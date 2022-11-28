@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+ 
+
+<suite name="UserCreation">
+    <test name="Salesforce UserCreation Test Cases">
+        <groups>
+            <run>
+                <include name="Salesforce UserCreation" />
+            </run>
+        </groups>
+        <classes>
+            <class name="com.intel.ebsqa.ccp.Testscripts.ui.SF_User_CreationTest">
+                <methods>
+                    <include name="SF_Internal_User_Creation_1" />
+                    <include name="External_User_Creation_1" />
+                    
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

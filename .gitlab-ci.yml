@@ -1,0 +1,12 @@
+stages:
+  - Test
+
+CIRun:
+
+  stage: Test
+  tags:
+    - SeleniumPSG
+  only:
+    - dev-branch
+  script:
+    - \\ccpautomation\C$\GitLabRunner\GitLab\%VM%.bat

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression Test">	
+	<test name="API &amp; UI Test Cases">
+		<classes>
+			<class name="com.intel.ebsqa.ccp.Testscripts.api.AccountTest" />				
+			<class name="com.intel.ebsqa.ccp.Testscripts.api.CampaignTest" />
+			<class name="com.intel.ebsqa.ccp.Testscripts.api.PartnerFundRequestTest" />				
+			<class name="com.intel.ebsqa.ccp.Testscripts.api.PartnerMarketingBudgetTest" />				
+			<class name="com.intel.ebsqa.ccp.Testscripts.ui.AccountsTest" />
+			<class name="com.intel.ebsqa.ccp.Testscripts.ui.BudgetTransferTest" />
+			<class name="com.intel.ebsqa.ccp.Testscripts.ui.CampaignTest" />
+			<class name="com.intel.ebsqa.ccp.Testscripts.ui.ExternalCustomerUI" />
+			<class name="com.intel.ebsqa.ccp.Testscripts.ui.InternalCustomerUI" />
+			<class name="com.intel.ebsqa.ccp.Testscripts.ui.PartnerFundRequestTest" />
+			<class name="com.intel.ebsqa.ccp.Testscripts.ui.PartnerMarketingBudgetTest" />
+			<class name="com.intel.ebsqa.ccp.Testscripts.ui.PartnerFundClaimTests"></class></classes>
+	</test>	
+</suite>
