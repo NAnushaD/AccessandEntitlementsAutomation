@@ -443,5 +443,17 @@ public class CommonEnum {
 
                         private final String description;
                   }
+                  
+                  /**
+                   * @Description Enum for Escalation Record type
+                   * @author manish9x Since 29-Nov-2022
+                   */
+                   @AllArgsConstructor
+                   @Getter
+                   public enum IntegrationStatus {
+                        IN_PROGRESS("In-Progress"),Successful("Successful"),Pending("Pending"),Complete("Complete");
+
+                         private final String description;
+                   }
 }
 

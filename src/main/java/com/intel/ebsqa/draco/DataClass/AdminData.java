@@ -136,5 +136,10 @@ public class AdminData {
 		public String cMFPricingParentName2;
 		public String sAPDistributor;
 		
+		public String salutation;
+		public String firstName;
+		public String lastName;
+		public String email;
+		public String accountName;
 	}
 }
