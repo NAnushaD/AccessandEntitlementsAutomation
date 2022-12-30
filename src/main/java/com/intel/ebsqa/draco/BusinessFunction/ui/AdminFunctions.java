@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
@@ -73,6 +74,13 @@ public class AdminFunctions extends TestBase {
 			objAdminDataDetails.setLastName(excelData.get(4));
 			objAdminDataDetails.setEmail(excelData.get(5));
 			objAdminDataDetails.setAccountName(excelData.get(6));
+			objAdminDataDetails.setNonExistingEmail(excelData.get(7));
+			objAdminDataDetails.setFirstName2(excelData.get(8));
+			objAdminDataDetails.setLastName2(excelData.get(9));
+			objAdminDataDetails.setAccountType(excelData.get(10));
+			objAdminDataDetails.setAccountName2(excelData.get(11));
+			objAdminDataDetails.setAccountType2(excelData.get(12));
+			objAdminDataDetails.setAccountName3(excelData.get(13));
 			
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			log.info(" set setAdminDataDetails created");
@@ -1484,5 +1492,549 @@ public class AdminFunctions extends TestBase {
 
 		}
 
+	}
+	
+	/**
+	 * @Description Method to clickOnLogintoExperienceasUserButton
+	 * @Author manish9x
+	 * @Since 15-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void clickOnLogintoExperienceasUserButton() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickOnLogintoExperienceasUserButton();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnLogintoExperienceasUserButton");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnLogintoExperienceasUserButton. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to clickOnPartnercenterUnifiedCommunity
+	 * @Author manish9x
+	 * @Since 15-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void clickOnPartnercenterUnifiedCommunity() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickOnPartnercenterUnifiedCommunity();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnPartnercenterUnifiedCommunity");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnPartnercenterUnifiedCommunity. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to clickOnMyProgramDropDown
+	 * @Author manish9x
+	 * @Since 15-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void clickOnMyProgramDropDown() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickOnMyProgramDropDown();
+	
+			log.info("Succussfully clickOnMyProgramDropDown");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnMyProgramDropDown. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to clickOnGrantAccessFromMyProgramDropDown
+	 * @Author manish9x
+	 * @Since 15-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void clickOnGrantAccessFromMyProgramDropDown() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickOnGrantAccessFromMyProgramDropDown();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnGrantAccessFromMyProgramDropDown");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnGrantAccessFromMyProgramDropDown. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to verifyCCPPageWithSearchContactButtonPresent
+	 * @Author manish9x
+	 * @Since 15-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void verifyCCPPageWithSearchContactButtonPresent() throws TimeOutException {
+		try {
+			
+			Assert.assertTrue(objOperationPageClass.verifyCCPPagePresent(), "CCP Page is not present");
+			Assert.assertTrue(objOperationPageClass.verifySearchContactButtonPresent(), "Search Contact Button is not present");
+			log.info("Succussfully verifyCCPPageWithSearchContactButtonPresent");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to verifyCCPPageWithSearchContactButtonPresent. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * 
+	 * @Description Method to SearchContactWithEmailAndClickOnSearchContactButton
+	 * @Author manish9x
+	 * @Since 16-Dec-2022
+	 */
+	public void SearchContactWithEmailAndClickOnSearchContactButton(String searchText) {
+		try {
+			
+			seleniumObj.waitForElement(objOperationPageClass.typeHereTextbox, 5, 5);
+			objOperationPageClass.typeHereTextbox.click();
+			objOperationPageClass.typeHereTextbox.clear();
+			seleniumObj.waitForSeconds(2);
+			objOperationPageClass.typeHereTextbox.sendKeys(searchText);
+			seleniumObj.waitForSeconds(2);
+			objOperationPageClass.clickOnSearchContactButton();
+			
+			log.info("Successfully SearchContactWithEmailAndClickOnSearchContactButton");
+		} catch (Exception e) {
+			log.error("Not able to SearchContactWithEmailAndClickOnSearchContactButton");
+			Assert.fail("Not able to SearchContactWithEmailAndClickOnSearchContactButton");
+		}
+
+	}
+	
+	/**
+	 * @Description Method to verifyContactIsVisibleOnclickingSearchContactButton
+	 * @Author manish9x
+	 * @Since 16-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void verifyContactIsVisibleOnclickingSearchContactButton(String email) throws TimeOutException {
+		try {
+			
+			Assert.assertTrue(objOperationPageClass.verifyContactIsVisibleOnclickingSearchContactButton(email), "Contact is not visible on clicking Search Contact Button!");
+			log.info("Succussfully verifyContactIsVisibleOnclickingSearchContactButton");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to verifyContactIsVisibleOnclickingSearchContactButton. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to clickOnLoadEntitlementsButton
+	 * @Author manish9x
+	 * @Since 16-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void clickOnLoadEntitlementsButton() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickOnLoadEntitlementsButton();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnLoadEntitlementsButton");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnLoadEntitlementsButton. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to verifyNoResultFoundMessage
+	 * @Author manish9x
+	 * @Since 20-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void verifyNoResultFoundMessage() throws TimeOutException {
+		try {
+			
+			Assert.assertTrue(objOperationPageClass.verifyNoResultFoundMessage(), "No Result Found is not present");
+			log.info("Succussfully verifyNoResultFoundMessage");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to verifyNoResultFoundMessage. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * Method to createContactThroughPartnerCenter
+	 * 
+	 * @Author manish9x
+	 * @Since 20-Dec-2022
+	 * @throws TimeOutException
+	 *             Exception thrown when a blocking operation times
+	 */
+	public void createContactThroughPartnerCenter(AdminDataDetails objAdminDataDetails) throws TimeOutException {
+		try {
+
+
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getFirstName2())) {
+				this.enterFirstNameContactThroughPartnerCenter(objAdminDataDetails.getFirstName2());
+			}
+
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getLastName2())) {
+				this.enterLastNameContactThroughPartnerCenter(objAdminDataDetails.getLastName2());
+			}
+
+		    this.selectAccountType(objAdminDataDetails.getAccountType());
+		    this.selectAccountNamefromDropDown(objAdminDataDetails.getAccountName2());
+		    
+			this.clickSave();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info(" createContactThroughPartnerCenter Successfully Done");
+		} catch (Exception ex) {
+			Assert.fail("createContactThroughPartnerCenter not created " + ex.getMessage());
+		}
+	}
+	
+	
+	
+	
+	/**
+	 * Method to enter first name contact
+	 * 
+	 * @Author manish9x
+	 * @Since 20-Dec-2022
+	 * @throws TimeOutException
+	 *             Exception thrown when a blocking operation times
+	 */
+	public void enterFirstNameContactThroughPartnerCenter(String name) throws TimeOutException {
+		try {
+			seleniumObj.waitForElement(objOperationPageClass.firstNameContactThroughPartnerCenter, 30, 10);
+			Assert.assertTrue(seleniumObj.isElementExists(objOperationPageClass.firstNameContactThroughPartnerCenter),
+					"first name contact does not exist in the UI");
+			objOperationPageClass.enterFirstNameContactThroughPartnerCenter(name);
+			log.info("Entered first name contact value : " + name);
+		} catch (Exception ex) {
+			Assert.fail("Not able to enter first name contact " + ex.getMessage());
+		}
+	}
+	
+	/**
+	 * Method to enter last name contact
+	 * 
+	 * @Author manish9x
+	 * @Since 20-Dec-2022
+	 * @throws TimeOutException
+	 *             Exception thrown when a blocking operation times
+	 */
+	public void enterLastNameContactThroughPartnerCenter(String name) throws TimeOutException {
+		try {
+			seleniumObj.waitForElement(objOperationPageClass.lastNameContactThroughPartnerCenter, 30, 10);
+			Assert.assertTrue(seleniumObj.isElementExists(objOperationPageClass.lastNameContactThroughPartnerCenter),
+					"last name contact does not exist in the UI");
+			objOperationPageClass.enterLastNameContactThroughPartnerCenter(name);
+			log.info("Entered last name contact value : " + name);
+		} catch (Exception ex) {
+			Assert.fail("Not able to enter last name contact " + ex.getMessage());
+		}
+	}
+	
+	/**
+	 * @Description Method to selectAccountType
+	 * @Author manish9x
+	 * @Since 20-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void selectAccountType(String account) throws TimeOutException {
+		try {
+
+			objOperationPageClass.selectAccountType(account);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully selectAccountType");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to selectAccountType. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to selectAccountNamefromDropDown
+	 * @Author manish9x
+	 * @Since 20-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void selectAccountNamefromDropDown(String account) throws TimeOutException {
+		try {
+
+			objOperationPageClass.selectAccountNamefromDropDown(account);
+			log.info("Succussfully selectAccountNamefromDropDown");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to selectAccountNamefromDropDown. " + ex.getMessage());
+
+		}
+	}
+	
+	
+	/**
+	 * @Description Method to selectAnyOfTheEntitlements
+	 * @Author manish9x
+	 * @Since 23-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void selectAnyOfTheEntitlements(String entitlement) throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.selectAnyOfTheEntitlements(entitlement);
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully selectAnyOfTheEntitlements");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to selectAnyOfTheEntitlements. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to validateContactEntitlementsAssignment
+	 * @Author manish9x
+	 * @Since 02-dec-2022
+	 * @throws TimeOutException
+	 */
+	public void VerifyStatusOfEntitlementAsProcessing(String entitlement) throws TimeOutException {
+		
+		{
+			try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+entitlement+"']/following::div[@class='slds-show'])[1]"));
+			String ActualStatus=ele.getText();
+	  
+	    	if(ActualStatus.equalsIgnoreCase("Processing"))
+	    		System.out.println("Entitlement status is Processing");
+			}
+	    	catch (Exception e) {
+				log.info("Entitlements status is not Processing" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Entitlements status is not Processing");
+			}
+		
+		}
+	}
+	
+	/**
+	 * @Description Method to verifyErrorOnContactThroughPartnerCenter
+	 * @Author manish9x
+	 * @Since 27-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void verifyErrorOnContactThroughPartnerCenter() throws TimeOutException {
+		try {
+			 sfcommonObj.waitTillLightningPageLoadComplete();
+			Assert.assertTrue(objOperationPageClass.verifyErrorOnContactThroughPartnerCenter(), "Error is not present");
+			log.info("Succussfully verifyErrorOnContactThroughPartnerCenter");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to verifyErrorOnContactThroughPartnerCenter. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to verifyPermissionSetAssignmentsForSPCFUserAdministrator
+	 * @Author manish9x
+	 * @Since 28-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void verifyPermissionSetAssignmentsForSPCFUserAdministrator()
+	{
+	
+		String SPCF=objOperationPageClass.sPCFuser.getText();
+		String CCPExternal=objOperationPageClass.cCPExternalUser.getText();
+	    try
+	    {
+	    if(SPCF.equalsIgnoreCase("SPCF USER") && CCPExternal.equalsIgnoreCase("CCP External User Admin"))
+	    {
+	    	log.info("Succussfully verifyPermissionSetAssignmentsForSPCFUserAdministrator");
+	    }
+	    }
+	    catch (Exception ex) {
+			Assert.fail("Not able to verifyPermissionSetAssignmentsForSPCFUserAdministrator. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to verifyCCFActivitySubmitterPresentOrNot
+	 * @Author manish9x
+	 * @Since 28-dec-2022
+	 * @throws TimeOutException
+	 */
+	public void verifyCCFActivitySubmitterPresentOrNot() throws TimeOutException {
+		try {
+			
+			Assert.assertTrue(objOperationPageClass.verifyCCFActivitySubmitterPresentOrNot(), "CCF Activity Submitter is not present");
+			log.info("Succussfully verifyCCFActivitySubmitterPresentOrNot");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to verifyCCFActivitySubmitterPresentOrNot. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to checkCCFActivitySubmitterCheckbox
+	 * @Author manish9x
+	 * @Since 28-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void checkCCFActivitySubmitterCheckbox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkCCFActivitySubmitterCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkCCFActivitySubmitterCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to checkCCFActivitySubmitterCheckbox. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to verifyPermissionSetAssignmentsForCCFActivitySubmitter
+	 * @Author manish9x
+	 * @Since 28-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void verifyPermissionSetAssignmentsForCCFActivitySubmitter()
+	{
+	
+		String CCF=objOperationPageClass.cCPCCFuser.getText();
+		String CCPActivitySubmitter=objOperationPageClass.cCPActivitySubmitter.getText();
+	    try
+	    {
+	    if(CCF.equalsIgnoreCase("CCP CCF USER") && CCPActivitySubmitter.equalsIgnoreCase("CCP External Activity Submitter"))
+	    {
+	    	log.info("Succussfully verifyPermissionSetAssignmentsForCCFActivitySubmitter");
+	    }
+	    }
+	    catch (Exception ex) {
+			Assert.fail("Not able to verifyPermissionSetAssignmentsForCCFActivitySubmitter. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to verifyGrantAccessNotPresentUnderMyProgram
+	 * @Author manish9x
+	 * @Since 28-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void verifyGrantAccessNotPresentUnderMyProgram()
+	{
+	    try
+	    {
+	    	Assert.assertFalse(objOperationPageClass.verifyGrantAccessNotPresentUnderMyProgram(), "Grant Access is present in My Program Dropdown");
+	    	log.info("Succussfully verifyGrantAccessNotPresentUnderMyProgram");
+	    }
+	    catch (Exception ex) {
+			Assert.fail("Not able to verifyGrantAccessNotPresentUnderMyProgram. " + ex.getMessage());
+
+		}
+	}
+	
+	/**
+	 * @Description Method to validateContactEntitlementsPresent
+	 * @Author manish9x
+	 * @Since 28-dec-2022
+	 * @throws TimeOutException
+	 */
+	public void validateContactEntitlementsPresent(List<String> Entitlement_Name) throws TimeOutException {
+		for(int i=0;i<Entitlement_Name.size();i++)
+		{
+			Entitlement_Name.get(i);
+			try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//span[text()='"+ Entitlement_Name.get(i) +"'])[1]"));
+			if(ele.isDisplayed())
+				System.out.println("Entitlements is displayed");
+			}
+			catch (Exception e) {
+				log.info("Entitlements is not displayed" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Entitlements is not displayed");
+			}
+		}
+	}
+	
+	/**
+	 * Method to verifyAccountsPresentWhichWereInPGMRecords
+	 * 
+	 * @Author manish9x
+	 * @Since 29-Dec-2022
+	 * @throws TimeOutException
+	 *             Exception thrown when a blocking operation times
+	 */
+	public void verifyAccountsPresentWhichWereInPGMRecords(AdminDataDetails objAdminDataDetails) throws TimeOutException {
+
+		try {
+		    this.selectAccountType(objAdminDataDetails.getAccountType());
+		    this.verifyAccountsPresentInDropDown(objAdminDataDetails.getAccountName2());
+		    
+		    this.selectAccountType(objAdminDataDetails.getAccountType2());
+		    this.verifyAccountsPresentInDropDown(objAdminDataDetails.getAccountName3());
+		    
+			log.info(" verifyAccountsPresentWhichWereInPGMRecords Successfully Done");
+		} catch (Exception ex) {
+			Assert.fail("verifyAccountsPresentWhichWereInPGMRecords not done " + ex.getMessage());
+		}
+	}
+	
+	/**
+	 * @Description Method to verifyAccountsPresentInDropDown
+	 * @Author manish9x
+	 * @Since 30-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void verifyAccountsPresentInDropDown(String expectedAccountName) throws TimeOutException {
+		try {
+
+			String actualAccountName=objOperationPageClass.verifyAccountsPresentInDropDown();
+			Assert.assertEquals(actualAccountName,expectedAccountName, "Accounts Mismatch");
+
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully verifyAccountsPresentInDropDown");
+			
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to verifyAccountsPresentInDropDown. " + ex.getMessage());
+
+		}
 	}
 }

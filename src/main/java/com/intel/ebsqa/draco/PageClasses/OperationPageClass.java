@@ -66,6 +66,21 @@ public class OperationPageClass extends TestBase {
 	@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='PMP External - Employee'])[1]")
 	public WebElement Employee;
 	
+	@FindBy(xpath = "//input[contains(@placeholder,'Type here')]")
+	public WebElement typeHereTextbox;
+	
+	@FindBy(xpath = "(//label[text()='First Name']/following::input)[1]")
+	public WebElement firstNameContactThroughPartnerCenter;
+
+	@FindBy(xpath = "(//label[text()='Last Name']/following::input)[1]")
+	public WebElement lastNameContactThroughPartnerCenter;
+	
+	@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='SPCF USER'])[1]")
+	public WebElement sPCFuser;
+	
+	@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='CCP External Activity Submitter'])[1]")
+   	public WebElement cCPActivitySubmitter;
+	
 	public void clickOnSetup() {
 		sfcommonObj.waitTillLightningPageLoadComplete();
 		seleniumObj.waitForElement(setup_icon, 4, 4);
@@ -631,4 +646,242 @@ public class OperationPageClass extends TestBase {
 			}
 		}
 		
+		@FindBy(xpath = "(//button[text()='Log in to Experience as User'])[1]")
+		public WebElement LogintoExperienceasUserButton;
+
+		public void clickOnLogintoExperienceasUserButton() {
+			seleniumObj.waitForElement(LogintoExperienceasUserButton, 4, 4);
+			seleniumObj.scrollToElement(LogintoExperienceasUserButton);
+			LogintoExperienceasUserButton.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}	
+		
+		@FindBy(xpath = "(//*[text()='Partnercenter Unified Community'])[1]")
+		public WebElement PartnercenterUnifiedCommunity;
+
+		public void clickOnPartnercenterUnifiedCommunity() {
+			seleniumObj.waitForElement(PartnercenterUnifiedCommunity, 4, 4);
+			seleniumObj.scrollToElement(PartnercenterUnifiedCommunity);
+			PartnercenterUnifiedCommunity.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}	
+		
+		@FindBy(xpath = "//button[text()='My Program']")
+		public WebElement MyProgram;
+
+		public void clickOnMyProgramDropDown() {
+			seleniumObj.waitForElement(MyProgram, 4, 4);
+			seleniumObj.scrollToElement(MyProgram);
+			MyProgram.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+		@FindBy(xpath = "//*[text()='Grant Access']")
+		public WebElement GrantAccessFromMyProgram;
+
+		public void clickOnGrantAccessFromMyProgramDropDown() {
+			seleniumObj.waitForElement(GrantAccessFromMyProgram, 4, 4);
+			seleniumObj.scrollToElement(GrantAccessFromMyProgram);
+			GrantAccessFromMyProgram.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}	
+		
+		@FindBy(xpath = "//h1[text()='Contacts']")
+		public WebElement CCPPage;
+
+		public boolean verifyCCPPagePresent() {
+
+			seleniumObj.waitForElement(CCPPage, 4, 4);
+			seleniumObj.scrollToElement(CCPPage);
+			return CCPPage.isDisplayed();
+
+		}
+		
+		@FindBy(xpath = "//button[text()='Search Contact']")
+		public WebElement SearchContactButton;
+
+		public boolean verifySearchContactButtonPresent() {
+
+			seleniumObj.waitForElement(SearchContactButton, 4, 4);
+			seleniumObj.scrollToElement(SearchContactButton);
+			return SearchContactButton.isDisplayed();
+
+		}
+		
+		public void clickOnSearchContactButton() {
+			seleniumObj.waitForElement(SearchContactButton, 4, 4);
+			seleniumObj.scrollToElement(SearchContactButton);
+			SearchContactButton.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+		
+
+		public boolean verifyContactIsVisibleOnclickingSearchContactButton(String email) {
+
+			WebElement ele = seleniumObj.getDriver().findElement(
+					By.xpath("//*[text()='"+email+"']"));
+			seleniumObj.waitForElement(ele, 4, 4);
+			seleniumObj.scrollToElement(ele);
+			return ele.isDisplayed();
+
+		}
+		
+		@FindBy(xpath = "(//button[text()='Load Entitlements'])[1]")
+		public WebElement LoadEntitlements;
+
+		public void clickOnLoadEntitlementsButton() {
+			seleniumObj.waitForElement(LoadEntitlements, 4, 4);
+			seleniumObj.scrollToElement(LoadEntitlements);
+			LoadEntitlements.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}	
+		
+		@FindBy(xpath = "//*[contains(text(),'No Result Found')]")
+		public WebElement NoResultFound;
+
+		public boolean verifyNoResultFoundMessage() {
+
+			seleniumObj.waitForElement(NoResultFound, 4, 4);
+			seleniumObj.scrollToElement(NoResultFound);
+			return NoResultFound.isDisplayed();
+
+		}
+		
+		/**
+		 * 
+		 * @Description Method to enterFirstNameContact
+		 * @Author manish9x
+		 * @Since 20-Dec-2022
+		 */
+		public void enterFirstNameContactThroughPartnerCenter(String searchText) {
+			try {
+				seleniumObj.waitForElement(firstNameContactThroughPartnerCenter, 4, 4);
+				seleniumObj.scrollToElement(firstNameContactThroughPartnerCenter);
+				firstNameContactThroughPartnerCenter.click();
+				firstNameContactThroughPartnerCenter.clear();
+				firstNameContactThroughPartnerCenter.sendKeys(searchText);
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				log.info("Entered text in first name textbox : " + searchText);
+			} catch (Exception e) {
+				log.error("Not able to enter text in first name text box");
+				Assert.fail("Not able to enter text in first name text box");
+			}
+
+		}
+		
+
+		/**
+		 * 
+		 * @Description Method to enterLastNameContact
+		 * @Author manish9x
+		 * @Since 20-Dec-2022
+		 */
+		public void enterLastNameContactThroughPartnerCenter(String searchText) {
+			try {
+				seleniumObj.waitForElement(lastNameContactThroughPartnerCenter, 4, 4);
+				seleniumObj.scrollToElement(lastNameContactThroughPartnerCenter);
+				lastNameContactThroughPartnerCenter.click();
+				lastNameContactThroughPartnerCenter.clear();
+				lastNameContactThroughPartnerCenter.sendKeys(searchText);
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				log.info("Entered text in last name textbox : " + searchText);
+			} catch (Exception e) {
+				log.error("Not able to enter text in last name text box");
+				Assert.fail("Not able to enter text in last name text box");
+			}
+
+		}
+		
+		public void selectAccountType(String account) {
+			
+			WebElement ele = seleniumObj.getDriver().findElement(
+					By.xpath("//input[@name='AccountType' and @value='"+account+"']"));
+			seleniumObj.waitForElement(ele, 5, 5);
+			seleniumObj.scrollToElement(ele);
+			//ele.click();
+			executor.executeScript("arguments[0].click();", ele);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+		
+		public void selectAccountNamefromDropDown(String account) {
+			WebElement ele = seleniumObj.getDriver().findElement(
+					By.xpath("//select[@name='myAccSelect']"));
+			ele.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			
+			WebElement ele2 = seleniumObj.getDriver().findElement(
+					By.xpath("//option[text()='"+account+"']"));
+			seleniumObj.waitForElement(ele2, 5, 5);
+			ele2.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+		
+
+		public void selectAnyOfTheEntitlements(String entitlement) {
+
+			WebElement entitlementCheckbox = seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+entitlement+"']/following::span[@class='slds-checkbox_faux'])[1]"));
+			seleniumObj.waitForElement(entitlementCheckbox, 4, 4);
+			seleniumObj.scrollToElement(entitlementCheckbox);
+			entitlementCheckbox.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+		
+		  @FindBy(xpath = "//*[contains(text(),'You cannot create contact under this account')]")
+			public WebElement ErrorOnContact;
+
+			public boolean verifyErrorOnContactThroughPartnerCenter() {
+
+				seleniumObj.waitForElement(ErrorOnContact, 4, 4);
+				seleniumObj.scrollToElement(ErrorOnContact);
+				return ErrorOnContact.isDisplayed();
+
+			}
+			
+			@FindBy(xpath = "//*[text()='CCF Activity Submitter']")
+			public WebElement CCFActivitySubmitter;
+
+			public boolean verifyCCFActivitySubmitterPresentOrNot() {
+
+				seleniumObj.waitForElement(CCFActivitySubmitter, 4, 4);
+				seleniumObj.scrollToElement(CCFActivitySubmitter);
+				return CCFActivitySubmitter.isDisplayed();
+
+			}
+			
+			@FindBy(xpath = "(//*[text()='CCF Activity Submitter']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement CCFActivitySubmitterCheckbox;
+
+			public void checkCCFActivitySubmitterCheckbox() {
+
+				seleniumObj.waitForElement(CCFActivitySubmitterCheckbox, 4, 4);
+				seleniumObj.scrollToElement(CCFActivitySubmitterCheckbox);
+				CCFActivitySubmitterCheckbox.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			public boolean verifyGrantAccessNotPresentUnderMyProgram() {
+				try {
+
+					return seleniumObj.getDriver().findElement(By.xpath("//*[text()='Grant Access']")).isDisplayed();
+
+				} catch (Exception e) {
+					return false;
+				}
+			}
+			public String verifyAccountsPresentInDropDown() {
+				WebElement ele = seleniumObj.getDriver().findElement(
+						By.xpath("//select[@name='myAccSelect']"));
+				ele.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				
+				List<WebElement> ele2 = seleniumObj.getDriver().findElements(
+						By.xpath("//select[@name='myAccSelect']//option"));
+				if(ele2.size()>2){
+					
+					Assert.fail("Accounts not matching with the accounts presents in PGM records");
+				}
+				else if(ele2.size()==2)
+				{
+					return ele2.get(ele2.size()-1).getText();
+				}
+				return ele2.get(ele2.size()-1).getText();
+			}	
 }
