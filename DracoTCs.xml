@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+
+
+<suite name="Draco Smoke">
+	<test name="Draco Smoke Test Cases">
+		<groups>
+			<run>
+				<include name="Draco Smoke" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.intel.ebsqa.draco.Testscripts.ui.EntitlementAssignmentonNewContactValidationTest">
+				<methods>					
+					<include name="TC0001_DRACO" />	
+					<include name="TC0002_DRACO" />	
+					<include name="TC0004_DRACO" />	
+					<include name="TC0003_DRACO" />	
+					<include name="TC0005_DRACO" />	
+					<include name="TC0006_DRACO" />	
+					<include name="TC0007_DRACO" />	
+					<include name="TC0008_DRACO" />	
+					<include name="TC0009_DRACO" />	
+					<include name="TC0010_DRACO" />	
+					<include name="TC0011_DRACO" />	
+					<include name="TC0012_DRACO" />	
+					<include name="TC0013_DRACO" />	
+					<include name="TC0014_DRACO" />	
+					<include name="TC0015_DRACO" />	
+					<include name="TC0016_DRACO" />	
+					<include name="TC0017_DRACO" />	
+					<include name="TC0018_DRACO" />	
+						
+				</methods>
+			</class>	
+		</classes>
+	</test>
+</suite>
