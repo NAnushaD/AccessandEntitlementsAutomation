@@ -73,7 +73,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 	ExternalCustomerUIData objExternalCustomerUIData;
 	ExternalCustomerUIDataDetails objExternalCustomerUIDetails;
 	public List<String> Entitlement_Name = new ArrayList<String>();
-
+    public List<String> IPA_membership=new ArrayList<String>();
 	
 	@BeforeTest(alwaysRun = true)
 	public void BeforeTestcase() {
@@ -1566,4 +1566,700 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 		objNavigation.logoutFromApplication();
 
 	}
+	/**
+	 * Verify that User can assign CCP entitlements to an existing non-ccp user of same Corporate Account  
+	 * @throws Exception 
+	 * 
+	 * @Author asuhassx
+	 * @Since 02-Jan-2023
+	 */
+	
+		@Test(description="Verify that User can assign CCP entitlements to an existing non-ccp user of same Corporate Account",groups={"Draco Smoke"})
+		public void TC0019_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("CCF User");
+			Entitlement_Name.add("Partner Portal");
+			Entitlement_Name.add("CCF User Administrator");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.clickOnGrantAccessButton();
+			objAdminFunctions.expandConsolidatedPlatform();
+			objAdminFunctions.verifyCCFUserAdministratorPresentOrNot();
+			objAdminFunctions.checkCCFUserAdministratorCheckbox();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Pending.getDescription());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
+			objAdminFunctions.goBackToContactsPage();
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.validateContactEntitlementsAssignment(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+			objAdminFunctions.clickOnLogintoExperienceasUserButton();
+			objAdminFunctions.clickOnPartnercenterUnifiedCommunity();
+			objAdminFunctions.clickOnMyProgramDropDown();
+			objAdminFunctions.clickOnGrantAccessFromMyProgramDropDown();
+			objAdminFunctions.verifyCCPPageWithSearchContactButtonPresent();
+			
+			objAdminFunctions.SearchContactWithEmailAndClickOnSearchContactButton(objAdminDataDetails.getExistingEmail());
+			objAdminFunctions.clickOnLoadEntitlementsButton();
+			objAdminFunctions.selectAnyOfTheEntitlements("CCF User Administrator");
+			objAdminFunctions.clickButton(Button.SaveEntitlements.toString());
+			objAdminFunctions.VerifyStatusOfEntitlementAsProcessing("CCF User Administrator");
+		
+			seleniumObj.getDriver().get(currentContactsURL);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			
+			String contactName2 = objAdminDataDetails.getFirstName2() + " "
+					+ objAdminDataDetails.getLastName2();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getExistingEmail(), contactName2);
+			
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.validateContactEntitlementsAssignment(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+			
+			objNavigation.logoutFromApplication();
+
+			
+		
+	}
+		@Test(description="Verify that User can assign CCP entitlements to an existing non-ccp user of same Agency Account",groups={"Draco Smoke"})
+		public void TC0020_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("CCF User");
+			Entitlement_Name.add("Partner Portal");
+			Entitlement_Name.add("CCF User Administrator");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			//objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.clickOnGrantAccessButton();
+			objAdminFunctions.expandConsolidatedPlatform();
+			objAdminFunctions.verifyCCFUserAdministratorPresentOrNot();
+			objAdminFunctions.checkCCFUserAdministratorCheckbox();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Pending.getDescription());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
+			objAdminFunctions.goBackToContactsPage();
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.validateContactEntitlementsAssignment(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+			objAdminFunctions.clickOnLogintoExperienceasUserButton();
+			objAdminFunctions.clickOnPartnercenterUnifiedCommunity();
+			objAdminFunctions.clickOnMyProgramDropDown();
+			objAdminFunctions.clickOnGrantAccessFromMyProgramDropDown();
+			objAdminFunctions.verifyCCPPageWithSearchContactButtonPresent();
+			
+			objAdminFunctions.SearchContactWithEmailAndClickOnSearchContactButton(objAdminDataDetails.getExistingEmail());
+			objAdminFunctions.clickOnLoadEntitlementsButton();
+			objAdminFunctions.selectAnyOfTheEntitlements("CCF User Administrator");
+			objAdminFunctions.clickButton(Button.SaveEntitlements.toString());
+			objAdminFunctions.VerifyStatusOfEntitlementAsProcessing("CCF User Administrator");
+		
+			seleniumObj.getDriver().get(currentContactsURL);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			
+			String contactName2 = objAdminDataDetails.getFirstName2() + " "
+					+ objAdminDataDetails.getLastName2();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getExistingEmail(), contactName2);
+			
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.validateContactEntitlementsAssignment(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+			
+			objNavigation.logoutFromApplication();
+
+			
+		
+	}
+		@Test(description="Verify that after opening Manage Personnel page, User should be able to see columns of Contacts list as Select, Name, Email Address, Last Sign-in, IPA Membership, Country,Responibilities Assigned",groups={"Draco Smoke"})
+		public void TC0021_DRACO() throws Exception
+		{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Partner Admin");
+			Entitlement_Name.add("Partner Portal");
+			Entitlement_Name.add("Employee");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			//objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.clickOnGrantAccessButton();
+			objAdminFunctions.expandConsolidatedPlatform();
+			objAdminFunctions.clickOnLogintoExperienceasUserButton();
+			objAdminFunctions.clickOnIntelPartnerAllianceCommunity();
+			objAdminFunctions.clickOnManagePersonnel();
+			seleniumObj.waitForSeconds(100);
+			objAdminFunctions.arecolumnsavailable();
+			seleniumObj.waitForSeconds(100);
+			seleniumObj.getDriver().get(currentContactsURL);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();		
+		}
+		@Test(description="Verify that  Contacts with IPA Membership Active(ACR-Complete) and Invited(ACR-Pending) are displayed and ACR-Inactive contacts are not displayed under Contacts list of Manage Personnel page",groups={"Draco Smoke"})
+		public void TC0022_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Partner Admin");
+			Entitlement_Name.add("Partner Portal");
+			Entitlement_Name.add("Employee");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			//objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.clickOnGrantAccessButton();
+			objAdminFunctions.expandConsolidatedPlatform();
+			objAdminFunctions.clickOnLogintoExperienceasUserButton();
+			objAdminFunctions.clickOnIntelPartnerAllianceCommunity();
+			objAdminFunctions.clickOnManagePersonnel();
+			seleniumObj.waitForSeconds(100);
+			objAdminFunctions.checkInactiveIPAMembership();
+			seleniumObj.waitForSeconds(100);
+			seleniumObj.getDriver().get(currentContactsURL);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();
+			
+		}
+		@Test(description="Verify Manage Personnel filters work properly",groups={"Draco Smoke"})
+		public void TC0023_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Partner Admin");
+			Entitlement_Name.add("Partner Portal");
+			Entitlement_Name.add("Employee");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			//objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.clickOnGrantAccessButton();
+			objAdminFunctions.expandConsolidatedPlatform();
+			objAdminFunctions.clickOnLogintoExperienceasUserButton();
+			objAdminFunctions.clickOnIntelPartnerAllianceCommunity();
+			objAdminFunctions.clickOnManagePersonnel();
+			objAdminFunctions.clickOnmanagepersonnelFilter();
+			objAdminFunctions.clickOnfilterEmail();
+			objAdminFunctions.addfilter(objAdminDataDetails);
+			objAdminFunctions.clickOnfilterApply();
+			
+			
+			
+		}
+		
+		@Test(description="Verify that a User can remove the Invited/Active Contact with Same Partner Role and Same Account from IPA by clicking on Delete button",groups={"Draco Smoke"})
+		public void TC0024_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Partner Admin");
+			Entitlement_Name.add("Partner Portal");
+			Entitlement_Name.add("Employee");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			//objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.clickOnGrantAccessButton();
+			objAdminFunctions.expandConsolidatedPlatform();
+			objAdminFunctions.clickOnLogintoExperienceasUserButton();
+			objAdminFunctions.clickOnIntelPartnerAllianceCommunity();
+			objAdminFunctions.clickOnManagePersonnel();
+			objAdminFunctions.clickOnmanagepersonnelFilter();
+			objAdminFunctions.clickOnfilterEmail();
+			objAdminFunctions.addfilter(objAdminDataDetails);
+			objAdminFunctions.clickOnfilterApply();
+			objAdminFunctions.clickOnContacttoInvite();
+			objAdminFunctions.clickOnDeletemanagepersonnel();
+			seleniumObj.waitForSeconds(100);
+			seleniumObj.getDriver().get(currentContactsURL);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			
+			String contactName2 = objAdminDataDetails.getFirstName2() + " "
+					+ objAdminDataDetails.getLastName2();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getExistingEmail(), contactName2);
+			
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.clickOnViewAllOfPartnerContactRelationship();
+			objAdminFunctions.verifyEmployeeRelationshipStatusAsCompleteAndInactiveIndicatorAsTrue(CommonEnum.IntegrationStatus.Complete.getDescription());
+			
+			
+		}
+		@Test(description="Verify that a User can re-invite the Invited Contact with Same Partner Role and Same Account from IPA by clicking on Re-invite button",groups={"Draco Smoke"})
+		public void TC0025_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Partner Admin");
+			Entitlement_Name.add("Partner Portal");
+			Entitlement_Name.add("Employee");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			//objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.clickOnGrantAccessButton();
+			objAdminFunctions.expandConsolidatedPlatform();
+			objAdminFunctions.clickOnLogintoExperienceasUserButton();
+			objAdminFunctions.clickOnIntelPartnerAllianceCommunity();
+			objAdminFunctions.clickOnManagePersonnel();
+			objAdminFunctions.clickOnmanagepersonnelFilter();
+			objAdminFunctions.clickOnfilterEmail();
+			objAdminFunctions.addfilter(objAdminDataDetails);
+			objAdminFunctions.clickOnfilterApply();
+			objAdminFunctions.clickOnContacttoInvite();
+			objAdminFunctions.clickOnReinvitemanagepersonnel();
+			seleniumObj.waitForSeconds(100);
+			seleniumObj.getDriver().get(currentContactsURL);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			
+			String contactName2 = objAdminDataDetails.getFirstName2() + " "
+					+ objAdminDataDetails.getLastName2();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getExistingEmail(), contactName2);
+			
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.clickOnViewAllOfPartnerContactRelationship();
+			objAdminFunctions.verifyEmployeeRelationshipStatusAsCompleteAndInactiveIndicatorAsFalse(CommonEnum.IntegrationStatus.Complete.getDescription());
+				
+		}
+		@Test(description="Verify that a User can't perform Re-invite or Delete Quick Actions on the Same Account Different Partner Role contacts and Contacts with different OPID associated through MPI",groups={"Draco Smoke"})
+		public void TC0026_DRACO() throws Exception{
+				String MethodName = new Object() {
+				}.getClass().getEnclosingMethod().getName();
+				
+				objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+				objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+				String[] filePaths = new String[2];
+				filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+				filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+						+ objAdminDataDetails.getFileName();
+				objAdminDataDetails.setFilePaths(filePaths);
+				objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+				Entitlement_Name.add("Partner Admin");
+				Entitlement_Name.add("Partner Portal");
+				Entitlement_Name.add("Employee");
+				sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+						objAdminData.getRole());
+				
+				//objAdminFunctions.switchToLightningExperience();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+				
+				String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+				
+				objAdminFunctions.clickButton(Button.New.toString());
+				objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+				objAdminFunctions.createNewContact(objAdminDataDetails);
+				objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+				seleniumObj.waitForSeconds(100);
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+				objAdminFunctions.clickOnGrantAccessButton();
+				objAdminFunctions.expandConsolidatedPlatform();
+				objAdminFunctions.clickOnLogintoExperienceasUserButton();
+				objAdminFunctions.clickOnIntelPartnerAllianceCommunity();
+				objAdminFunctions.clickOnManagePersonnel();
+				objAdminFunctions.clickOnmanagepersonnelFilter();
+				objAdminFunctions.clickOnfilterEmail();
+				objAdminFunctions.addfilter(objAdminDataDetails);
+				objAdminFunctions.clickOnfilterApply();
+				objAdminFunctions.clickOnContacttoInvite();
+				objAdminFunctions.verifyIfReinviteButtonExists();
+				objAdminFunctions.verifyIfDeleteButtonExists();
+				seleniumObj.waitForSeconds(100);
+				seleniumObj.getDriver().get(currentContactsURL);
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				objNavigation.logoutFromApplication();
+				
+		}
+		@Test(description="Verify that Delete and Reinvite buttons are not shown for the PA contact",groups={"Draco Smoke"})
+		public void TC0027_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Partner Admin");
+			Entitlement_Name.add("Partner Portal");
+			Entitlement_Name.add("Employee");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			//objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.clickOnGrantAccessButton();
+			objAdminFunctions.expandConsolidatedPlatform();
+			objAdminFunctions.clickOnLogintoExperienceasUserButton();
+			objAdminFunctions.clickOnIntelPartnerAllianceCommunity();
+			objAdminFunctions.clickOnManagePersonnel();
+			objAdminFunctions.clickOnmanagepersonnelFilter();
+			objAdminFunctions.clickOnfilterEmail();
+			objAdminFunctions.addfilter(objAdminDataDetails);
+			objAdminFunctions.clickOnfilterApply();
+			objAdminFunctions.clickOnContacttoInvite();
+			objAdminFunctions.verifyIfReinviteButtonExists();
+			objAdminFunctions.verifyIfDeleteButtonExists();
+			seleniumObj.waitForSeconds(100);
+			seleniumObj.getDriver().get(currentContactsURL);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();
+		}
+		@Test(description="Verify that user is able to assign and remove any of the entitlements below for a contact having same partner role same Account as that of logged in user based on the benefits assigned on the Account: Employee, Partner Admin,Partner Admin Delegate, Intel Solutions Library Partner NDA,IPA Distributor User,IPA Titanium User,MDF Claim Submitter,MDF Proposal Manager,MDF User ,MDF Viewer,Platform Verification Program (PVP) access,Points Manager,Points View ,Warranty Requestor,Web Ticketing ",groups={"Draco Smoke"})
+		public void TC0028_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Partner Admin");
+			Entitlement_Name.add("Partner Portal");
+			Entitlement_Name.add("Employee");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			//objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.clickOnGrantAccessButton();
+			objAdminFunctions.expandConsolidatedPlatform();
+			objAdminFunctions.clickOnLogintoExperienceasUserButton();
+			objAdminFunctions.clickOnIntelPartnerAllianceCommunity();
+			objAdminFunctions.clickOnManagePersonnel();
+			objAdminFunctions.clickOnmanagepersonnelFilter();
+			objAdminFunctions.clickOnfilterEmail();
+			objAdminFunctions.addfilter(objAdminDataDetails);
+			objAdminFunctions.clickOnfilterApply();
+			objAdminFunctions.clickOnContacttoInvite();
+			objAdminFunctions.checkPADCheckbox();
+			seleniumObj.waitForSeconds(100);
+			seleniumObj.getDriver().get(currentContactsURL);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String contactName2 = objAdminDataDetails.getFirstName2() + " "
+					+ objAdminDataDetails.getLastName2();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getExistingEmail(), contactName2);
+			
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			Entitlement_Name.add("Partner Admin Delegate");
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.validateContactEntitlementsAssignment(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+			objNavigation.logoutFromApplication();
+			
+			
+		}
+		@Test(description="Verify that a User can assign/remove Marketplace entitlement(Marketing Specialist/Offering Editor/Partner Lead Development Rep) based on benefit on Account/OPID to the Contact of Same Account with different Partner Role ",groups={"Draco Smoke"})
+		public void TC0029_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Partner Admin");
+			Entitlement_Name.add("Partner Portal");
+			Entitlement_Name.add("Employee");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			//objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.clickOnGrantAccessButton();
+			objAdminFunctions.expandConsolidatedPlatform();
+			objAdminFunctions.clickOnLogintoExperienceasUserButton();
+			objAdminFunctions.clickOnIntelPartnerAllianceCommunity();
+			objAdminFunctions.clickOnManagePersonnel();
+			objAdminFunctions.clickOnmanagepersonnelFilter();
+			objAdminFunctions.clickOnfilterEmail();
+			objAdminFunctions.addfilter(objAdminDataDetails);
+			objAdminFunctions.clickOnfilterApply();
+			objAdminFunctions.clickOnContacttoInvite();
+			objAdminFunctions.checkPADCheckbox();
+			seleniumObj.waitForSeconds(100);
+			seleniumObj.getDriver().get(currentContactsURL);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String contactName2 = objAdminDataDetails.getFirstName2() + " "
+					+ objAdminDataDetails.getLastName2();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getExistingEmail(), contactName2);
+			
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			Entitlement_Name.add("Marketing Specialist");
+			seleniumObj.waitForSeconds(100);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.validateContactEntitlementsAssignment(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+			objAdminFunctions.goBackToContactsPage();
+			objAdminFunctions.clickOnViewPartnerUserButton();
+			objAdminFunctions.verifyActiveCheckboxOnUserIsCheckedOrNot();
+			objAdminFunctions.verifyPermissionSetAssignments();
+			objNavigation.logoutFromApplication();
+			
+		}
+		
+		
 }

@@ -81,7 +81,9 @@ public class AdminFunctions extends TestBase {
 			objAdminDataDetails.setAccountName2(excelData.get(11));
 			objAdminDataDetails.setAccountType2(excelData.get(12));
 			objAdminDataDetails.setAccountName3(excelData.get(13));
-			
+			objAdminDataDetails.setExistingEmail(excelData.get(14));
+			objAdminDataDetails.setFilter(excelData.get(15));
+			//System.out.println("Email " + objAdminDataDetails.getExistingEmail());
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			log.info(" set setAdminDataDetails created");
 		} catch (Exception ex) {
@@ -382,7 +384,17 @@ public class AdminFunctions extends TestBase {
 			Assert.fail("createNewContact not created " + ex.getMessage());
 		}
 	}
-	
+	public void addfilter(AdminDataDetails objAdminDataDetails) throws TimeOutException{
+		try{
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getFilter())) {
+				this.selectSalutationForContact(objAdminDataDetails.getFilter());
+		      }
+		}
+			catch (Exception ex) {
+				Assert.fail("Filter not entered " + ex.getMessage());
+			}
+			
+	}
 	
 	/**
 	 * @Description Method to verifyERPMIntegrationStatus
@@ -572,7 +584,20 @@ public class AdminFunctions extends TestBase {
 
 	}
 	
+    public void clickOnSaveOnManagePersonnel() throws TimeOutException {
+    	try{
+    		objOperationPageClass.clickOnSaveOnManagePersonnel();
+    		sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnSaveOnGrantAccessPage");
+		}
+    	catch (Exception ex) {
+			Assert.fail("Not able to clickOnSaveOnGrantAccessPage. " + ex.getMessage());
 
+		}
+    	}
+     
 	/**
 	 * @Description Method to clickOnViewAllOfContactEntitlements
 	 * @Author manish9x
@@ -1471,7 +1496,31 @@ public class AdminFunctions extends TestBase {
 
 		}
 	}
-	
+	public void checkPADCheckbox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkPADCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to checkEmployeeCheckbox. " + ex.getMessage());
+
+		}
+	}
+	public void checkInactiveIPAMembership() throws TimeOutException {
+		try {
+			objOperationPageClass.checkInactiveIPAMembership();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkInactiveIPAMembership");
+		}
+		catch(Exception ex){
+			Assert.fail("Not able to checkInactiveIPAMembership."+ex.getMessage());
+		}
+	}
 	/**
 	 * @Description Method to clickOnYesOnGrantAccessPage
 	 * @Author manish9x
@@ -1539,7 +1588,111 @@ public class AdminFunctions extends TestBase {
 
 		}
 	}
+	/**
+	 * @Description Method to clickOnIntelPartnerAllianceCommunity
+	 * @Author asuhassx
+	 * @Since 24-Jan-2023
+	 * @throws TimeOutException
+	 */
+	public void clickOnIntelPartnerAllianceCommunity() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickOnIntelPartnerAllianceCommunity();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnIntelPartnerAllianceCommunity");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnIntelPartnerAllianceCommunity. " + ex.getMessage());
+
+		}
+	}
 	
+	public void clickOnManagePersonnel() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickOnManagePersonnel();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnManagePersonnel");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnManagePersonnel. " + ex.getMessage());
+
+		}
+	}
+	public void arecolumnsavailable() throws TimeOutException{
+		try{
+			objOperationPageClass.arecolumnsavailable();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("All columns are available");
+		}
+		catch (Exception ex){
+			Assert.fail("All columns are not available " + ex.getMessage());
+		}
+	}
+	public void clickOnfilterEmail() throws TimeOutException{
+		try{
+			objOperationPageClass.clickOnfilterEmail();
+			log.info("Successfully clickOnfilterEmail");
+		}
+		catch(Exception ex){
+			Assert.fail("Not able to clickOnfilterEmail. "+ex.getMessage());
+		}
+	}
+	public void clickOnReinvitemanagepersonnel() throws TimeOutException{
+		try{
+			objOperationPageClass.clickOnReinvitemanagepersonnel();
+			log.info("Successfully clickOnReinvitemanagepersonnel");
+		}
+		catch(Exception ex)
+		{
+			Assert.fail("Not able to clickOnReinvitemanagepersonnel"+ex.getMessage());
+		}
+	}
+	/**
+	 * @Description Method to check if Reinvite and Delete button exist or not
+	 *@Author asuhassx
+	 *@Since 25-Jan-2023
+	 *@throws TimeOutException
+	 */
+	public void verifyIfReinviteButtonExists() throws TimeOutException {
+	try{
+		sfcommonObj.waitTillLightningPageLoadComplete();
+		Assert.assertFalse(objOperationPageClass.checkIfReinviteButtonDisplayed(),"'Reinvite Button' is not Displayed");
+		log.info("'Reinvite Button' is Displayed");
+	}
+	catch(Exception ex)
+	{
+		Assert.fail("Not able to verify if 'Reinvite Button' is Displayed " + ex.getMessage());	
+	}
+	}	
+	public void verifyIfDeleteButtonExists() throws TimeOutException {
+		try{
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			Assert.assertFalse(objOperationPageClass.checkIfDeleteButtonDisplayed(),"'Delete Button' is not Displayed");
+			log.info("'Delete Button' is Displayed");
+		}
+		catch(Exception ex)
+		{
+			Assert.fail("Not able to verify if 'Delete Button' is Displayed " + ex.getMessage());	
+		}
+		}	
 	/**
 	 * @Description Method to clickOnMyProgramDropDown
 	 * @Author manish9x
@@ -1559,7 +1712,54 @@ public class AdminFunctions extends TestBase {
 
 		}
 	}
+	public void clickOnContacttoInvite() throws TimeOutException{
+		try{
+			objOperationPageClass.clickOnContacttoInvite();
+			log.info("Successfully clickOnContacttoInvite");
+		}
+		catch(Exception ex){
+			Assert.fail("Not able to clickOnContacttoInvite. "+ex.getMessage());
+		}
+	}
+	public void clickOnmanagepersonnelFilter() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickOnmanagepersonnelFilter();
 	
+			log.info("Succussfully clickOnmanagepersonnelFilter");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnmanagepersonnelFilter. " + ex.getMessage());
+
+		}
+	}
+	public void clickOnDeletemanagepersonnel() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickOnDeletemanagepersonnel();
+	
+			log.info("Succussfully clickOnDeletemanagepersonnel");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnDeletemanagepersonnel. " + ex.getMessage());
+
+		}
+	}
+	public void clickOnfilterApply() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickOnfilterApply();
+	
+			log.info("Succussfully clickOnfilterApply");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnfilterApply. " + ex.getMessage());
+
+		}
+	}
 	/**
 	 * @Description Method to clickOnGrantAccessFromMyProgramDropDown
 	 * @Author manish9x
