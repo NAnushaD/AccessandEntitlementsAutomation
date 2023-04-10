@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+
+
+<suite name="ManagePersonalTest">
+	<test name="ManagePersonalTest">
+		<groups>
+			<run>
+				<include name="ManagePersonalTest" />
+			</run>
+		</groups>
+		<classes>
+			<class name="com.intel.ebsqa.draco.Testscripts.ui.ManagePersonalTest">
+				<methods>					
+					<include name="TC0041_DRACO" />		
+					<include name="TC0042_DRACO" />	
+					<include name="TC0043_DRACO" />	
+					<include name="TC0044_DRACO" />		
+					<include name="TC0045_DRACO" />	
+					<include name="TC0046_DRACO" />	
+					<include name="TC0047_DRACO" />		
+					<include name="TC0048_DRACO" />	
+					<include name="TC0049_DRACO" />	
+					<include name="TC0050_DRACO" />	
+					<include name="TC0051_DRACO" />		
+						
+				</methods>
+			</class>	
+		</classes>
+	</test>
+</suite>
