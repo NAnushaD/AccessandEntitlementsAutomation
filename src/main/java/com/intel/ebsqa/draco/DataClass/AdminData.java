@@ -140,6 +140,7 @@ public class AdminData {
 		public String firstName;
 		public String lastName;
 		public String email;
+		public String email2;
 		public String accountName;
 		public String nonExistingEmail;
 		public String ExistingEmail;
@@ -150,5 +151,6 @@ public class AdminData {
 		public String accountType2;
 		public String accountName3;
 		public String filter;
+		public String country;
 	}
 }

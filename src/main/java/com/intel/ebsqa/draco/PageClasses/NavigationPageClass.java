@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.Reporter;
 
@@ -584,5 +585,116 @@ public class NavigationPageClass extends TestBase {
 			log.info("Successfully logged in");
 		}
 	}
+	@FindBy(xpath="//button[@class='slds-button slds-button_neutral search-button slds-truncate']")
+	public WebElement GlobalSearch_id_forClick;
+	
+	@FindBy(xpath="//input[@placeholder='Search...']")
+	public WebElement Search_id;
+	
+	@FindBy(xpath="//div[@class='resultsWrapper slds-template__content slds-scrollable--y']//table//tbody//th//span//a")
+	public WebElement Contact_Name;
+	
+	public void SearchKeyContact(String Searchid) throws InterruptedException {
+		seleniumObj.waitForElement(GlobalSearch_id_forClick, 2, 10);
+		GlobalSearch_id_forClick.click();
+		
+		seleniumObj.waitForSeconds(2);
+		Search_id.sendKeys(Searchid);
+		Search_id.sendKeys(Keys.ENTER);
+		seleniumObj.waitForSeconds(10);
+		seleniumObj.waitForElement(Contact_Name, 2, 10);
+	    seleniumObj.clickByJS(Contact_Name);
+	   
+	}
+	@FindBy(xpath = "(//button[text()='Log in to Experience as User'])[1]")
+	public WebElement experirncedUserBtn;
+	
+	@FindBy(xpath = "(//span[text()='Intel Partner Alliance'])[1]")
+	public WebElement ipaLink;
+	
+	@FindBy(xpath = "//button[text()='Dashboard']")
+	public WebElement dashboardLink;
+	
+	@FindBy(xpath = "//a[text()='Company Profile']")
+	public WebElement companyProfileLink;
+	
+	@FindBy(xpath = "//a[@title='Company Profile']")
+	public WebElement EPUM_Company_Profile;
 
+	
+	
+	@FindBy(xpath = "//div/button[@class='slds-button slds-button_brand save_button hideButton']")
+	public WebElement MangPerButt;
+	
+	@FindBy(xpath = "//input[@name='conEmail']")
+	public WebElement emailTextBox;
+	
+	@FindBy(xpath = "//button[contains(text(), 'Submit')]")
+	public WebElement srchContact;
+	
+	@FindBy(xpath = "//button[contains(text(), 'Submit')]")
+	public WebElement displayMsg;
+	
+	
+
+	public void epumEnterFirstName(String adminSec_EmailID)
+	{
+		
+		emailTextBox.sendKeys(adminSec_EmailID);
+	//	WebElement srchContact = driver.findElement(By.xpath("//button[contains(text(), 'Submit')]"));
+		srchContact.click();
+		seleniumObj.waitForSeconds(3);
+
+		if (displayMsg.isDisplayed()) {
+			System.out.println(
+					"Invite the contact to register for the Intel® Partner Alliance Program");
+		}
+		
+	}
+	@FindBy(xpath = "//button[contains(text(), 'Invite a User')]")
+	public WebElement inviteUsr;
+	
+	@FindBy(xpath = "//input[@name='firstname']")
+	public WebElement fname;
+	
+	@FindBy(xpath = "//input[@name='lastname']")
+	public WebElement lname;
+	
+	@FindBy(xpath = "//select[@name='Country']")
+	public WebElement ctrydrpdown;
+	
+	@FindBy(xpath = "//button[contains(text(), 'Send Invite')]")
+	public WebElement inviteBtn;
+	
+	public void InviteNewUserPagee(String FirstName,String LastName,String Country) {
+		// Clicking on Invite a user
+		//WebElement inviteUsr = driver.findElement(By.xpath("//button[contains(text(), 'Invite a User')]"));
+		inviteUsr.click();
+		seleniumObj.waitForSeconds(2);
+		String adminRegFirstName=FirstName;
+		String adminRegLastName=LastName;
+		//WebElement fname = driver.findElement(By.xpath("//input[@name='firstname']"));
+		fname.sendKeys(adminRegFirstName);
+		//DatafromConfig.strFirstName = adminRegFirstName;
+		seleniumObj.waitForSeconds(1);
+
+	   //WebElement lname = driver.findElement(By.xpath("//input[@name='lastname']"));
+		lname.sendKeys(adminRegLastName);
+		//DatafromConfig.strLastName = adminRegLastName;
+		seleniumObj.waitForSeconds(1);
+
+		// WebElement ctryDrpdwn =
+		// driver.findElement(By.xpath("//select[@name='Country']"));
+		Select ctryDrpdwn = new Select(ctrydrpdown);
+		ctryDrpdwn.selectByVisibleText(Country);
+		seleniumObj.waitForSeconds(1);
+
+		//WebElement inviteBtn = driver.findElement(By.xpath("//button[contains(text(), 'Send Invite')]"));
+		inviteBtn.click();
+		seleniumObj.waitForSeconds(20);
+	}
+	public void InviteuserAsExistingACR(){
+		inviteBtn.click();
+		seleniumObj.waitForSeconds(20);
+	}
 }

@@ -1071,5 +1071,253 @@ public class OperationPageClass extends TestBase {
 					return ele2.get(ele2.size()-1).getText();
 				}
 				return ele2.get(ele2.size()-1).getText();
-			}	
+			}
+			@FindBy(xpath = "//span[text()='Partner Admin']//preceding::a[1]")
+			public WebElement clickOnNameID;
+
+			public void clickOnNameID() {
+
+				seleniumObj.waitForElement(clickOnNameID, 4, 4);
+				seleniumObj.scrollToElement(clickOnNameID);
+				sfcommonObj.pageRefresh();
+			    seleniumObj.clickByJS(clickOnNameID);
+				//clickOnNameID.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			@FindBy(xpath="(//*[text()='Partner Admin']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement PartnerAdminCheckbox;
+			public void checkPartnerAdminCheckbox() {
+
+				seleniumObj.waitForElement(PartnerAdminCheckbox, 4, 4);
+				seleniumObj.scrollToElement(PartnerAdminCheckbox);
+				PartnerAdminCheckbox.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+
+		    }
+			@FindBy(xpath="//span[text()='Status of Assignment/Removal']//following::lightning-formatted-text[1]")
+			public WebElement statusAssignmentOrRemoval;
+			public String verifyStatusAssignmentOrRemoval() {
+                seleniumObj.waitForElement(statusAssignmentOrRemoval, 3, 3);
+                seleniumObj.scrollToElement(statusAssignmentOrRemoval);
+				return statusAssignmentOrRemoval.getText();
+
+		    }
+			@FindBy(xpath="//span[text()='Update Reason']//following::lightning-formatted-text[1]")
+			public WebElement updateReason;
+			public String verifyUpdateReason() {
+                seleniumObj.waitForElement(updateReason, 3, 3);
+                seleniumObj.scrollToElement(updateReason);
+				return updateReason.getText();
+
+		    }
+			public void goBackToContactPage(){
+				WebElement ContactCreatedElement = seleniumObj.getDriver().findElement(By.xpath("(//span[text()='Contact']/following::a)[1]"));
+				seleniumObj.waitForElement(ContactCreatedElement, 4, 4);
+				seleniumObj.scrollToElement(ContactCreatedElement);
+				executor.executeScript("arguments[0].click();", ContactCreatedElement);
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			@FindBy(xpath="//input[@placeholder='Quick Find']")
+			public WebElement QuickFindElement;
+			public void clickQuickFind(){
+				//WebElement QuickFindElement = seleniumObj.getDriver().findElement(By.xpath("//input[@placeholder='Quick Find']"));
+				seleniumObj.waitForElement(QuickFindElement, 4, 4);
+//				seleniumObj.clickByJS(QuickFindElement);
+				
+				//QuickFindElement.click();
+				QuickFindElement.sendKeys("Public Groups");
+				seleniumObj.waitForSeconds(10);
+				
+				WebElement PublicGroupElement = seleniumObj.getDriver().findElement(By.xpath("//mark[text()='Public Groups']"));
+				seleniumObj.waitForElement(PublicGroupElement, 4, 4);
+				executor.executeScript("arguments[0].click();", PublicGroupElement);
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			
+			@FindBy(xpath="//select[@id='fcf']")
+			public WebElement selectView;
+			@FindBy(xpath="//a[contains(text(),'Go to list')]")
+			public WebElement selectList;
+			@FindBy(xpath="//a[text()='AutomationMPdraco23 Useripa01']")
+			public WebElement userName;
+			public void verifyUser(){
+				//WebElement QuickFindElement = seleniumObj.getDriver().findElement(By.xpath("//input[@placeholder='Quick Find']"));
+				
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(selectView, 4, 4);
+				selectView.sendKeys("PMP_New");
+				seleniumObj.waitForSeconds(10);
+				
+				WebElement PublicGroupName = seleniumObj.getDriver().findElement(By.xpath("(//a[text()='PMP_0012i00000bms2fAAA'])[1]"));
+				seleniumObj.waitForElement(PublicGroupName, 4, 4);
+				executor.executeScript("arguments[0].click();", PublicGroupName);
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(selectList, 4, 4);
+				seleniumObj.clickByJS(selectList);
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(userName, 4, 4);
+				seleniumObj.scrollToElement(userName);
+				Assert.assertEquals("Successfully Found","AutomationMPdraco21 Useripa01", userName.getText());
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			public void verifyUserAsLeadsOfEmployees(){
+				//WebElement QuickFindElement = seleniumObj.getDriver().findElement(By.xpath("//input[@placeholder='Quick Find']"));
+				
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(selectView, 4, 4);
+				selectView.sendKeys("PMP_New");
+				seleniumObj.waitForSeconds(10);
+				
+				WebElement PublicGroupName = seleniumObj.getDriver().findElement(By.xpath("(//a[text()='PMP_0012i00000bms2fAAA_LeadsOfEmployees'])[1]"));
+				seleniumObj.waitForElement(PublicGroupName, 4, 4);
+				executor.executeScript("arguments[0].click();", PublicGroupName);
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(selectList, 4, 4);
+				seleniumObj.clickByJS(selectList);
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(userName, 4, 4);
+				seleniumObj.scrollToElement(userName);
+				Assert.assertEquals("Successfully Found","AutomationMPdraco23 Useripa01", userName.getText());
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			@FindBy(xpath="(//*[text()='Partner Lead Development Rep']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement PartnerLeadDevCheckbox;
+			public void checkPartnerLeadDevCheckbox() {
+
+				seleniumObj.waitForElement(PartnerLeadDevCheckbox, 4, 4);
+				seleniumObj.scrollToElement(PartnerLeadDevCheckbox);
+				PartnerLeadDevCheckbox.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+
+		    }
+			@FindBy(xpath="//button[@title='Edit Contact Segment']")
+			public WebElement EditContactBtn;
+			@FindBy(xpath="//span[text()='Internet of Things and Embedded']")
+			public WebElement selectIOT;
+			@FindBy(xpath="(//button[@title='Move selection to Chosen'])[2]")
+			public WebElement selectMovetoSelect;
+			public void checkEditContactBtn() {
+
+				seleniumObj.waitForElement(EditContactBtn, 4, 4);
+				seleniumObj.scrollToElement(EditContactBtn);
+				EditContactBtn.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				selectIOT.click();
+				seleniumObj.waitForSeconds(10);
+				selectMovetoSelect.click();
+				seleniumObj.waitForSeconds(10);
+
+		    }
+			public void verifyUserAsInternetOfThings(){
+				//WebElement QuickFindElement = seleniumObj.getDriver().findElement(By.xpath("//input[@placeholder='Quick Find']"));
+				
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(selectView, 4, 4);
+				selectView.sendKeys("PMP_New");
+				seleniumObj.waitForSeconds(10);
+				
+				WebElement PublicGroupName = seleniumObj.getDriver().findElement(By.xpath("(//a[text()='PMP_0012i00000bms2fAAA_Internet_of_Thing'])[1]"));
+				seleniumObj.waitForElement(PublicGroupName, 4, 4);
+				executor.executeScript("arguments[0].click();", PublicGroupName);
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(userName, 4, 4);
+				seleniumObj.scrollToElement(userName);
+				Assert.assertEquals("Successfully Found","AutomationMPdraco23 Useripa01", userName.getText());
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			public void verifyUserAsLeadsOfEmployeesforInterNetOfThing(){
+				//WebElement QuickFindElement = seleniumObj.getDriver().findElement(By.xpath("//input[@placeholder='Quick Find']"));
+				
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(selectView, 4, 4);
+				selectView.sendKeys("PMP_New");
+				seleniumObj.waitForSeconds(10);
+				
+				WebElement PublicGroupName = seleniumObj.getDriver().findElement(By.xpath("(//a[text()='PMP_0012i00000bms2fAAA_LeadsOfEmployees'])[1]"));
+				seleniumObj.waitForElement(PublicGroupName, 4, 4);
+				executor.executeScript("arguments[0].click();", PublicGroupName);
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(selectList, 4, 4);
+				seleniumObj.clickByJS(selectList);
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(userName, 4, 4);
+				if(!userName.isDisplayed()){
+					System.out.println("Successfully Done");
+				}
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			@FindBy(xpath="//button[text()='Filter']")
+			public WebElement FilterBtn;
+			@FindBy(xpath="//button[text()='Email Address']")
+			public WebElement EmailAddressBtn;
+			@FindBy(xpath="//input[@placeholder='Enter Email']")
+			public WebElement EnterEmailBtn;
+			@FindBy(xpath="//button[text()='Responsibility Name']//following::button[2]")
+			public WebElement ApplyBtn;
+			public void verifyInvitedUser(String User){
+				seleniumObj.waitForElement(FilterBtn, 4, 4);
+				seleniumObj.clickByJS(FilterBtn);
+				seleniumObj.waitForSeconds(10);
+				seleniumObj.waitForElement(EmailAddressBtn, 4, 4);
+				seleniumObj.clickByJS(EmailAddressBtn);
+				seleniumObj.waitForSeconds(10);
+				seleniumObj.waitForElement(EnterEmailBtn, 4, 4);
+				seleniumObj.clickByJS(EnterEmailBtn);
+				seleniumObj.waitForSeconds(10);
+				EnterEmailBtn.sendKeys(User);
+				seleniumObj.waitForSeconds(10);
+				seleniumObj.waitForElement(ApplyBtn, 4, 4);
+				seleniumObj.clickByJS(ApplyBtn);
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			@FindBy(xpath="//lightning-layout-item[@title='testevmail12@mailinator.com']")
+			public WebElement EmailField;
+			public void checkInvitedStatus(String User){
+				WebElement EmailElement = seleniumObj.getDriver().findElement(By.xpath("//lightning-layout-item[@title='"+User+"']"));
+				if(EmailElement.isDisplayed()){
+					seleniumObj.waitForSeconds(10);
+					WebElement InvitedElement = seleniumObj.getDriver().findElement(By.xpath("//lightning-layout-item[@title='Invited']"));
+					if(InvitedElement.isDisplayed()){
+						log.info("Successfully Invite the user");
+					}
+					else{
+						Assert.fail("Unable to Send Invite");
+					}
+				}
+				else{
+					Assert.fail("Unable to Find the User");
+				}
+				
+			}
+			@FindBy(xpath="//span[text()='Pending Action'][1]")
+			public WebElement StatusBtn;
+			public void verifyEmployeeStatus(){
+				seleniumObj.waitForElement(StatusBtn, 4, 4);
+				if(StatusBtn.isDisplayed()){
+					log.info("Successfuly verify Status");
+				}
+				else{
+					Assert.fail("Unable to Verify Status");
+				}
+			}
+			public void verifyUserAsLeads(){
+				//WebElement QuickFindElement = seleniumObj.getDriver().findElement(By.xpath("//input[@placeholder='Quick Find']"));
+				
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(selectView, 4, 4);
+				selectView.sendKeys("PMP_New");
+				seleniumObj.waitForSeconds(10);
+				
+				WebElement PublicGroupName = seleniumObj.getDriver().findElement(By.xpath("(//a[text()='PMP_0012i00000bms2fAAA_Leads'])[1]"));
+				seleniumObj.waitForElement(PublicGroupName, 4, 4);
+				executor.executeScript("arguments[0].click();", PublicGroupName);
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(selectList, 4, 4);
+				seleniumObj.clickByJS(selectList);
+				seleniumObj.getDriver().switchTo().frame(0);
+				seleniumObj.waitForElement(userName, 4, 4);
+				seleniumObj.scrollToElement(userName);
+				Assert.assertEquals("Successfully Found","AutomationMPdraco4 Useripa03", userName.getText());
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
 }

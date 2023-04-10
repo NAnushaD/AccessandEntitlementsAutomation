@@ -2,7 +2,6 @@ package com.intel.ebsqa.draco.BusinessFunction.ui;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
@@ -539,5 +538,91 @@ public class Navigation extends TestBase {
 		public void timoutLogin() {
 				objNavigationPageClass.clickLoginBtn();
 		}	
+		public void getSalesforceSearchIdContact(String username) throws InterruptedException {
 
+			seleniumObj.waitForSeconds(10);
+			try {
+				objNavigationPageClass.SearchKeyContact((username));
+				return;
+			} catch (Exception e) {
+				log.info(e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + "Faile to search co");
+			}
+		}
+		public void logintoIntelPartnerAlliance()
+		{
+			seleniumObj.waitForSeconds(5);
+			seleniumObj.waitForElement(objNavigationPageClass.experirncedUserBtn,5,5);
+			objNavigationPageClass.experirncedUserBtn.click();
+			seleniumObj.waitForSeconds(5);
+			objNavigationPageClass.ipaLink.click();
+			seleniumObj.waitForSeconds(5);
+		}
+		   public void switchWindow()
+		    {
+		    	
+		    	for(String windowhandle:driver.getWindowHandles())
+		    	{
+		          driver.switchTo().window(windowhandle);
+		          driver.switchTo().defaultContent();
+		    	}
+		    	
+		    }	
+		
+		  public void switchToOverviewPage()
+		    {
+		    	try
+		    	{
+		    	seleniumObj.waitForElement(objNavigationPageClass.companyProfileLink, 5, 5);
+		    	objNavigationPageClass.companyProfileLink.click();
+				seleniumObj.waitForSeconds(15);
+				switchWindow();
+		    	}
+		    	catch(Exception e)
+		    	{
+		    		seleniumObj.waitForSeconds(5);
+		    	}
+		    }
+		  public void AddSecondaryUserEmail(String Email2) {
+
+				seleniumObj.waitForElement(objNavigationPageClass.EPUM_Company_Profile, 2, 15);
+				//JavascriptExecutor executor = (JavascriptExecutor) driver;
+				//WebElement MangCompProfilel = driver.findElement(By.xpath("//a[@title='Company Profile']"));
+				//executor.executeScript("arguments[0].click();", MangCompProfilel);
+				seleniumObj.clickByJS(objNavigationPageClass.EPUM_Company_Profile);
+				seleniumObj.waitForSeconds(5);
+			    String adminSec_EmailID= Email2;
+				/*WebElement MangPerButt = driver
+						.findElement(By.xpath("//div/button[@class='slds-button slds-button_brand save_button hideButton']"));
+				seleniumObj.waitForElement(MangPerButt, 2, 5);
+				executor.executeScript("arguments[0].click();", MangPerButt);*/
+				seleniumObj.clickByJS(objNavigationPageClass.MangPerButt);
+				// MangPerButt.click();
+				
+				seleniumObj.waitForSeconds(5);
+				objNavigationPageClass.epumEnterFirstName(adminSec_EmailID);
+				/*WebElement emailTextBox = driver.findElement(By.xpath("//input[@name='conEmail']"));
+				
+				
+				emailTextBox.sendKeys(adminSec_EmailID);*/
+				
+				
+				//	DatafromConfig.strEmailId2 = adminSec_EmailID;
+				
+
+				// WebElement srchContact =
+				// driver.findElement(By.xpath("//button[contains(text(), 'Search Contact')]"));
+				
+
+			}
+		  public void InviteNewUser(String FirstName,String LastName,String Country) {
+				// Clicking on Invite a user
+				//WebElement inviteUsr = driver.findElement(By.xpath("//button[contains(text(), 'Invite a User')]"));
+				objNavigationPageClass.InviteNewUserPagee(FirstName,LastName,Country);
+				seleniumObj.waitForSeconds(20);
+			}
+		  public void InviteUserAsExistingACR(){
+			  objNavigationPageClass.InviteuserAsExistingACR();
+			  seleniumObj.waitTillPageLoadIsComplete();
+		  }
 }

@@ -83,6 +83,7 @@ public class AdminFunctions extends TestBase {
 			objAdminDataDetails.setAccountName3(excelData.get(13));
 			objAdminDataDetails.setExistingEmail(excelData.get(14));
 			objAdminDataDetails.setFilter(excelData.get(15));
+			objAdminDataDetails.setEmail2(excelData.get(16));
 			//System.out.println("Email " + objAdminDataDetails.getExistingEmail());
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			log.info(" set setAdminDataDetails created");
@@ -2234,6 +2235,280 @@ public class AdminFunctions extends TestBase {
 
 		catch (Exception ex) {
 			Assert.fail("Not able to verifyAccountsPresentInDropDown. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to clickOnViewAllOfContactEntitlements
+	 * @Author AmartyaX
+	 * @Since 3-Feb-2023
+	 * @throws TimeOutException
+	 */
+	public void clickOnContactEntitlements() throws TimeOutException {
+		try {
+			objOperationPageClass.clickOnNameID();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnViewAllOfContactEntitlements");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnViewAllOfContactEntitlements. " + ex.getMessage());
+
+		}
+
+	}
+	public void checkPartnerAdminCheckbox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkPartnerAdminCheckbox();;
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Successfully check Partner Admin Check Box");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able check Partner Admin Check Box. " + ex.getMessage());
+
+		}
+	}
+	public void verifyStatusofAssignmentOrRemoval() throws TimeOutException {
+		try {
+			
+	        String actualmsg=objOperationPageClass.verifyStatusAssignmentOrRemoval();
+	        String exceptedmsg="Successful Assignment";
+	        Assert.assertEquals(actualmsg, exceptedmsg, "Status Mismatch");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able verify Status of Assignment Or Removal. " + ex.getMessage());
+
+		}
+	}
+	public void verifyUpdateReason() throws TimeOutException {
+		try {
+			
+	        String actualmsg=objOperationPageClass.verifyUpdateReason();
+	        if(actualmsg==null){
+	        	log.info("Successfully verified");
+	        }
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able verify Status of Assignment Or Removal. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to goBackToContactsPage
+	 * @Author manish9x
+	 * @Since 01-Dec-2022
+	 * @throws TimeOutException
+	 */
+	public void goBackToContactPage() throws TimeOutException {
+		try {
+
+			objOperationPageClass.goBackToContactPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully goBackToContactPage");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to goBackToContactPage. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to Click Quick Find
+	 * @Author Amartyax
+	 * @Since 16-Feb-2022
+	 * @throws TimeOutException
+	 */
+	public void clickQuickFind() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickQuickFind();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully goBackToContactPage");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to goBackToContactPage. " + ex.getMessage());
+
+		}
+	}
+	public void selectOptionUnderMoreActions() throws TimeOutException {
+		try {
+
+			objOperationPageClass.ClickOnshowMoreActions();
+			log.info("Succussfully clicked on selectOptionUnderMoreActions");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to click on selectOptionUnderMoreActions. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to Verify User
+	 * @Author Amartyax
+	 * @Since 23-Feb-2023
+	 * @throws TimeOutException
+	 */
+	public void verifyUser() throws TimeOutException {
+		try {
+
+			objOperationPageClass.verifyUser();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully goBackToContactPage");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to goBackToContactPage. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to Verify User
+	 * @Author Amartyax
+	 * @Since 23-Feb-2023
+	 * @throws TimeOutException
+	 */
+	public void verifyUserAsLeadOfEmployee() throws TimeOutException {
+		try {
+
+			objOperationPageClass.verifyUserAsLeadsOfEmployees();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully goBackToContactPage");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to goBackToContactPage. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to Verify User 
+	 * @Author Amartyax
+	 * @Since 23-Feb-2023
+	 * @throws TimeOutException
+	 */
+	public void verifyUserAsLead() throws TimeOutException {
+		try {
+
+			objOperationPageClass.verifyUserAsLeads();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully goBackToContactPage");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to goBackToContactPage. " + ex.getMessage());
+
+		}
+	}
+	public void checkPartnerLeadDevCheckbox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkPartnerLeadDevCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Successfully check Partner Lead Dev Check Box");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able check Partner Lead Dev Check Box. " + ex.getMessage());
+
+		}
+	}
+	public void checkContactSegment() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkEditContactBtn();
+	        this.clickSave();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Successfully check Partner Lead Dev Check Box");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able check Partner Lead Dev Check Box. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to Verify User
+	 * @Author Amartyax
+	 * @Since 23-Feb-2023
+	 * @throws TimeOutException
+	 */
+	public void verifyUserAsInternetOfThings() throws TimeOutException {
+		try {
+
+			objOperationPageClass.verifyUserAsInternetOfThings();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully goBackToContactPage");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to goBackToContactPage. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to Verify User 
+	 * @Author Amartyax
+	 * @Since 23-Feb-2023
+	 * @throws TimeOutException
+	 */
+	public void verifyUserAsLeadsOfEmployeesforInterNetOfThing() throws TimeOutException {
+		try {
+
+			objOperationPageClass.verifyUserAsLeadsOfEmployeesforInterNetOfThing();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully goBackToContactPage");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to goBackToContactPage. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to Verify Invited User 
+	 * @Author Amartyax
+	 * @Since 04-Apr-2023
+	 * @throws TimeOutException
+	 */
+	public void verifyInvitedUser(String User) throws TimeOutException {
+		try {
+
+			objOperationPageClass.verifyInvitedUser(User);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objOperationPageClass.checkInvitedStatus(User);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully goBackToContactPage");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to goBackToContactPage. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to Verify Invited User 
+	 * @Author Amartyax
+	 * @Since 04-Apr-2023
+	 * @throws TimeOutException
+	 */
+	public void verifyEmployeeStatus() throws TimeOutException {
+		try {
+
+			objOperationPageClass.verifyEmployeeStatus();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully goBackToContactPage");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to goBackToContactPage. " + ex.getMessage());
 
 		}
 	}

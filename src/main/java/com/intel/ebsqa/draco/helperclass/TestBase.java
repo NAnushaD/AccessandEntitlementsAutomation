@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -28,7 +29,7 @@ import com.intel.ebsqa.wrappers.SeleniumWrapper;
 public class TestBase {
 	final String sConfigFilePath = "configuration/Config_QA.cfg";
 	final String sLoggerConfigFilePath = "configuration/log4j.properties";
-
+	public static WebDriver driver;
 	public static ConfigHelper configObj = null;
 	public static LoggerWrapper log = null;
 	public static SeleniumWrapper seleniumObj = null;
