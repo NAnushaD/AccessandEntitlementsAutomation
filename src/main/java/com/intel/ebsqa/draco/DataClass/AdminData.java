@@ -141,6 +141,7 @@ public class AdminData {
 		public String lastName;
 		public String Email;
 		public String email2;
+		public String Country;
 		public String accountName;
 		public String nonExistingEmail;
 		public String ExistingEmail;
