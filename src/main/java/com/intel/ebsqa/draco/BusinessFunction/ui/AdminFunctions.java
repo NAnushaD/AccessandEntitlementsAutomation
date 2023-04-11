@@ -90,6 +90,7 @@ public class AdminFunctions extends TestBase {
 			objAdminDataDetails.setLastNameclassic(excelData.get(19));
 			objAdminDataDetails.setEmailclassic(excelData.get(20));
             objAdminDataDetails.setEmail2(excelData.get(16));
+            objAdminDataDetails.setCountry(excelData.get(17));
 			objAdminDataDetails.setAccountNameclassic(excelData.get(21));
 			objAdminDataDetails.setNonExistingEmailclassic(excelData.get(22));
 			objAdminDataDetails.setFirstName2classic(excelData.get(23));
