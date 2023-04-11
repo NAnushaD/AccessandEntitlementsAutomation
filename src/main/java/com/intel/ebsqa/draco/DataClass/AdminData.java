@@ -139,7 +139,7 @@ public class AdminData {
 		public String salutation;
 		public String firstName;
 		public String lastName;
-		public String email;
+		public String Email;
 		public String email2;
 		public String accountName;
 		public String nonExistingEmail;
@@ -150,7 +150,22 @@ public class AdminData {
 		public String accountName2;
 		public String accountType2;
 		public String accountName3;
-		public String filter;
-		public String country;
+		public String Filter;
+		
+		public String salutationclassic;
+		public String firstNameclassic;
+		public String lastNameclassic;
+		public String emailclassic;
+		public String accountNameclassic;
+		public String nonExistingEmailclassic;
+		public String ExistingEmailclassic;
+		public String firstName2classic;
+		public String lastName2classic;
+		public String accountTypeclassic;
+		public String accountName2classic;
+		public String accountType2classic;
+		public String accountName3classic;
+		public String filterclassic;
+		
 	}
 }

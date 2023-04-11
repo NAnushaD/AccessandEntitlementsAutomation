@@ -24,8 +24,7 @@ public class OperationPageClass extends TestBase {
 		PageFactory.initElements(seleniumObj.getDriver(), this);
 	}
 
-	@FindBy(xpath = "//*[@data-key='setup']")
-	public WebElement setup_icon;
+	
 	
 	@FindBy(xpath = "//label[text()='Salutation']/following::button[@name='salutation']")
 	public WebElement salutationContact;
@@ -38,6 +37,21 @@ public class OperationPageClass extends TestBase {
 
 	@FindBy(xpath = "(//label[text()='Email']/following::input[@name='Email'])[1]")
 	public WebElement email;
+	
+	@FindBy(xpath = "//*[@data-key='setup']")
+	public WebElement setup_icon;
+	
+	@FindBy(xpath = "//select[@name='name_salutationcon2']")
+	public WebElement salutationContactclassic;
+
+	@FindBy(xpath = "(//label[text()='First Name']/following::input[@name='name_firstcon2'])[1]")
+	public WebElement firstNameContactclassic;
+
+	@FindBy(xpath = "(//label[text()='Last Name']/following::input[@name='name_lastcon2'])[1]")
+	public WebElement lastNameContactclassic;
+
+	@FindBy(xpath = "//label[text()='Email']/following::input[@name='con15']")
+	public WebElement emailclassic;
 	
 	@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='CCP CCF USER'])[1]")
 	public WebElement cCPCCFuser;
@@ -66,8 +80,12 @@ public class OperationPageClass extends TestBase {
 	@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='PMP External - Employee'])[1]")
 	public WebElement Employee;
 	
+	
 	@FindBy(xpath = "//input[contains(@placeholder,'Type here')]")
 	public WebElement typeHereTextbox;
+	
+	@FindBy(xpath="//input[contains(@placeholder,'Enter Email Address...')]")
+	public WebElement enteremailaddress;
 	
 	@FindBy(xpath = "(//label[text()='First Name']/following::input)[1]")
 	public WebElement firstNameContactThroughPartnerCenter;
@@ -110,6 +128,7 @@ public class OperationPageClass extends TestBase {
 
 	@FindBy(xpath = "(//*[@title='Home']/span[text()='Home'])[1]")
 	public WebElement home_Tab;
+    
 
 	public void clickOnHomeTab() {
 		sfcommonObj.waitTillLightningPageLoadComplete();
@@ -142,8 +161,10 @@ public class OperationPageClass extends TestBase {
 		}
 	
 	public void switchToLightningExperience(){
-		boolean isLightning=seleniumObj.getDriver().findElement(By.xpath("//a[@class='switch-to-lightning']")).isDisplayed();
-		if(isLightning)
+		try
+		{
+		WebElement isLightning=seleniumObj.getDriver().findElement(By.xpath("//a[@class='switch-to-lightning']"));
+		if(isLightning.isDisplayed())
 		{
 		WebElement element = seleniumObj.getDriver().findElement(By.xpath("//a[@class='switch-to-lightning']"));
 		seleniumObj.waitForElement(element, 4, 4);
@@ -154,12 +175,59 @@ public class OperationPageClass extends TestBase {
 		else
 		{
 			sfcommonObj.waitTillLightningPageLoadComplete();
-		}
-		
-		
+		}}
+		catch(Exception e)
+		{
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}	
 		
 	}
-	
+	public void switchToClassicExperience(){
+		try
+		{
+		WebElement isClassic=seleniumObj.getDriver().findElement(By.xpath("(//span[@class='uiImage'])[1]"));
+		if(isClassic.isDisplayed())
+		{
+		WebElement element = seleniumObj.getDriver().findElement(By.xpath("(//span[@class='uiImage'])[1]"));
+		seleniumObj.waitForElement(element, 4, 4);
+		seleniumObj.scrollToElement(element);
+		executor.executeScript("arguments[0].click();", element);
+		sfcommonObj.waitTillLightningPageLoadComplete();
+		seleniumObj.waitForSeconds(5);
+		}
+		else
+		{
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}}
+		catch(Exception e)
+		{
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}	
+		
+	}
+	public void clickonClassicExperience()
+	{
+		try{
+			WebElement classic = seleniumObj.getDriver().findElement(By.xpath("//a[text()='Switch to Salesforce Classic']"));
+			if(classic.isDisplayed())
+			{
+			WebElement element = seleniumObj.getDriver().findElement(By.xpath("//a[text()='Switch to Salesforce Classic']"));
+			seleniumObj.waitForElement(element, 4, 4);
+			seleniumObj.scrollToElement(element);
+			executor.executeScript("arguments[0].click();", element);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			seleniumObj.waitForSeconds(5);
+			}
+			else
+			{
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+		}
+		catch(Exception e)
+		{
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+	}
 	public void clickButton(String button){
 		WebElement buttonelement = seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+button+"'])[1]"));
 		seleniumObj.waitForElement(buttonelement, 4, 4);
@@ -167,22 +235,52 @@ public class OperationPageClass extends TestBase {
 		executor.executeScript("arguments[0].click();", buttonelement);
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
-	
+	public void clickContactsClassic(){
+		WebElement contactsclassic = seleniumObj.getDriver().findElement(By.xpath("//a[@title='Contacts Tab - Selected']"));
+		seleniumObj.waitForElement(contactsclassic, 4, 4);
+		seleniumObj.scrollToElement(contactsclassic);
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
+	public void clickContinueClassic(){
+		WebElement Continueclassic = seleniumObj.getDriver().findElement(By.xpath("//input[@title='Continue']"));
+		seleniumObj.waitForElement(Continueclassic, 4, 4);
+		seleniumObj.scrollToElement(Continueclassic);
+		Continueclassic.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
 	public void selectContactTypeAsIntelContact(){
 		WebElement contactType = seleniumObj.getDriver().findElement(By.xpath("//span[text()='Intel Contact']/parent::*/parent::*/div/span[@class='slds-radio--faux']"));
 		seleniumObj.waitForElement(contactType, 4, 4);
 		seleniumObj.scrollToElement(contactType);
 		contactType.click();
 	}
+	public void selectContactTypeAsIntelContactAndClickNextClassic(){
+		WebElement contactTypeClassic=seleniumObj.getDriver().findElement(By.xpath("//option[text()='Intel Contact']"));
+		seleniumObj.waitForElement(contactTypeClassic, 4, 4);
+		seleniumObj.scrollToElement(contactTypeClassic);
+		contactTypeClassic.click();
+	}
+	public void clickOnNewbuttonContactClassic(){
+		WebElement NewbuttonClassic =seleniumObj.getDriver().findElement(By.xpath("//input[@title='New'][1]"));
+		seleniumObj.waitForElement(NewbuttonClassic,4,4);
+		seleniumObj.scrollToElement(NewbuttonClassic);
+		NewbuttonClassic.click();
+	}
 	
+	public void clickOnDropdownClassic(){
+		WebElement dropdownClassic =seleniumObj.getDriver().findElement(By.xpath("//select[@id='p3']"));
+		seleniumObj.waitForElement(dropdownClassic,4,4);
+		seleniumObj.scrollToElement(dropdownClassic);
+		dropdownClassic.click();
+	}
 	public void clickOnSalutation() {
-		seleniumObj.waitForElement(salutationContact, 4, 3);
-		seleniumObj.scrollToElement(salutationContact);
-		seleniumObj.clickByJS(salutationContact);
+		seleniumObj.waitForElement(salutationContactclassic, 4, 3);
+		seleniumObj.scrollToElement(salutationContactclassic);
+		seleniumObj.clickByJS(salutationContactclassic);
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
 	
-	public void selectSalutation(String salutation) {
+	public void selectSalutationclassic(String salutation) {
 		WebElement conatctSalutation = seleniumObj.getDriver().findElement(
 				By.xpath("(//label[text()='Salutation']/following::div[contains(@class,'slds-listbox')]//*[@data-value='"
 						+ salutation + "'])[1]"));
@@ -193,13 +291,37 @@ public class OperationPageClass extends TestBase {
 		sfcommonObj.waitTillAllXHRCallsComplete();
 	}
 
-	
+	public void selectSalutation(String salutation) {
+		WebElement conatctSalutation = seleniumObj.getDriver().findElement(
+				By.xpath("(//label[text()='Salutation']/following::div[contains(@class,'slds-listbox')]//*[@data-value='"
+						+ salutation + "'])[1]"));
+		seleniumObj.waitForElement(conatctSalutation, 4, 4);
+		seleniumObj.scrollToElement(conatctSalutation);
+		conatctSalutation.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+		sfcommonObj.waitTillAllXHRCallsComplete();
+	}	
 	/**
 	 * 
 	 * @Description Method to enterFirstNameContact
 	 * @Author manish9x
 	 * @Since 29-Nov-2022
 	 */
+	public void enterFirstNameContactclassic(String searchText) {
+		try {
+			seleniumObj.waitForElement(firstNameContactclassic, 4, 4);
+			seleniumObj.scrollToElement(firstNameContactclassic);
+			firstNameContactclassic.click();
+			firstNameContactclassic.clear();
+			firstNameContactclassic.sendKeys(searchText);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Entered text in first name textbox : " + searchText);
+		} catch (Exception e) {
+			log.error("Not able to enter text in first name text box");
+			Assert.fail("Not able to enter text in first name text box");
+		}
+
+	}
 	public void enterFirstNameContact(String searchText) {
 		try {
 			seleniumObj.waitForElement(firstNameContact, 4, 4);
@@ -215,7 +337,21 @@ public class OperationPageClass extends TestBase {
 		}
 
 	}
-	
+	public void enterfilter(String searchText) {
+		try {
+			seleniumObj.waitForElement(filterEmailaddress, 4, 4);
+			seleniumObj.scrollToElement(filterEmailaddress);
+			//filterEmailaddress.click();
+			//filterEmailaddress.clear();
+			filterEmailaddress.sendKeys(searchText);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Entered text in first name textbox : " + searchText);
+		} catch (Exception e) {
+			log.error("Not able to enter text in filter text box");
+			Assert.fail("Not able to enter text in filter text box");
+		}
+
+	}
 	/**
 	 * 
 	 * @Description Method to enter Last name
@@ -223,6 +359,20 @@ public class OperationPageClass extends TestBase {
 	 * @param searchText
 	 * @Since 29-Nov-2022
 	 */
+	public void enterLastNameContactclassic(String searchText) {
+		try {
+			seleniumObj.waitForElement(lastNameContactclassic, 4, 4);
+			seleniumObj.scrollToElement(lastNameContactclassic);
+			lastNameContactclassic.click();
+			lastNameContactclassic.clear();
+			lastNameContactclassic.sendKeys(searchText);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Entered text in Last name textbox : " + searchText);
+		} catch (Exception e) {
+			log.error("Not able to enter text in Last name text box");
+			Assert.fail("Not able to enter text in Last name text box");
+		}
+	}
 	public void enterLastNameContact(String searchText) {
 		try {
 			seleniumObj.waitForElement(lastNameContact, 4, 4);
@@ -237,7 +387,6 @@ public class OperationPageClass extends TestBase {
 			Assert.fail("Not able to enter text in Last name text box");
 		}
 	}
-	
 	/**
 	 * 
 	 * @Description Method enter email
@@ -245,6 +394,20 @@ public class OperationPageClass extends TestBase {
 	 * @param searchText
 	 * @Since 29-Nov-2022
 	 */
+	public void enterEmailContactclassic(String searchText) {
+		try {
+			seleniumObj.waitForElement(emailclassic, 4, 4);
+			seleniumObj.scrollToElement(emailclassic);
+			emailclassic.click();
+			emailclassic.clear();
+			emailclassic.sendKeys(searchText);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Entered text in email textbox : " + searchText);
+		} catch (Exception e) {
+			log.error("Not able to enter text in email text box");
+			Assert.fail("Not able to enter text in email text box");
+		}
+	}
 	public void enterEmailContact(String searchText) {
 		try {
 			seleniumObj.waitForElement(email, 4, 4);
@@ -259,19 +422,33 @@ public class OperationPageClass extends TestBase {
 			Assert.fail("Not able to enter text in email text box");
 		}
 	}
-	
-	@FindBy(xpath = "(//label[text()='Account Name']/following::input[@placeholder='Search Accounts...'])[1]")
-	public WebElement accountName;
+	@FindBy(xpath = "//label[text()='Account Name']/following::input[@id='con4']")
+	public WebElement accountNameclassic;
 
-	public void enterAccountName(String account) {
-		seleniumObj.waitForElement(accountName, 4, 4);
-		seleniumObj.scrollToElement(accountName);
-		accountName.clear();
-		accountName.sendKeys(account);
+	@FindBy(xpath="//img[@title='Account Name Lookup (New Window)']")
+	public WebElement searchicon;
+	
+	public void enterAccountNameclassic(String account) {
+		seleniumObj.waitForElement(accountNameclassic, 4, 4);
+		seleniumObj.scrollToElement(accountNameclassic);
+		accountNameclassic.clear();
+		accountNameclassic.sendKeys(account);
 		sfcommonObj.waitTillLightningPageLoadComplete();
 
 	}
+	
 
+    @FindBy(xpath = "(//label[text()='Account Name']/following::input[@placeholder='Search Accounts...'])[1]")
+	public WebElement accountName;
+
+    public void enterAccountName(String account) {
+	seleniumObj.waitForElement(accountName, 4, 4);
+	seleniumObj.scrollToElement(accountName);
+	accountName.clear();
+	accountName.sendKeys(account);
+	sfcommonObj.waitTillLightningPageLoadComplete();
+
+}
 	@FindBy(xpath = "(//span[contains(@title,'Show All Results for ')])[1]")
 	public WebElement showAllResults;
 
@@ -298,26 +475,52 @@ public class OperationPageClass extends TestBase {
 		save.click();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
-	
 	@FindBy(xpath = "(//span[text()='ERPM Integration Status']/following::lightning-formatted-text)[1]")
 	public WebElement eRPMIntegrationStatus;
-
+	
 	public String getERPMIntegrationStatus() {
 		seleniumObj.waitForElement(eRPMIntegrationStatus, 4, 4);
 		seleniumObj.scrollToElement(eRPMIntegrationStatus);
 		return eRPMIntegrationStatus.getText();
 	}
-	
-	@FindBy(xpath = "(//span[text()='AGS Integration Status']/following::lightning-formatted-text)[1]")
+    @FindBy(xpath = "(//span[text()='AGS Integration Status']/following::lightning-formatted-text)[1]")
 	public WebElement AGSIntegrationStatus;
 
-	public String getAGSIntegrationStatus() {
+    public String getAGSIntegrationStatus() {
 		seleniumObj.waitForElement(AGSIntegrationStatus, 4, 4);
 		seleniumObj.scrollToElement(AGSIntegrationStatus);
 		return AGSIntegrationStatus.getText();
 	}
+    
+	@FindBy(xpath = "//div[@id='00No000000Eg0V4_ileinner']")
+	public WebElement eRPMIntegrationStatusclassic;
+
+	public String getERPMIntegrationStatusclassic() {
+		seleniumObj.waitForElement(eRPMIntegrationStatusclassic, 4, 4);
+		seleniumObj.scrollToElement(eRPMIntegrationStatusclassic);
+		return eRPMIntegrationStatusclassic.getText();
+	}
 	
-	@FindBy(xpath = "(//button[text()='Grant Access'])[1]")
+	@FindBy(xpath = "//div[@id='00No000000Eg0V1_ileinner']")
+	public WebElement AGSIntegrationStatusclassic;
+
+	public String getAGSIntegrationStatusclassic() {
+		seleniumObj.waitForElement(AGSIntegrationStatusclassic, 4, 4);
+		seleniumObj.scrollToElement(AGSIntegrationStatusclassic);
+		return AGSIntegrationStatusclassic.getText();
+	}
+	
+	@FindBy(xpath = "(//input[@name='core_grant_access'])[1]")
+	public WebElement grantAccessButtonclassic;
+
+	public void clickOnGrantAccessButtonclassic() {
+		seleniumObj.waitForElement(grantAccessButtonclassic, 4, 4);
+		seleniumObj.scrollToElement(grantAccessButtonclassic);
+		grantAccessButtonclassic.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
+	
+	@FindBy(xpath = "//button[text()='Grant Access']")
 	public WebElement grantAccessButton;
 
 	public void clickOnGrantAccessButton() {
@@ -326,7 +529,6 @@ public class OperationPageClass extends TestBase {
 		grantAccessButton.click();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
-	
 	@FindBy(xpath = "(//span[text()='Grant Access'])[1]")
 	public WebElement grantAccessButtonInShowMoreActions;
 
@@ -346,6 +548,116 @@ public class OperationPageClass extends TestBase {
 		consolidatedPlatform.click();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
+	@FindBy(xpath = "//*[contains(text(),'Consolidated Co-marketing Platform')]/parent::div/div/div[@class='headerPlusMinusIcon'][1]")
+	public WebElement consolidatedPlatformclassic;
+	
+	public void expandConsolidatedPlatformclassic() {
+		seleniumObj.waitForElement(consolidatedPlatformclassic, 4, 4);
+		seleniumObj.scrollToElement(consolidatedPlatformclassic);
+//		consolidatedPlatformclassic.click();
+		seleniumObj.clickByJS(consolidatedPlatformclassic);
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
+	@FindBy(xpath = "//*[text()='Channel MDF User Administrator']")
+	public WebElement ChannelMDFUserAdministrator;
+
+	public boolean verifyChannelMDFUserAdministratorPresentOrNot() {
+
+		seleniumObj.waitForElement(ChannelMDFUserAdministrator, 4, 4);
+		seleniumObj.scrollToElement(ChannelMDFUserAdministrator);
+		return ChannelMDFUserAdministrator.isDisplayed();
+     }
+	
+	@FindBy(xpath = "(//*[text()='Channel MDF User Administrator']/following::span[@class='slds-checkbox--faux'])[1]")
+	public WebElement ChannelMDFUserAdministratorCheckbox;
+
+	public void checkChannelMDFUserAdministratorCheckbox() {
+
+		seleniumObj.waitForElement(ChannelMDFUserAdministratorCheckbox, 4, 4);
+		seleniumObj.scrollToElement(ChannelMDFUserAdministratorCheckbox);
+		ChannelMDFUserAdministratorCheckbox.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
+	@FindBy(xpath = "//*[text()='RMF User Administrator']")
+	public WebElement RMFUserAdministrator;
+
+	public boolean verifyRMFUserAdministratorPresentOrNot() {
+
+		seleniumObj.waitForElement(RMFUserAdministrator, 4, 4);
+		seleniumObj.scrollToElement(RMFUserAdministrator);
+		return RMFUserAdministrator.isDisplayed();
+     }
+	
+	@FindBy(xpath = "(//*[text()='RMF User Administrator']/following::span[@class='slds-checkbox--faux'])[1]")
+	public WebElement RMFUserAdministratorCheckbox;
+
+	public void checkRMFUserAdministratorCheckbox() {
+
+		seleniumObj.waitForElement(RMFUserAdministratorCheckbox, 4, 4);
+		seleniumObj.scrollToElement(RMFUserAdministratorCheckbox);
+		RMFUserAdministratorCheckbox.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
+	@FindBy(xpath = "//*[text()='SPCF User Administrator']")
+	public WebElement SPCFUserAdministrator;
+
+	public boolean verifySPCFUserAdministratorPresentOrNot() {
+
+		seleniumObj.waitForElement(SPCFUserAdministrator, 4, 4);
+		seleniumObj.scrollToElement(SPCFUserAdministrator);
+		return SPCFUserAdministrator.isDisplayed();
+     }
+	
+	@FindBy(xpath = "(//*[text()='SPCF User Administrator']/following::span[@class='slds-checkbox--faux'])[1]")
+	public WebElement SPCFUserAdministratorCheckbox;
+
+	public void checkSPCFUserAdministratorCheckbox() {
+
+		seleniumObj.waitForElement(SPCFUserAdministratorCheckbox, 4, 4);
+		seleniumObj.scrollToElement(SPCFUserAdministratorCheckbox);
+		SPCFUserAdministratorCheckbox.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
+	@FindBy(xpath = "//*[text()='DCF User Administrator']")
+	public WebElement DCFUserAdministrator;
+
+	public boolean verifyDCFUserAdministratorPresentOrNot() {
+
+		seleniumObj.waitForElement(DCFUserAdministrator, 4, 4);
+		seleniumObj.scrollToElement(DCFUserAdministrator);
+		return DCFUserAdministrator.isDisplayed();
+     }
+	
+	@FindBy(xpath = "(//*[text()='DCF User Administrator']/following::span[@class='slds-checkbox--faux'])[1]")
+	public WebElement DCFUserAdministratorCheckbox;
+
+	public void checkDCFUserAdministratorCheckbox() {
+
+		seleniumObj.waitForElement(DCFUserAdministratorCheckbox, 4, 4);
+		seleniumObj.scrollToElement(DCFUserAdministratorCheckbox);
+		DCFUserAdministratorCheckbox.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
+	@FindBy(xpath = "//*[text()='CCF Boost User Administrator']")
+	public WebElement CCFBoostUserAdministrator;
+
+	public boolean verifyCCFBoostUserAdministratorPresentOrNot() {
+
+		seleniumObj.waitForElement(CCFBoostUserAdministrator, 4, 4);
+		seleniumObj.scrollToElement(CCFBoostUserAdministrator);
+		return CCFBoostUserAdministrator.isDisplayed();
+     }
+	
+	@FindBy(xpath = "(//*[text()='CCF Boost User Administrator']/following::span[@class='slds-checkbox--faux'])[1]")
+	public WebElement CCFBoostUserAdministratorCheckbox;
+
+	public void checkCCFBoostUserAdministratorCheckbox() {
+
+		seleniumObj.waitForElement(CCFBoostUserAdministratorCheckbox, 4, 4);
+		seleniumObj.scrollToElement(CCFBoostUserAdministratorCheckbox);
+		CCFBoostUserAdministratorCheckbox.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
 	
 	@FindBy(xpath = "//*[text()='CCF User Administrator']")
 	public WebElement CCFUserAdministrator;
@@ -355,8 +667,7 @@ public class OperationPageClass extends TestBase {
 		seleniumObj.waitForElement(CCFUserAdministrator, 4, 4);
 		seleniumObj.scrollToElement(CCFUserAdministrator);
 		return CCFUserAdministrator.isDisplayed();
-
-	}
+     }
 	
 	@FindBy(xpath = "(//*[text()='CCF User Administrator']/following::span[@class='slds-checkbox--faux'])[1]")
 	public WebElement CCFUserAdministratorCheckbox;
@@ -368,6 +679,37 @@ public class OperationPageClass extends TestBase {
 		CCFUserAdministratorCheckbox.click();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
+	@FindBy(xpath="//select[@id='portalUserLoginAsSelect']")
+	public WebElement dropdownclassic;
+	
+	public void clickondropdowncommunityclassic() {
+
+		seleniumObj.waitForElement(dropdownclassic, 4, 4);
+		seleniumObj.scrollToElement(dropdownclassic);
+		dropdownclassic.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
+	
+	@FindBy(xpath="//*[text()='Partnercenter Unified Community']")
+	public WebElement community;
+	
+	public void clickonccpcommunityclassic() {
+
+		seleniumObj.waitForElement(community, 4, 4);
+		seleniumObj.scrollToElement(community);
+		community.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
+	@FindBy(xpath="//*[text()='CCF User Administrator']/following::input[@id='j_id0:j_id96:pbEngagements:j_id119:0:j_id125:14:isinstance']")
+	public WebElement CCFUserAdministratorCheckboxclassic;
+	
+	public void checkCCFUserAdministratorCheckboxclassic() {
+
+		seleniumObj.waitForElement(CCFUserAdministratorCheckboxclassic, 4, 4);
+		seleniumObj.scrollToElement(CCFUserAdministratorCheckboxclassic);
+		CCFUserAdministratorCheckboxclassic.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
 	
 	public WebElement getSelectedCheckboxOfContactEntitlementsAsFalse() {
 
@@ -376,13 +718,23 @@ public class OperationPageClass extends TestBase {
 		return element;
 	}
 	
-	@FindBy(xpath = "//input[@class='btn' and contains(@value,'Save')]")
+	@FindBy(xpath = "//input[@class='btn' and contains(@value,'Save ')]")
 	public WebElement saveOnGrantAccessPage;
 
 	public void clickOnSaveOnGrantAccessPage() {
 		seleniumObj.waitForElement(saveOnGrantAccessPage, 4, 4);
 		seleniumObj.scrollToElement(saveOnGrantAccessPage);
 		saveOnGrantAccessPage.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
+	
+	@FindBy(xpath = "(//input[@value=' Save '])[2]")
+	public WebElement saveOnGrantAccessPagelight;
+
+	public void clickOnSaveOnGrantAccessPagelight() {
+		seleniumObj.waitForElement(saveOnGrantAccessPagelight, 4, 4);
+		seleniumObj.scrollToElement(saveOnGrantAccessPagelight);
+		saveOnGrantAccessPagelight.click();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
 	
@@ -420,6 +772,26 @@ public class OperationPageClass extends TestBase {
 		seleniumObj.waitForElement(viewPartnerUserButton, 4, 4);
 		seleniumObj.scrollToElement(viewPartnerUserButton);
 		viewPartnerUserButton.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
+	
+	@FindBy(xpath="//span[@id='workWithPortalLabel']")
+	public WebElement ManageExternalUserClassic;
+	
+	public void clickOnManageExternalUserButtonclassic() {
+		seleniumObj.waitForElement(ManageExternalUserClassic, 4, 4);
+		seleniumObj.scrollToElement(ManageExternalUserClassic);
+		ManageExternalUserClassic.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+	}
+	
+	@FindBy(xpath="//a[text()='View Partner User'][1]")
+	public WebElement ViewPartnerUser;
+	
+	public void clickOnViewPartnerUserButtonclassic() {
+		seleniumObj.waitForElement(ViewPartnerUser, 4, 4);
+		seleniumObj.scrollToElement(ViewPartnerUser);
+		ViewPartnerUser.click();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
 	
@@ -476,6 +848,18 @@ public class OperationPageClass extends TestBase {
 		seleniumObj.waitForElement(PSGLicensingUserCheckbox, 4, 4);
 		seleniumObj.scrollToElement(PSGLicensingUserCheckbox);
 		PSGLicensingUserCheckbox.click();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+
+	}
+	
+	@FindBy(xpath = "(//*[text()='PSG Licensing User']/following::label[@class='slds-checkbox1'])[1]")
+	public WebElement PSGLicensingUserCheckboxclassic;
+
+	public void checkPSGLicensingUserCheckboxclassic() {
+
+		seleniumObj.waitForElement(PSGLicensingUserCheckboxclassic, 4, 4);
+		seleniumObj.scrollToElement(PSGLicensingUserCheckboxclassic);
+		PSGLicensingUserCheckboxclassic.click();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 
 	}
@@ -582,7 +966,17 @@ public class OperationPageClass extends TestBase {
 			sfcommonObj.waitTillLightningPageLoadComplete();
 
 		}
-		
+		@FindBy(xpath = "(//*[text()='PSG Disti Quoting Access']/following::label[@class='slds-checkbox1'])[1]")
+		public WebElement PSGDistiQuotingAccessCheckboxclassic;
+
+		public void checkPSGDistiQuotingAccessCheckboxclassic() {
+
+			seleniumObj.waitForElement(PSGDistiQuotingAccessCheckboxclassic, 4, 4);
+			seleniumObj.scrollToElement(PSGDistiQuotingAccessCheckboxclassic);
+			PSGDistiQuotingAccessCheckboxclassic.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+
+		}
 		@FindBy(xpath = "//*[contains(text(),'Intel Quote Request')]/parent::div/div/div[@class='headerPlusMinusIcon']")
 	 	public WebElement IntelQuoteRequest;
 
@@ -615,7 +1009,29 @@ public class OperationPageClass extends TestBase {
 			sfcommonObj.waitTillLightningPageLoadComplete();
 
 		}
+		@FindBy(xpath = "(//*[text()='Customer Drafter Access']/following::label[@class='slds-checkbox1'])[1]")
+		public WebElement CustomerDrafterAccessCheckboxclassic;
+
+		public void checkCustomerDrafterAccessCheckboxclassic() {
+
+			seleniumObj.waitForElement(CustomerDrafterAccessCheckboxclassic, 4, 4);
+			seleniumObj.scrollToElement(CustomerDrafterAccessCheckboxclassic);
+			CustomerDrafterAccessCheckboxclassic.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+
+		}
 		
+		@FindBy(xpath = "(//*[text()='Employee']/following::label[@class='slds-checkbox1'])[1]")
+		public WebElement EmployeeCheckboxclassic;
+
+		public void checkEmployeeCheckboxclassic() {
+
+			seleniumObj.waitForElement(EmployeeCheckboxclassic, 4, 4);
+			seleniumObj.scrollToElement(EmployeeCheckboxclassic);
+			EmployeeCheckboxclassic.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+
+		}
 		@FindBy(xpath = "(//span[text()='Partner Contact Relationship']/following::span[text()='View All'])[1]")
 		public WebElement ViewAllOfPartnerContactRelationship;
 
@@ -626,7 +1042,7 @@ public class OperationPageClass extends TestBase {
 			sfcommonObj.waitTillLightningPageLoadComplete();
 		}
 		
-		 @FindBy(xpath = "//*[contains(text(),'Intel Partner Alliance')]/parent::div/div/div[@class='headerPlusMinusIcon']")
+		 @FindBy(xpath = "(//*[contains(text(),'Intel Partner Alliance')]/parent::div/div/div[@class='headerPlusMinusIcon'])[1]")
 		 public WebElement IntelPartnerAlliance;
 
 		 public void expandIntelPartnerAlliance() {
@@ -647,8 +1063,8 @@ public class OperationPageClass extends TestBase {
 				sfcommonObj.waitTillLightningPageLoadComplete();
 
 		}
-			
-		@FindBy(xpath="(//*[text()='Partner Admin Delegate']/following::span[@class='slds-checkbox_faux'])[1]")
+		
+		@FindBy(xpath="(//*[text()='Partner Admin Delegate']/following::span[@class='slds-checkbox--faux'])[1]")
 		public WebElement PartnerAdminDelegateCheckbox;
 		
 		public void checkPADCheckbox() {
@@ -659,6 +1075,18 @@ public class OperationPageClass extends TestBase {
 			sfcommonObj.waitTillLightningPageLoadComplete();
 
 	    }
+		
+		@FindBy(xpath="//slot[text()='Marketing Specialist']//following::span[@part='indicator']")
+		public WebElement MarketingSpecialistCheckbox;
+		
+		public void checkMSCheckbox() {
+
+			seleniumObj.waitForElement(MarketingSpecialistCheckbox, 4, 4);
+			seleniumObj.scrollToElement(MarketingSpecialistCheckbox);
+			MarketingSpecialistCheckbox.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+
+	    }
 		public void clickOnYesOnGrantAccessPage() {
 				List<WebElement> ele = seleniumObj.getDriver().findElements(By.xpath("//commandbutton[@class='slds-button slds-button_neutral' and contains(text(),'Yes')]"));
 				seleniumObj.waitForElement(ele.get(ele.size()-1), 4, 4);
@@ -666,7 +1094,28 @@ public class OperationPageClass extends TestBase {
 				executor.executeScript("arguments[0].click();", ele.get(ele.size()-1));
 				sfcommonObj.waitTillLightningPageLoadComplete();
 		}	
+		@FindBy(xpath="//*[text()='Ok']")
+		public WebElement OkbuttonEmployee;
 		
+		public void clickOnOkOnGrantAccessPage() {
+
+			seleniumObj.waitForElement(OkbuttonEmployee, 4, 4);
+			seleniumObj.scrollToElement(OkbuttonEmployee);
+			OkbuttonEmployee.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+
+	    }
+		@FindBy(xpath="//button[text()='Yes']")
+		public WebElement YesbuttonMP;
+		
+		public void clickOnYesOnManagePersonnelPage() {
+
+			seleniumObj.waitForElement(YesbuttonMP, 4, 4);
+			seleniumObj.scrollToElement(YesbuttonMP);
+			YesbuttonMP.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+
+	    }
 		public boolean verifyEmployeeNotPresent() {
 			try {
 
@@ -677,7 +1126,7 @@ public class OperationPageClass extends TestBase {
 			}
 		}
 		
-		@FindBy(xpath = "(//button[text()='Log in to Experience as User'])[1]")
+		@FindBy(xpath = "//button[text()='Log in to Experience as User']")
 		public WebElement LogintoExperienceasUserButton;
 
 		public void clickOnLogintoExperienceasUserButton() {
@@ -705,15 +1154,17 @@ public class OperationPageClass extends TestBase {
 			IntelPartnerAllianceCommunity.click();
 			sfcommonObj.waitTillLightningPageLoadComplete();
 		}	
-		@FindBy(xpath = "(//*[text()='Manage Personnel'])[1]")
+		@FindBy(xpath = "(//div[text()='Manage Personnel'])")
 		public WebElement ManagePersonnel;
 		
 		public void clickOnManagePersonnel(){
 			seleniumObj.waitForElement(ManagePersonnel, 4, 4);
 			seleniumObj.scrollToElement(ManagePersonnel);
-			IntelPartnerAllianceCommunity.click();
+			ManagePersonnel.click();
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			}
+		
+		
 		@FindBy(xpath="(//*[text()='Name'])[1]")
 		public WebElement column_Name;
 		
@@ -737,14 +1188,15 @@ public class OperationPageClass extends TestBase {
 			seleniumObj.scrollToElement(column_Name);
 			seleniumObj.waitForElement(column_EmailAddress, 4, 4);
 			seleniumObj.scrollToElement(column_EmailAddress);
-			seleniumObj.waitForElement(column_LastSignIn, 4, 4);
-			seleniumObj.scrollToElement(column_LastSignIn);
+			//seleniumObj.waitForElement(column_LastSignIn, 4, 4);
+			//seleniumObj.scrollToElement(column_LastSignIn);
 			seleniumObj.waitForElement(column_IPAMembership, 4, 4);
 			seleniumObj.scrollToElement(column_IPAMembership);
 			seleniumObj.waitForElement(column_Country, 4, 4);
 			seleniumObj.scrollToElement(column_Country);
 			seleniumObj.waitForElement(column_ResponsibilitiesAssigned, 4, 4);
 			seleniumObj.scrollToElement(column_ResponsibilitiesAssigned);
+			System.out.println("All columns are visible.");
 			
 		}
 		
@@ -780,7 +1232,34 @@ public class OperationPageClass extends TestBase {
 			filterEmail.click();
 			sfcommonObj.waitTillLightningPageLoadComplete();
 		}
+		@FindBy(xpath="//input[@placeholder='Enter Email']")
+		public WebElement filterEmailaddress;
 		
+		public void clickOnfilterEmailaddress(){
+			seleniumObj.waitForElement(filterEmailaddress,4,4);
+			seleniumObj.scrollToElement(filterEmailaddress);
+			filterEmailaddress.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+		@FindBy(xpath="//button[@class='slds-button slds-button_brand slds-m-right_xx-small prevNextButtonClass']//preceding::button[@class='slds-button slds-button_icon-container']")
+		public WebElement rowsperpage;
+		
+		public void clickonrowsperpage(){
+			seleniumObj.waitForElement(rowsperpage,4,4);
+			seleniumObj.scrollToElement(rowsperpage);
+			rowsperpage.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+		
+		@FindBy(xpath="//span[text()='100']")
+		public WebElement clickon100;
+		
+		public void clickon100rows(){
+			seleniumObj.waitForElement(clickon100,4,4);
+			seleniumObj.scrollToElement(clickon100);
+			clickon100.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
 		@FindBy(xpath="//button[text()='IPA Membership']")
 		public WebElement filterIPAMembership;
 		
@@ -790,13 +1269,23 @@ public class OperationPageClass extends TestBase {
 		@FindBy(xpath="//button[text()='Responsibility Name']")
 		public WebElement filterResponsibilityName;
 		
-		@FindBy(xpath="//button[@id='applyFilter-4']")
+		@FindBy(xpath="(//button[text()='Responsibility Name'])//following::button[2]")
 		public WebElement filterApply;
 		
 		public void clickOnfilterApply(){
 			seleniumObj.waitForElement(filterApply,4,4);
 			seleniumObj.scrollToElement(filterApply);
 			filterApply.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+		
+		@FindBy(xpath="//button[@id='firstName-4']")
+		public WebElement heading;
+		
+		public void clickelsewhere(){
+			seleniumObj.waitForElement(heading,4,4);
+			seleniumObj.scrollToElement(heading);
+			heading.click();
 			sfcommonObj.waitTillLightningPageLoadComplete();
 		}
 		@FindBy(xpath="//button[text()='Delete']")
@@ -819,6 +1308,21 @@ public class OperationPageClass extends TestBase {
 			sfcommonObj.waitTillLightningPageLoadComplete();
 		}
 		
+		@FindBy(xpath="//button[text()='Invite a User']")
+		public WebElement InviteAUserManagePersonnel;
+		
+
+		public void clickOnInviteAUserManagePersonnel(){
+			seleniumObj.waitForElement(InviteAUserManagePersonnel,4,4);
+			seleniumObj.scrollToElement(InviteAUserManagePersonnel);
+			InviteAUserManagePersonnel.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+		
+		public String getfilteredvalue(String emailID) {
+			return seleniumObj.getDriver()
+					.findElements(By.xpath("//lightning-layout-item[@title='"+emailID.toLowerCase()+"']")).toString();
+		}
 		
 		public boolean checkIfReinviteButtonDisplayed() throws TimeOutException {
 			 return sfcommonObj.checkElementExists(Reinvitemanagepersonnel);
@@ -842,7 +1346,7 @@ public class OperationPageClass extends TestBase {
 			}
 			return visible;
 		}
-		@FindBy(xpath="//input[@id='0032i00001PjdSuAAJ-4']")
+		@FindBy(xpath="//input[@name='optradio']")
 		public WebElement contacttoinvite;
 		
 		public void clickOnContacttoInvite(){
@@ -850,6 +1354,63 @@ public class OperationPageClass extends TestBase {
 			seleniumObj.scrollToElement(contacttoinvite);
 			contacttoinvite.click();
 			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+		
+		@FindBy(xpath="//button[text()='Submit']")
+		public WebElement SubmitInviteManagePersonnel;
+		
+		public void clickOnSubmitInviteManagePersonnel(){
+			seleniumObj.waitForElement(SubmitInviteManagePersonnel,4,4);
+			seleniumObj.scrollToElement(SubmitInviteManagePersonnel);
+			SubmitInviteManagePersonnel.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+		
+		@FindBy(xpath="//span[text()='Invite the contact to register for the Intel® Partner Alliance Program']")
+		public WebElement newcontactMessageManagePersonnel;
+		
+		//String str=newcontactMessageManagePersonnel.toString();
+		public String validateNewContactMessageonManagePersonnel() throws TimeOutException {
+			seleniumObj.waitForElement(newcontactMessageManagePersonnel,4,4);
+			String str=newcontactMessageManagePersonnel.getText();
+			return str;
+		}
+		
+		
+		@FindBy(xpath="//span[text()='The Contact has an Active Intel® Partner Alliance Membership. Need help?']")
+		public WebElement acractivecontactMessageManagePersonnel;
+		
+		public String validateACRactiveMessageonManagePersonnel() throws TimeOutException {
+			seleniumObj.waitForElement(acractivecontactMessageManagePersonnel,4,4); 
+			String str=acractivecontactMessageManagePersonnel.getText();
+			return str;
+		}
+		
+		@FindBy(xpath="//span[text()='An invitation has been extended and registration is in progress. Need help?']")
+		public WebElement invitedcontactMessageManagePersonnel;
+		
+		public String validateinvitedContactMessageonManagePersonnel() throws TimeOutException {
+			seleniumObj.waitForElement(invitedcontactMessageManagePersonnel,4,4); 
+			String str=invitedcontactMessageManagePersonnel.getText();
+			return str;
+		}
+		
+		@FindBy(xpath="//span[text()='The contact is not a part of your account. Need help?']")
+		public WebElement diffOPIDcontactMessageManagePersonnel;
+		
+		public String validatediffOPIDContactMessageonManagePersonnel() throws TimeOutException {
+			seleniumObj.waitForElement(diffOPIDcontactMessageManagePersonnel,4,4); 
+			String str=diffOPIDcontactMessageManagePersonnel.getText();
+			return str; 
+		}
+		
+		@FindBy(xpath="//*[text()='Invitation cannot be extended to an Intel domain Email ID']")
+		public WebElement InternalUserMessageManagePersonnel;
+		
+		public String validateInternalUserMessageonManagePersonnel() throws TimeOutException {
+			seleniumObj.waitForElement(InternalUserMessageManagePersonnel,4,4); 
+			String str=InternalUserMessageManagePersonnel.getText();
+			return str; 
 		}
 		public void clickOnmanagepersonnelFilter(){
 			seleniumObj.waitForElement(managepersonnelFilter, 4, 4);
