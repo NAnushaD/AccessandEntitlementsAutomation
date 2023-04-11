@@ -521,7 +521,7 @@ public class AdminFunctions extends TestBase {
 	 * @throws TimeOutException
 	 *             Exception thrown when a blocking operation times
 	 */
-	public void createNewContact(AdminDataDetails objAdminDataDetails) throws TimeOutException {
+/*	public void createNewContact(AdminDataDetails objAdminDataDetails) throws TimeOutException {
 		try {
 
 			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getSalutation())) {
@@ -551,7 +551,7 @@ public class AdminFunctions extends TestBase {
 		}
 	}
 	
-	
+	*/
 	public void createNewContactClassic(AdminDataDetails objAdminDataDetails) throws TimeOutException {
 		try {
 
