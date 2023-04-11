@@ -51,12 +51,18 @@ public class NavigationPageClass extends TestBase {
 	@FindBy(xpath = "//button[contains(text(),'Search')]")
 	public WebElement globalSearchTextButton;
 
+	@FindBy(xpath = "//input[@id='phSearchInput']")
+	public WebElement globalSearchTextButtonclassic;
+	
 	@FindBy(xpath = "//a[contains(@class,'SEARCH_OPTION')]")
 	public WebElement globalSearchResultSearchIcon;
 	
 	@FindBy(xpath = "(//span[contains(text(),'Show more results for')])[1]")
 	public WebElement globalSearchShowMoreResults;
-
+ 
+	@FindBy(xpath = "//input[@id='phSearchButton']")
+	public WebElement globalSearchShowMoreResultsclassic;
+	
 	public WebElement searchResult(String SearchText, String SearchType) {
 		return seleniumObj.getDriver()
 				.findElement(By.xpath("//div[contains(@class,'mruDescription')]//div[text()='" + SearchType
@@ -202,6 +208,23 @@ public class NavigationPageClass extends TestBase {
 
 	}
 	
+	public void setValueForGlobalSearchTextboxclassic(String searchText) {
+		try {
+			seleniumObj.waitForElement(globalSearchTextButtonclassic, 5, 5);
+			globalSearchTextButtonclassic.click();
+			//seleniumObj.waitForElement(globalSearchText, 5, 5);
+			globalSearchTextButtonclassic.clear();
+			seleniumObj.waitForSeconds(2);
+			globalSearchTextButtonclassic.sendKeys(searchText);
+			globalSearchTextButtonclassic.sendKeys(Keys.ENTER);
+			seleniumObj.waitForSeconds(4);
+			log.info("Entered text in global search textbox : " + searchText);
+		} catch (Exception e) {
+			log.error("Not able to enter text in global search text box");
+			Assert.fail("Not able to enter text in global search text box");
+		}
+
+	}
 	/**
 	 * 
 	 * @Description Method enter text in Global search text box
@@ -244,7 +267,21 @@ public class NavigationPageClass extends TestBase {
 			Assert.fail("Not able to click on search icon in global search");
 		}
 	}
+	public void clickOnSearchResultSearchIconclassic() {
 
+		try {
+			seleniumObj.waitForElement(globalSearchShowMoreResultsclassic, 5, 5);
+			seleniumObj.waitForSeconds(3);
+			seleniumObj.clickByJS(globalSearchShowMoreResultsclassic);
+			sfcommonObj.waitTillAllXHRCallsComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//globalSearchResultSearchIcon.click();
+			log.info("Clicked on search icon in global search");
+		} catch (Exception e) {
+			log.error("Not able to click on search icon in global search");
+			Assert.fail("Not able to click on search icon in global search");
+		}
+	}
 	/**
 	 * 
 	 * @Description Method click on search text with search type in auto-complete
@@ -445,6 +482,16 @@ public class NavigationPageClass extends TestBase {
 	public List<WebElement> getselectSearchedContact(String accName, String SearchType, String emailID, String contactName) {
 		return seleniumObj.getDriver()
 				.findElements(By.xpath("(//h2/*[text()='"+SearchType+"']/following::a[text()='"+emailID.toLowerCase()+"']/preceding::a[@title='"+accName+"']/preceding::th[@scope='row']//a[@title='"+contactName+"'])"));
+	}
+	
+	public List<WebElement> getselectSearchedAccountsclassic(String accName, String SearchType, String cimID, String accID) {
+		return seleniumObj.getDriver()
+				.findElements(By.xpath("(//h2/*[text()='"+SearchType+"']/following::span[@title='"+cimID+"']/following::span[text()='"+accID+"']/preceding::th[@scope='row']//a[text()='"+accName+"'])"));
+	}
+	
+	public List<WebElement> getselectSearchedContactclassic(String accName, String SearchType, String emailID, String contactName) {
+		return seleniumObj.getDriver()
+				.findElements(By.xpath("(//span[contains(text(),'"+SearchType+"')])[2]//following::a[text()='"+emailID.toLowerCase()+"']//preceding::a[text()='"+accName+"']//preceding::a[text()='"+contactName+"']"));
 	}
 	
 	

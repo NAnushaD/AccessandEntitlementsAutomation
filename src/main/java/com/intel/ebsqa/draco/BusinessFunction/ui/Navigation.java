@@ -2,6 +2,7 @@ package com.intel.ebsqa.draco.BusinessFunction.ui;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
@@ -423,7 +424,36 @@ public class Navigation extends TestBase {
 		}
 
 	}
+	public void globalUISearchAccountAndSelectclassic(String accName, String searchType, String searchIcon, String cimID,
+			String accID) {
+		sfcommonObj.waitTillLightningPageLoadComplete();
+		if (searchIcon.equals("false")) {
+			objNavigationPageClass.setValueForGlobalSearchTextbox(cimID);
+			objNavigationPageClass.clickOnSearchResultSearchIcon();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		} else if (searchIcon.equals("true")) {
+			objNavigationPageClass.setValueForGlobalSearchTextbox(cimID);
+			sfcommonObj.waitTillAllXHRCallsComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigationPageClass.clickOnSearchResultSearchIcon();
+			List<WebElement> records = objNavigationPageClass.getselectSearchedAccounts(accName, searchType, cimID,
+					accID);
+			if (records.size() == 1) {
+				WebElement ele = records.get(0);
+				seleniumObj.clickByJS(ele);
+				sfcommonObj.waitTillLightningPageLoadComplete();
 
+			} else {
+				WebElement ele = records.get(records.size() - 1);
+				seleniumObj.clickByJS(ele);
+				sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+
+	}
 	/**
 	 * @Description To Search Account Name from Global Search
 	 * @Author kumark8x
@@ -466,7 +496,40 @@ public class Navigation extends TestBase {
 		}
 
 	}
+	public void globalUISearchContactAndSelectclassic(String accName, String searchType, String searchIcon, String emailID,
+			String contactName) {
+		sfcommonObj.waitTillLightningPageLoadComplete();
+		//seleniumObj.pageRefresh();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+		sfcommonObj.waitTillLightningPageLoadComplete();
+		if (searchIcon.equals("false")) {
+			objNavigationPageClass.setValueForGlobalSearchTextboxclassic(emailID);
+			objNavigationPageClass.clickOnSearchResultSearchIconclassic();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		} else if (searchIcon.equals("true")) {
+			objNavigationPageClass.setValueForGlobalSearchTextboxclassic(emailID);
+			sfcommonObj.waitTillAllXHRCallsComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objNavigationPageClass.clickOnSearchResultSearchIconclassic();
+			List<WebElement> records = objNavigationPageClass.getselectSearchedContactclassic(accName, searchType, emailID,
+					contactName);
+			if (records.size() == 1) {
+				WebElement ele = records.get(0);
+				seleniumObj.clickByJS(ele);
+				sfcommonObj.waitTillLightningPageLoadComplete();
 
+			} else {
+				WebElement ele = records.get(records.size() - 1);
+				seleniumObj.clickByJS(ele);
+				sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+
+	}
+	
 	/**
 	 * @Description To switchToLightningExperience
 	 * @Author kumark8x

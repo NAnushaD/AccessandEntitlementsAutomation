@@ -69,11 +69,12 @@ public class AdminFunctions extends TestBase {
 			excelData = sfcommonObj.GetRowFromExcelSheet(filepath, sheetName, method, "Test Case ID");
 			objAdminData.setRole(excelData.get(1));
 			
-			objAdminDataDetails.setSalutation(excelData.get(2));
+			//objAdminDataDetails.setSalutationclassic(excelData.get(2));
 			objAdminDataDetails.setFirstName(excelData.get(3));
 			objAdminDataDetails.setLastName(excelData.get(4));
 			objAdminDataDetails.setEmail(excelData.get(5));
 			objAdminDataDetails.setAccountName(excelData.get(6));
+			objAdminDataDetails.setFilter(excelData.get(15));
 			objAdminDataDetails.setNonExistingEmail(excelData.get(7));
 			objAdminDataDetails.setFirstName2(excelData.get(8));
 			objAdminDataDetails.setLastName2(excelData.get(9));
@@ -82,8 +83,25 @@ public class AdminFunctions extends TestBase {
 			objAdminDataDetails.setAccountType2(excelData.get(12));
 			objAdminDataDetails.setAccountName3(excelData.get(13));
 			objAdminDataDetails.setExistingEmail(excelData.get(14));
-			objAdminDataDetails.setFilter(excelData.get(15));
-			objAdminDataDetails.setEmail2(excelData.get(16));
+			
+			
+		
+			objAdminDataDetails.setFirstNameclassic(excelData.get(18));
+			objAdminDataDetails.setLastNameclassic(excelData.get(19));
+			objAdminDataDetails.setEmailclassic(excelData.get(20));
+            objAdminDataDetails.setEmail2(excelData.get(16));
+			objAdminDataDetails.setAccountNameclassic(excelData.get(21));
+			objAdminDataDetails.setNonExistingEmailclassic(excelData.get(22));
+			objAdminDataDetails.setFirstName2classic(excelData.get(23));
+			objAdminDataDetails.setLastName2classic(excelData.get(24));
+			objAdminDataDetails.setAccountTypeclassic(excelData.get(25));
+			objAdminDataDetails.setAccountName2classic(excelData.get(26));
+			objAdminDataDetails.setAccountType2classic(excelData.get(27));
+			objAdminDataDetails.setAccountName3classic(excelData.get(28));
+			objAdminDataDetails.setExistingEmailclassic(excelData.get(29));
+			objAdminDataDetails.setFilterclassic(excelData.get(30));
+			
+		
 			//System.out.println("Email " + objAdminDataDetails.getExistingEmail());
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			log.info(" set setAdminDataDetails created");
@@ -101,18 +119,43 @@ public class AdminFunctions extends TestBase {
 	 */
 	public void switchToLightningExperience() throws TimeOutException {
 		try {
-
+            
 			objOperationPageClass.switchToLightningExperience();
-			sfcommonObj.waitTillLightningPageLoadComplete();
-			log.info("Succussfully switchToLightningExperience");
-		}
+            }
+            //sfcommonObj.waitTillLightningPageLoadComplete();
+			//log.info("Succussfully switchToLightningExperience");
+		//}
 
 		catch (Exception ex) {
 			Assert.fail("Not able to switchToLightningExperience. " + ex.getMessage());
-
 		}
 	}
-	
+	public void switchToClassicExperience() throws TimeOutException {
+		try {
+            
+			objOperationPageClass.switchToClassicExperience();
+            }
+            //sfcommonObj.waitTillLightningPageLoadComplete();
+			//log.info("Succussfully switchToClassicExperience");
+		//}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to switchToClassicExperience. " + ex.getMessage());
+		}
+	}
+	public void clickonClassicExperience() throws TimeOutException {
+		try {
+            
+			objOperationPageClass.clickonClassicExperience();
+            }
+            //sfcommonObj.waitTillLightningPageLoadComplete();
+			//log.info("Succussfully clickonClassicExperience");
+		//}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickonClassicExperience. " + ex.getMessage());
+		}
+	}
 	/**
 	 * @Description Method to switchToTab
 	 * @Author manish9x
@@ -154,7 +197,19 @@ public class AdminFunctions extends TestBase {
 		}
 		
 	}
-	
+	public void clickContactsClassic() throws TimeOutException, InterruptedException {
+		try {
+
+			objOperationPageClass.clickContactsClassic();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickButton :");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to click on :");
+		}
+		
+	}
 	/**
 	 * @Description Method to selectContactTypeAsIntelContactAndClickNext
 	 * @Author manish9x
@@ -173,8 +228,35 @@ public class AdminFunctions extends TestBase {
 		catch (Exception ex) {
 			Assert.fail("Not able to selectContactTypeAsIntelContactAndClickNext. " + ex.getMessage());
 		}
-		
 	}
+		public void selectContactTypeAsIntelContactAndClickNextClassic() throws TimeOutException, InterruptedException {
+			try {
+
+				objOperationPageClass.selectContactTypeAsIntelContactAndClickNextClassic();
+				//objOperationPageClass.clickButton(Button.Continue.toString());
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				log.info("Succussfully selectContactTypeAsIntelContactAndClickNextClassic");
+			}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to selectContactTypeAsIntelContactAndClickNextClassic. " + ex.getMessage());
+		}
+		
+		}
+		public void clickContinueClassic() throws TimeOutException, InterruptedException {
+			try {
+
+				objOperationPageClass.clickContinueClassic();
+				//objOperationPageClass.clickButton(Button.Continue.toString());
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				log.info("Succussfully clickContinueClassic");
+			}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickContinueClassic. " + ex.getMessage());
+		}
+		
+		}
 	/**
 	 * Method to clickonContactSaluatation
 	 * 
@@ -194,6 +276,28 @@ public class AdminFunctions extends TestBase {
 		}
 	}
 	
+	public void clickOnNewbuttonContactClassic() throws TimeOutException {
+		try {
+			objOperationPageClass.clickOnNewbuttonContactClassic();
+
+			log.info("Clicked on New button for contact creation");
+
+		} catch (Exception ex) {
+			Assert.fail("Not able to click on contact New button" + ex.getMessage());
+		}
+	}
+	
+	public void clickOnDropdownClassic() throws TimeOutException {
+		try {
+			objOperationPageClass.clickOnDropdownClassic();
+
+			log.info("Clicked on dropdown for contact creation");
+
+		} catch (Exception ex) {
+			Assert.fail("Not able to click on dropdown for contact creation" + ex.getMessage());
+		}
+	}
+	
 	/**
 	 * Method to select salutation for contact
 	 * 
@@ -202,6 +306,15 @@ public class AdminFunctions extends TestBase {
 	 * @throws TimeOutException
 	 *             Exception thrown when a blocking operation times
 	 */
+	public void selectSalutationForContactclassic(String salutation) throws TimeOutException {
+		try {
+			this.clickonContactSalutation();
+			objOperationPageClass.selectSalutationclassic(salutation);
+			log.info("salutation for contact is selected: " + salutation);
+		} catch (Exception ex) {
+			Assert.fail("Not able to select salutation for contact " + ex.getMessage());
+		}
+	}
 	public void selectSalutationForContact(String salutation) throws TimeOutException {
 		try {
 			this.clickonContactSalutation();
@@ -211,7 +324,6 @@ public class AdminFunctions extends TestBase {
 			Assert.fail("Not able to select salutation for contact " + ex.getMessage());
 		}
 	}
-	
 	/**
 	 * Method to enter first name contact
 	 * 
@@ -220,6 +332,17 @@ public class AdminFunctions extends TestBase {
 	 * @throws TimeOutException
 	 *             Exception thrown when a blocking operation times
 	 */
+	public void enterFirstNameContactclassic(String name) throws TimeOutException {
+		try {
+			seleniumObj.waitForElement(objOperationPageClass.firstNameContactclassic, 30, 10);
+			Assert.assertTrue(seleniumObj.isElementExists(objOperationPageClass.firstNameContactclassic),
+					"first name contact does not exist in the UI");
+			objOperationPageClass.enterFirstNameContactclassic(name);
+			log.info("Entered first name contact value : " + name);
+		} catch (Exception ex) {
+			Assert.fail("Not able to enter first name contact " + ex.getMessage());
+		}
+	}
 	public void enterFirstNameContact(String name) throws TimeOutException {
 		try {
 			seleniumObj.waitForElement(objOperationPageClass.firstNameContact, 30, 10);
@@ -231,7 +354,6 @@ public class AdminFunctions extends TestBase {
 			Assert.fail("Not able to enter first name contact " + ex.getMessage());
 		}
 	}
-	
 	/**
 	 * Method to enter last name contact
 	 * 
@@ -240,6 +362,17 @@ public class AdminFunctions extends TestBase {
 	 * @throws TimeOutException
 	 *             Exception thrown when a blocking operation times
 	 */
+	public void enterLastNameContactclassic(String name) throws TimeOutException {
+		try {
+			seleniumObj.waitForElement(objOperationPageClass.lastNameContactclassic, 30, 10);
+			Assert.assertTrue(seleniumObj.isElementExists(objOperationPageClass.lastNameContactclassic),
+					"last name contact does not exist in the UI");
+			objOperationPageClass.enterLastNameContactclassic(name);
+			log.info("Entered last name contact value : " + name);
+		} catch (Exception ex) {
+			Assert.fail("Not able to enter last name contact " + ex.getMessage());
+		}
+	}
 	public void enterLastNameContact(String name) throws TimeOutException {
 		try {
 			seleniumObj.waitForElement(objOperationPageClass.lastNameContact, 30, 10);
@@ -251,7 +384,6 @@ public class AdminFunctions extends TestBase {
 			Assert.fail("Not able to enter last name contact " + ex.getMessage());
 		}
 	}
-	
 	/**
 	 * Method to enter email contact
 	 * 
@@ -260,6 +392,17 @@ public class AdminFunctions extends TestBase {
 	 * @throws TimeOutException
 	 *             Exception thrown when a blocking operation times
 	 */
+	public void enterEmailContactclassic(String name) throws TimeOutException {
+		try {
+			seleniumObj.waitForElement(objOperationPageClass.emailclassic, 30, 10);
+			Assert.assertTrue(seleniumObj.isElementExists(objOperationPageClass.emailclassic),
+					"email contact does not exist in the UI");
+			objOperationPageClass.enterEmailContactclassic(name);
+			log.info("Entered email contact value : " + name);
+		} catch (Exception ex) {
+			Assert.fail("Not able to enter email contact " + ex.getMessage());
+		}
+	}
 	public void enterEmailContact(String name) throws TimeOutException {
 		try {
 			seleniumObj.waitForElement(objOperationPageClass.email, 30, 10);
@@ -267,9 +410,20 @@ public class AdminFunctions extends TestBase {
 					"email contact does not exist in the UI");
 			objOperationPageClass.enterEmailContact(name);
 			log.info("Entered email contact value : " + name);
-		} catch (Exception ex) {
+		 } catch (Exception ex) {
 			Assert.fail("Not able to enter email contact " + ex.getMessage());
-		}
+		 }
+	}
+	public void enterfilter(String Filter) throws TimeOutException {
+		try {
+			
+			//Assert.assertTrue(seleniumObj.isElementExists(objOperationPageClass.filterEmail),
+			//		"email contact does not exist in the UI");
+			objOperationPageClass.enterfilter(Filter);
+			log.info("Entered email contact value : " + Filter);
+		 } catch (Exception ex) {
+			Assert.fail("Not able to enter email contact " + ex.getMessage());
+		 }
 	}
 	
 	/**
@@ -347,7 +501,18 @@ public class AdminFunctions extends TestBase {
 		}
 
 	}
-	
+	public void clickelsewhere() throws TimeOutException {
+		try {
+			objOperationPageClass.clickelsewhere();
+			log.info("Succussfully clickelsewhere");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickelsewhere. " + ex.getMessage());
+
+		}
+
+	}
 	/**
 	 * Method to createNewContact
 	 * 
@@ -362,7 +527,7 @@ public class AdminFunctions extends TestBase {
 			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getSalutation())) {
 				this.selectSalutationForContact(objAdminDataDetails.getSalutation());
 			}
-
+            
 			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getFirstName())) {
 				this.enterFirstNameContact(objAdminDataDetails.getFirstName());
 			}
@@ -385,10 +550,70 @@ public class AdminFunctions extends TestBase {
 			Assert.fail("createNewContact not created " + ex.getMessage());
 		}
 	}
-	public void addfilter(AdminDataDetails objAdminDataDetails) throws TimeOutException{
+	
+	
+	public void createNewContactClassic(AdminDataDetails objAdminDataDetails) throws TimeOutException {
+		try {
+
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getSalutationclassic())) {
+				this.selectSalutationForContactclassic(objAdminDataDetails.getSalutationclassic());
+			}
+            
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getFirstNameclassic())) {
+				this.enterFirstNameContactclassic(objAdminDataDetails.getFirstNameclassic());
+			}
+
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getLastNameclassic())) {
+				this.enterLastNameContactclassic(objAdminDataDetails.getLastNameclassic());
+			}
+
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getEmailclassic())) {
+				this.enterEmailContactclassic(objAdminDataDetails.getEmailclassic());
+			}
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getAccountNameclassic())) {
+				this.enterAndselectAccountName(objAdminDataDetails.getAccountNameclassic());
+			}
+
+			this.clickSave();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info(" createNewContact Successfully Done");
+		} catch (Exception ex) {
+			Assert.fail("createNewContact not created " + ex.getMessage());
+		}
+	}
+	public void createNewContact(AdminDataDetails objAdminDataDetails) throws TimeOutException {
+		try {
+
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getSalutation())) {
+				this.selectSalutationForContact(objAdminDataDetails.getSalutation());
+			}
+            
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getFirstName())) {
+				this.enterFirstNameContact(objAdminDataDetails.getFirstName());
+			}
+
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getLastName())) {
+				this.enterLastNameContact(objAdminDataDetails.getLastName());
+			}
+
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getEmail())) {
+				this.enterEmailContact(objAdminDataDetails.getEmail());
+			}
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getAccountName())) {
+				this.enterAndselectAccountName(objAdminDataDetails.getAccountName());
+			}
+            
+			this.clickSave();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info(" createNewContact Successfully Done");
+		} catch (Exception ex) {
+			Assert.fail("createNewContact not created " + ex.getMessage());
+		}
+	}
+	public void addfilterclassic(AdminDataDetails objAdminDataDetails) throws TimeOutException{
 		try{
 			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getFilter())) {
-				this.selectSalutationForContact(objAdminDataDetails.getFilter());
+				this.selectSalutationForContactclassic(objAdminDataDetails.getFilterclassic());
 		      }
 		}
 			catch (Exception ex) {
@@ -396,7 +621,33 @@ public class AdminFunctions extends TestBase {
 			}
 			
 	}
-	
+	public void addfilter(AdminDataDetails objAdminDataDetails) throws TimeOutException{
+		try{
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getFilter())) {
+				this.enterfilter(objAdminDataDetails.getFilter());
+		      }
+		}
+			catch (Exception ex) {
+				Assert.fail("Filter not entered " + ex.getMessage());
+			}
+			
+	}
+	public void validatefilterapply(AdminDataDetails objAdminDataDetails) throws TimeOutException{
+		try{
+			String email=objOperationPageClass.getfilteredvalue(objAdminDataDetails.getFilter());
+			System.out.println("Email Filter is working correctly."+email);
+			if(email==objAdminDataDetails.getFilter())
+			{
+			System.out.println("Email Filter is working correctly."+email);
+			log.info("Succussfully verified emailfilter");
+			}
+		      
+		}
+			catch (Exception ex) {
+				Assert.fail("Filter not working " + ex.getMessage());
+			}
+			
+	}
 	/**
 	 * @Description Method to verifyERPMIntegrationStatus
 	 * @Author manish9x
@@ -415,7 +666,18 @@ public class AdminFunctions extends TestBase {
 
 		}
 	}
-	
+	public void verifyERPMIntegrationStatusClassic(String expectedStatus) throws TimeOutException {
+		try {
+			String actualStatus = objOperationPageClass.getERPMIntegrationStatusclassic();
+			Assert.assertEquals(actualStatus, expectedStatus, "Integration status Mis-Match");
+			log.info("Succussfully verifyERPMIntegrationStatus");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to verifyERPMIntegrationStatus. " + ex.getMessage());
+
+		}
+	}
 	/**
 	 * @Description Method to verifyAGSIntegrationStatus
 	 * @Author manish9x
@@ -434,6 +696,18 @@ public class AdminFunctions extends TestBase {
 
 		}
 	}
+	public void verifyAGSIntegrationStatusClassic(String expectedStatus) throws TimeOutException {
+		try {
+			String actualStatus = objOperationPageClass.getAGSIntegrationStatusclassic();
+			Assert.assertEquals(actualStatus, expectedStatus, "Integration status Mis-Match");
+			log.info("Succussfully verifyAGSIntegrationStatus");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to verifyAGSIntegrationStatus. " + ex.getMessage());
+
+		}
+	}
 	
 	/**
 	 * @Description Method to clickOnGrantAccessButton
@@ -441,6 +715,22 @@ public class AdminFunctions extends TestBase {
 	 * @Since 29-Nov-2022
 	 * @throws TimeOutException
 	 */
+	public void clickOnGrantAccessButtonclassic() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickOnGrantAccessButtonclassic();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			seleniumObj.getDriver().switchTo().frame(0);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnGrantAccessButton");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnGrantAccessButton. " + ex.getMessage());
+
+		}
+	}
 	public void clickOnGrantAccessButton() throws TimeOutException {
 		try {
 
@@ -457,7 +747,6 @@ public class AdminFunctions extends TestBase {
 
 		}
 	}
-	
 	/**
 	 * @Description Method to clickOnGrantAccessButton
 	 * @Author manish9x
@@ -498,7 +787,40 @@ public class AdminFunctions extends TestBase {
 
 		}
 	}
+	public void expandConsolidatedPlatformclassic() throws TimeOutException {
+		try {
+			objOperationPageClass.expandConsolidatedPlatformclassic();
+			log.info("Succussfully expandConsolidatedPlatform");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to expandConsolidatedPlatform. " + ex.getMessage());
+
+		}
+	}
 	
+	public void clickondropdowncommunityclassic() throws TimeOutException {
+		try {
+			objOperationPageClass.clickondropdowncommunityclassic();
+			log.info("Succussfully clickondropdowncommunityclassic");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickondropdowncommunityclassic. " + ex.getMessage());
+
+		}
+	}
+	public void clickonccpcommunityclassic() throws TimeOutException {
+		try {
+			objOperationPageClass.clickonccpcommunityclassic();
+			log.info("Succussfully clickonccpcommunityclassic");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickonccpcommunityclassic. " + ex.getMessage());
+
+		}
+	}
 	/**
 	 * @Description Method to verifyCCFUserAdministratorPresentOrNot
 	 * @Author manish9x
@@ -538,7 +860,19 @@ public class AdminFunctions extends TestBase {
 		}
 	}
 	
-	
+	public void checkCCFUserAdministratorCheckboxclassic() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkCCFUserAdministratorCheckboxclassic();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkCCFUserAdministratorCheckboxclassic");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to checkCCFUserAdministratorCheckboxclassic. " + ex.getMessage());
+
+		}
+	}
 	
 	/**
 	 * @Description Method to verifySelectedCheckboxOfContactEntitlementsAsFalse
@@ -584,7 +918,21 @@ public class AdminFunctions extends TestBase {
 		}
 
 	}
-	
+	public void clickOnSaveOnGrantAccessPagelight() throws TimeOutException {
+		try {
+			objOperationPageClass.clickOnSaveOnGrantAccessPagelight();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnSaveOnGrantAccessPage");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnSaveOnGrantAccessPage. " + ex.getMessage());
+
+		}
+
+	}
     public void clickOnSaveOnManagePersonnel() throws TimeOutException {
     	try{
     		objOperationPageClass.clickOnSaveOnManagePersonnel();
@@ -672,7 +1020,50 @@ public class AdminFunctions extends TestBase {
 			}		
 		}
 	}
+	public void verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlementsclassic(String expectedStatus,List<String> Entitlement_Name) throws TimeOutException {
+		for(int i=0;i<Entitlement_Name.size();i++)
+		{
+			Entitlement_Name.get(i);
+			try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+ Entitlement_Name.get(i) +"'])[1]"));
+			if(ele.isDisplayed())
+				System.out.println("Entitlements is displayed");
+			}
+			catch (Exception e) {
+				log.info("Entitlements is not displayed" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Entitlements is not displayed");
+			}
+		}
 	
+		for(int i=0;i<Entitlement_Name.size();i++)
+		{
+			try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//*[text()='"+Entitlement_Name.get(i)+"']//following::*[text()='"+expectedStatus+"']"));
+			String CCF=ele.getText();
+	  
+	    	if(CCF.equalsIgnoreCase("Pending"))
+	    		System.out.println("Entitlements status is Pending");
+			}
+	    	catch (Exception e) {
+				log.info("Entitlements status is not Pending" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Entitlements status is not Pending");
+			}
+		
+		}
+		seleniumObj.waitForSeconds(5);
+		for(int i=0;i<Entitlement_Name.size();i++)
+		{
+			try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='Checked'])[1]"));
+			if(!(ele.isSelected()))
+				System.out.println("checkbox is selected for the entitlement");
+			}
+			catch (Exception e) {
+				log.info("checkbox is not selected for the entitlement" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "checkebox is not selected for the entitlement");
+			}		
+		}
+	}
 	/**
 	 * @Description Method to verifyStatusAndSelectedCheckboxOfContactEntitlements
 	 * @Author manish9x
@@ -789,7 +1180,65 @@ public class AdminFunctions extends TestBase {
 		this.goBackToContactsPage();
 		
 	}
+	public void validateContactEntitlementsAssignmentclassic(String expectedStatus,List<String> Entitlement_Name) throws TimeOutException {
+		for(int i=0;i<Entitlement_Name.size();i++)
+		{
+			Entitlement_Name.get(i);
+			try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+ Entitlement_Name.get(i) +"'])[1]"));
+			if(ele.isDisplayed())
+				System.out.println("Entitlements is displayed");
+			}
+			catch (Exception e) {
+				log.info("Entitlements is not displayed" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Entitlements is not displayed");
+			}
+		}
 	
+		for(int i=0;i<Entitlement_Name.size();i++)
+		{
+			try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//*[text()='"+Entitlement_Name.get(i)+"']//following::*[text()='"+expectedStatus+"']"));
+			String CCF=ele.getText();
+	  
+	    	if(CCF.equalsIgnoreCase("Complete"))
+	    		System.out.println("Entitlements status is complete");
+			}
+	    	catch (Exception e) {
+				log.info("Entitlements status is not complete" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Entitlements status is not complete");
+			}
+		
+		}
+		seleniumObj.waitForSeconds(5);
+		for(int i=0;i<Entitlement_Name.size();i++)
+		{
+			try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='Checked'])[1]"));
+			if(!(ele.isSelected()))
+				System.out.println("checkbox is selected for the entitlement");
+			}
+			catch (Exception e) {
+				log.info("checkbox is not selected for the entitlement" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "checkebox is not selected for the entitlement");
+			}		
+		}
+		
+	/*	for(int i=0;i<Entitlement_Name.size();i++)
+		{
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String entitlement=Entitlement_Name.get(i);
+			objOperationPageClass.ClickOnEntitlementRecordElement(entitlement);
+			objOperationPageClass.validateStatusOfAssignmentorRemoval();
+			objOperationPageClass.clickOncontactNameInEntitlement();
+			this.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(20);
+			this.clickOnViewAllOfContactEntitlements();
+		}
+		this.goBackToContactsPage();*/
+		
+	}
 	/**
 	 * @Description Method to validateContactEntitlementsAssignment
 	 * @Author manish9x
@@ -855,7 +1304,51 @@ public class AdminFunctions extends TestBase {
 		this.goBackToContactsPage();
 		
 	}
+	public void validateContactEntitlementsRemovalclassic(String expectedStatus,List<String> Entitlement_Name) throws TimeOutException {
+		for(int i=0;i<Entitlement_Name.size();i++)
+		{
+			Entitlement_Name.get(i);
+			try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+ Entitlement_Name.get(i) +"'])[1]"));
+			if(ele.isDisplayed())
+				System.out.println("Entitlements is displayed");
+			}
+			catch (Exception e) {
+				log.info("Entitlements is not displayed" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Entitlements is not displayed");
+			}
+		}
 	
+		for(int i=0;i<Entitlement_Name.size();i++)
+		{
+			try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//*[text()='"+Entitlement_Name.get(i)+"']//following::*[text()='"+expectedStatus+"']"));
+			String CCF=ele.getText();
+	  
+	    	if(CCF.equalsIgnoreCase("Complete"))
+	    		System.out.println("Entitlements status is complete");
+			}
+	    	catch (Exception e) {
+				log.info("Entitlements status is not complete" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Entitlements status is not complete");
+			}
+		
+		}
+		seleniumObj.waitForSeconds(5);
+		for(int i=0;i<Entitlement_Name.size();i++)
+		{
+			try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='Unchecked'])[1]"));
+			if(!(ele.isSelected()))
+				System.out.println("checkbox is Not selected for the entitlement");
+			}
+			catch (Exception e) {
+				log.info("checkbox is selected for the entitlement" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "checkbox is selected for the entitlement");
+			}		
+		}
+		
+	}
 	/**
 	 * @Description Method to goBackToContactsPage
 	 * @Author manish9x
@@ -889,6 +1382,40 @@ public class AdminFunctions extends TestBase {
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			seleniumObj.getDriver().switchTo().frame(0);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnViewPartnerUserButton");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnViewPartnerUserButton. " + ex.getMessage());
+
+		}
+	}
+	
+	
+	public void clickOnManageExternalUserButtonclassic() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickOnManageExternalUserButtonclassic();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//seleniumObj.getDriver().switchTo().frame(0);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnManageExternalUserButtonclassic");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnManageExternalUserButtonclassic. " + ex.getMessage());
+
+		}
+	}
+	public void clickOnViewPartnerUserButtonclassic() throws TimeOutException {
+		try {
+
+			objOperationPageClass.clickOnViewPartnerUserButtonclassic();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//seleniumObj.getDriver().switchTo().frame(0);
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			log.info("Succussfully clickOnViewPartnerUserButton");
 		}
@@ -1009,7 +1536,7 @@ public class AdminFunctions extends TestBase {
 
 		catch (Exception ex) {
 			Assert.fail("Not able to goToContactFromPartnerUserPage. " + ex.getMessage());
-
+            
 		}
 
 	}
@@ -1071,6 +1598,38 @@ public class AdminFunctions extends TestBase {
 		}
 	}
 	
+	public void verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlementsAsFalseclassic(String expectedStatus,List<String> Entitlement_Name) throws TimeOutException {
+		for(int i=0;i<Entitlement_Name.size();i++)
+		{
+			try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//*[text()='"+Entitlement_Name.get(i)+"']//following::*[text()='"+expectedStatus+"']"));
+			String CCF=ele.getText();
+	  
+	    	if(CCF.equalsIgnoreCase("Pending"))
+	    		System.out.println("Entitlements status is Pending");
+			}
+	    	catch (Exception e) {
+				log.info("Entitlements status is not Pending" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Entitlements status is not Pending");
+			}
+		
+		}
+		
+		seleniumObj.waitForSeconds(5);
+		for(int i=0;i<Entitlement_Name.size();i++)
+		{
+			try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='Unchecked'])[1]"));
+			if(!(ele.isSelected()))
+				System.out.println("checkbox is Not selected for the entitlement");
+			}
+			catch (Exception e) {
+				log.info("checkbox is Not selected for the entitlement" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "checkbox is selected for the entitlement");
+			}		
+		}
+	}
+	
 	/**
 	 * @Description Method to expandProgrammableSolutionsGroup
 	 * @Author manish9x
@@ -1107,7 +1666,19 @@ public class AdminFunctions extends TestBase {
 
 		}
 	}
-	
+	public void checkPSGLicensingUserCheckboxclassic() throws TimeOutException {
+		try {
+			
+			objOperationPageClass.checkPSGLicensingUserCheckboxclassic();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkPSGLicensingUserCheckboxclassic");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to checkPSGLicensingUserCheckboxclassic. " + ex.getMessage());
+
+		}
+	}
 	/**
 	 * @Description Method to checkPSGLicensingUserCheckbox
 	 * @Author manish9x
@@ -1230,7 +1801,19 @@ public class AdminFunctions extends TestBase {
 
 		}
 	}
-	
+	public void checkPSGDistiQuotingAccessCheckboxclassic() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkPSGDistiQuotingAccessCheckboxclassic();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkPSGDistiQuotingAccessCheckboxclassic");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to checkPSGDistiQuotingAccessCheckboxclassic. " + ex.getMessage());
+
+		}
+	}
 	/**
 	 * @Description Method to expandIntelQuoteRequest
 	 * @Author manish9x
@@ -1287,7 +1870,19 @@ public class AdminFunctions extends TestBase {
 
 		}
 	}
-	
+	public void checkCustomerDrafterAccessCheckboxclassic() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkCustomerDrafterAccessCheckboxclassic();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkCustomerDrafterAccessCheckboxclassic");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to checkCustomerDrafterAccessCheckboxclassic. " + ex.getMessage());
+
+		}
+	}
 	/**
 	 * @Description Method to verifyPermissionSetAssignmentsForDistiQuotingAndDrafterAccess
 	 * @Author manish9x
@@ -1343,7 +1938,40 @@ public class AdminFunctions extends TestBase {
 	 * @Since 13-dec-2022
 	 * @throws TimeOutException
 	 */
-	public void verifyEmployeeRelationshipStatusAsCompleteAndInactiveIndicatorAsFalse(String expectedStatus) throws TimeOutException {
+	public void verifyEmployeeRelationshipStatusAsCompleteAndInactiveIndicatorAsFalseclassic(String expectedStatus) throws TimeOutException {
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='Employee'])[1]"));
+			if(ele.isDisplayed())
+				System.out.println("Employee Relationship is displayed");
+			}
+			catch (Exception e) {
+				log.info("Employee Relationship is not displayed" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Employee Relationship is not displayed");
+			}
+		
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//input[@title='New Account Contact Relationship']//following::a[text()='Employee']//following::*[text()='"+expectedStatus+"'])[1]"));
+			String actualStatus=ele.getText();
+	  
+	    	if(actualStatus.equalsIgnoreCase("Complete"))
+	    		System.out.println("Employee Relationship status is complete");
+			}
+	    	catch (Exception e) {
+				log.info("Employee Relationship status is not complete" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Employee Relationship status is not complete");
+			}
+	
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//a[text()='Employee']//following::img[@alt='False'])[1]"));
+			if(!(ele.isSelected()))
+				System.out.println("Inactive Indicator checkbox is Not selected");
+			}
+			catch (Exception e) {
+				log.info("Inactive Indicator checkbox is selected" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Inactive Indicator checkbox checkbox is selected");
+			}		
+	}
+		public void verifyEmployeeRelationshipStatusAsCompleteAndInactiveIndicatorAsFalse(String expectedStatus) throws TimeOutException {
 		try {
 			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='Employee'])[1]"));
 			if(ele.isDisplayed())
@@ -1376,6 +2004,39 @@ public class AdminFunctions extends TestBase {
 				Assert.fail(e.getClass().getSimpleName() + " : " + "Inactive Indicator checkbox checkbox is selected");
 			}		
 	}
+	public void verifyEmployeeRelationshipStatusAsPendingAndInactiveIndicatorAsFalse(String expectedStatus) throws TimeOutException {
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='Employee'])[1]"));
+			if(ele.isDisplayed())
+				System.out.println("Employee Relationship is displayed");
+			}
+			catch (Exception e) {
+				log.info("Employee Relationship is not displayed" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Employee Relationship is not displayed");
+			}
+		
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//input[@title='New Account Contact Relationship']//following::a[text()='Employee']//following::*[text()='"+expectedStatus+"'])[1]"));
+			String actualStatus=ele.getText();
+	  
+	    	if(actualStatus.equalsIgnoreCase("Pending"))
+	    		System.out.println("Employee Relationship status is pending");
+			}
+	    	catch (Exception e) {
+				log.info("Employee Relationship status is not pending" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Employee Relationship status is not pending");
+			}
+	
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//a[text()='Employee']//following::img[@alt='False'])[1]"));
+			if(!(ele.isSelected()))
+				System.out.println("Inactive Indicator checkbox is Not selected");
+			}
+			catch (Exception e) {
+				log.info("Inactive Indicator checkbox is selected" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Inactive Indicator checkbox checkbox is selected");
+			}		
+	}
 	
 	/**
 	 * @Description Method to verifyEmployeeRelationshipStatusAsCompleteAndInactiveIndicatorAsTrue
@@ -1386,6 +2047,112 @@ public class AdminFunctions extends TestBase {
 	public void verifyEmployeeRelationshipStatusAsCompleteAndInactiveIndicatorAsTrue(String expectedStatus) throws TimeOutException {
 		try {
 			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='Employee'])[1]"));
+			if(ele.isDisplayed())
+				System.out.println("Employee Relationship is displayed");
+			}
+			catch (Exception e) {
+				log.info("Employee Relationship is not displayed" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Employee Relationship is not displayed");
+			}
+		
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//a[text()='Employee']//following::span[text()='"+expectedStatus+"']"));
+			String actualStatus=ele.getText();
+	  
+	    	if(actualStatus.equalsIgnoreCase("Complete"))
+	    		System.out.println("Employee Relationship status is complete");
+			}
+	    	catch (Exception e) {
+				log.info("Employee Relationship status is not complete" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Employee Relationship status is not complete");
+			}
+	
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//a[text()='Employee']//following::img[@alt='True'])[1]"));
+			if(!(ele.isSelected()))
+				System.out.println("Inactive Indicator checkbox is selected");
+			}
+			catch (Exception e) {
+				log.info("Inactive Indicator checkbox is not selected" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Inactive Indicator checkbox is not selected");
+			}		
+	}
+	public void verifyEmployeeRelationshipStatusAsCompleteAndInactiveIndicatorAsFalseClassic(String expectedStatus) throws TimeOutException {
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='Employee'])[1]"));
+			if(ele.isDisplayed())
+				System.out.println("Employee Relationship is displayed");
+			}
+			catch (Exception e) {
+				log.info("Employee Relationship is not displayed" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Employee Relationship is not displayed");
+			}
+		
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//input[@title='New Account Contact Relationship']//following::a[text()='Employee']//following::*[text()='"+expectedStatus+"'])[1]"));
+			String actualStatus=ele.getText();
+	  
+	    	if(actualStatus.equalsIgnoreCase("Complete"))
+	    		System.out.println("Employee Relationship status is complete");
+			}
+	    	catch (Exception e) {
+				log.info("Employee Relationship status is not complete" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Employee Relationship status is not complete");
+			}
+	
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//a[text()='Employee']//following::img[@alt='Not Checked'])[1]"));
+			if(!(ele.isSelected()))
+				System.out.println("Inactive Indicator checkbox is Not selected");
+			}
+			catch (Exception e) {
+				log.info("Inactive Indicator checkbox is selected" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Inactive Indicator checkbox checkbox is selected");
+			}		
+	}
+	
+	/**
+	 * @Description Method to verifyEmployeeRelationshipStatusAsCompleteAndInactiveIndicatorAsTrue
+	 * @Author manish9x
+	 * @Since 13-dec-2022
+	 * @throws TimeOutException
+	 */
+	public void verifyEmployeeRelationshipStatusAsCompleteAndInactiveIndicatorAsTrueClassic(String expectedStatus) throws TimeOutException {
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='Employee'])[1]"));
+			if(ele.isDisplayed())
+				System.out.println("Employee Relationship is displayed");
+			}
+			catch (Exception e) {
+				log.info("Employee Relationship is not displayed" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Employee Relationship is not displayed");
+			}
+		
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//a[text()='Employee']//following::span[text()='"+expectedStatus+"']"));
+			String actualStatus=ele.getText();
+	  
+	    	if(actualStatus.equalsIgnoreCase("Complete"))
+	    		System.out.println("Employee Relationship status is complete");
+			}
+	    	catch (Exception e) {
+				log.info("Employee Relationship status is not complete" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Employee Relationship status is not complete");
+			}
+	
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//a[text()='Employee']//following::img[@alt='True'])[1]"));
+			if(!(ele.isSelected()))
+				System.out.println("Inactive Indicator checkbox is selected");
+			}
+			catch (Exception e) {
+				log.info("Inactive Indicator checkbox is not selected" + e.getMessage());
+				Assert.fail(e.getClass().getSimpleName() + " : " + "Inactive Indicator checkbox is not selected");
+			}		
+	}
+	public void verifyEmployeeRelationshipStatusAsCompleteAndInactiveIndicatorAsTrueclassic(String expectedStatus) throws TimeOutException {
+		try {
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//*[@id='0032i00001Jf8OL_00N3b000006juA6_title']//following::a[text()='Employee']"));
 			if(ele.isDisplayed())
 				System.out.println("Employee Relationship is displayed");
 			}
@@ -1497,16 +2264,42 @@ public class AdminFunctions extends TestBase {
 
 		}
 	}
+	public void checkEmployeeCheckboxclassic() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkEmployeeCheckboxclassic();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckboxclassic");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to checkEmployeeCheckboxclassic. " + ex.getMessage());
+
+		}
+	}
 	public void checkPADCheckbox() throws TimeOutException {
 		try {
 			
 	        objOperationPageClass.checkPADCheckbox();
 	        sfcommonObj.waitTillLightningPageLoadComplete();
-			log.info("Succussfully checkEmployeeCheckbox");
+			log.info("Succussfully checkPADCheckbox");
 		}
 
 		catch (Exception ex) {
-			Assert.fail("Not able to checkEmployeeCheckbox. " + ex.getMessage());
+			Assert.fail("Not able to checkPADCheckbox. " + ex.getMessage());
+
+		}
+	}
+	public void checkMSCheckbox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkMSCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkMSCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to checkMSCheckbox. " + ex.getMessage());
 
 		}
 	}
@@ -1520,6 +2313,30 @@ public class AdminFunctions extends TestBase {
 		}
 		catch(Exception ex){
 			Assert.fail("Not able to checkInactiveIPAMembership."+ex.getMessage());
+		}
+	}
+	public void clickonrowsperpage() throws TimeOutException {
+		try {
+			objOperationPageClass.clickonrowsperpage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickonrowsperpage");
+		}
+		catch(Exception ex){
+			Assert.fail("Not able to clickonrowsperpage."+ex.getMessage());
+		}
+	}
+	public void clickon100rows() throws TimeOutException {
+		try {
+			objOperationPageClass.clickon100rows();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickon100rows");
+		}
+		catch(Exception ex){
+			Assert.fail("Not able to clickon100rows."+ex.getMessage());
 		}
 	}
 	/**
@@ -1543,7 +2360,36 @@ public class AdminFunctions extends TestBase {
 		}
 
 	}
-	
+	public void clickOnYesOnManagePersonnelPage() throws TimeOutException {
+		try {
+			objOperationPageClass.clickOnYesOnManagePersonnelPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnYesOnManagePersonnelPage");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnYesOnManagePersonnelPage. " + ex.getMessage());
+
+		}
+
+	}
+	public void clickOnOkOnGrantAccessPage() throws TimeOutException {
+		try {
+			objOperationPageClass.clickOnOkOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully clickOnOkOnGrantAccessPage");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to clickOnOkOnGrantAccessPage. " + ex.getMessage());
+
+		}
+
+	}
 	/**
 	 * @Description Method to clickOnLogintoExperienceasUserButton
 	 * @Author manish9x
@@ -1638,9 +2484,6 @@ public class AdminFunctions extends TestBase {
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			sfcommonObj.waitTillLightningPageLoadComplete();
-			sfcommonObj.waitTillLightningPageLoadComplete();
-			sfcommonObj.waitTillLightningPageLoadComplete();
-			sfcommonObj.waitTillLightningPageLoadComplete();
 			log.info("All columns are available");
 		}
 		catch (Exception ex){
@@ -1650,6 +2493,15 @@ public class AdminFunctions extends TestBase {
 	public void clickOnfilterEmail() throws TimeOutException{
 		try{
 			objOperationPageClass.clickOnfilterEmail();
+			log.info("Successfully clickOnfilterEmail");
+		}
+		catch(Exception ex){
+			Assert.fail("Not able to clickOnfilterEmail. "+ex.getMessage());
+		}
+	}
+	public void clickOnfilterEmailaddress() throws TimeOutException{
+		try{
+			objOperationPageClass.clickOnfilterEmailaddress();
 			log.info("Successfully clickOnfilterEmail");
 		}
 		catch(Exception ex){
@@ -1666,6 +2518,33 @@ public class AdminFunctions extends TestBase {
 			Assert.fail("Not able to clickOnReinvitemanagepersonnel"+ex.getMessage());
 		}
 	}
+	/**
+	 * @Description Method to click on Invite a User button on Manage Personnel
+	 * @Author asuhassx
+	 * @Since 02-Feb-2023
+	 * @throws TimeOutException
+	 */
+	public void clickOnInviteAUserManagePersonnel() throws TimeOutException{
+		try{
+			objOperationPageClass.clickOnInviteAUserManagePersonnel();
+			log.info("Successfully clickOnInviteAUserManagePersonnel");
+		}
+		catch(Exception ex)
+		{
+			Assert.fail("Not able to clickOnInviteAUserManagePersonnel"+ex.getMessage());
+		}
+	}
+	public void clickOnSubmitInviteManagePersonnel() throws TimeOutException{
+		try{
+			objOperationPageClass.clickOnSubmitInviteManagePersonnel();
+			log.info("Successfully clickOnSubmitInviteManagePersonnel");
+		}
+		catch(Exception ex)
+		{
+			Assert.fail("Not able to clickOnSubmitInviteManagePersonnel"+ex.getMessage());
+		}
+	}
+	
 	/**
 	 * @Description Method to check if Reinvite and Delete button exist or not
 	 *@Author asuhassx
@@ -1694,6 +2573,68 @@ public class AdminFunctions extends TestBase {
 			Assert.fail("Not able to verify if 'Delete Button' is Displayed " + ex.getMessage());	
 		}
 		}	
+	/**
+	 * @Description Method to check if messages coming on Manage Personnel invite are correct or not
+	 *@Author asuhassx
+	 *@Since 06-Feb-2023
+	 *@throws TimeOutException
+	 */
+	public void validateNewContactMessageonManagePersonnel() throws TimeOutException {
+		try{
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			Assert.assertEquals(objOperationPageClass.validateNewContactMessageonManagePersonnel(),"Invite the contact to register for the Intel® Partner Alliance Program");
+			log.info("Message is Displayed");
+		}
+		catch(Exception ex)
+		{
+			Assert.fail("Not able to verify if Message is Displayed " + ex.getMessage());	
+		}
+		}	
+	
+	public void validateACRactiveMessageonManagePersonnel() throws TimeOutException {
+		try{
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			Assert.assertEquals(objOperationPageClass.validateACRactiveMessageonManagePersonnel(),"The Contact has an Active Intel® Partner Alliance Membership. Need help?");
+			log.info("Message is Displayed");
+		}
+		catch(Exception ex)
+		{
+			Assert.fail("Not able to verify if Message is Displayed " + ex.getMessage());	
+		}
+		}	
+	public void validateinvitedContactMessageonManagePersonnel() throws TimeOutException {
+		try{
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			Assert.assertEquals(objOperationPageClass.validateinvitedContactMessageonManagePersonnel(),"An invitation has been extended and registration is in progress. Need help?");
+			log.info("Message is Displayed");
+		}
+		catch(Exception ex)
+		{
+			Assert.fail("Not able to verify if Message is Displayed " + ex.getMessage());	
+		}
+		}
+	public void validatediffOPIDContactMessageonManagePersonnel() throws TimeOutException {
+		try{
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			Assert.assertEquals(objOperationPageClass.validatediffOPIDContactMessageonManagePersonnel(),"The contact is not a part of your account. Need help?");
+			log.info("Message is Displayed");
+		}
+		catch(Exception ex)
+		{
+			Assert.fail("Not able to verify if Message is Displayed " + ex.getMessage());	
+		}
+		}
+	public void validateInternalUserMessageonManagePersonnel() throws TimeOutException {
+		try{
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			Assert.assertEquals(objOperationPageClass.validateInternalUserMessageonManagePersonnel(),"Invitation cannot be extended to an Intel domain Email ID");
+			log.info("Message is Displayed");
+		}
+		catch(Exception ex)
+		{
+			Assert.fail("Not able to verify if Message is Displayed " + ex.getMessage());	
+		}
+		}
 	/**
 	 * @Description Method to clickOnMyProgramDropDown
 	 * @Author manish9x
@@ -1782,7 +2723,7 @@ public class AdminFunctions extends TestBase {
 
 		}
 	}
-	
+
 	/**
 	 * @Description Method to verifyCCPPageWithSearchContactButtonPresent
 	 * @Author manish9x
@@ -1827,7 +2768,24 @@ public class AdminFunctions extends TestBase {
 		}
 
 	}
-	
+	public void SearchContactWithEmailAndClickOnSearchContactButtonMP(String searchText) {
+		try {
+			
+			seleniumObj.waitForElement(objOperationPageClass.enteremailaddress, 5, 5);
+			objOperationPageClass.enteremailaddress.click();
+			objOperationPageClass.enteremailaddress.clear();
+			seleniumObj.waitForSeconds(2);
+			objOperationPageClass.enteremailaddress.sendKeys(searchText);
+			seleniumObj.waitForSeconds(2);
+			//objOperationPageClass.clickOnSearchContactButton();
+			
+			log.info("Successfully SearchContactWithEmailAndClickOnSearchContactButtonMP");
+		} catch (Exception e) {
+			log.error("Not able to SearchContactWithEmailAndClickOnSearchContactButtonMP");
+			Assert.fail("Not able to SearchContactWithEmailAndClickOnSearchContactButtonMP");
+		}
+
+	}
 	/**
 	 * @Description Method to verifyContactIsVisibleOnclickingSearchContactButton
 	 * @Author manish9x
