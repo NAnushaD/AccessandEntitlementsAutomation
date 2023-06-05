@@ -646,13 +646,13 @@ public class ManagePersonalTest extends TestBase {
 	}
 	
 	/**
-	 *Verify that the message is displayed as "Invite the contact to register for the Intel® Partner Alliance Program. (Send Invite)" On Manage Personnel when user searches for an ACR Inactive contact
+	 *Verify that a user gets added to Public Group named as PMP_OnePartnerID, if it gets assigned with Employee entitlement successfully
 	 * @throws Exception 
 	 * 
 	 * @Author Amartyax
 	 * @Since 09-Feb-2023
 	 */
-	@Test(description = "Verify that the message is displayed as Invite the contact to register for the Intel® Partner Alliance Program. (Send Invite) On Manage Personnel when user searches for an ACR Inactive contact", groups = { "Draco Smoke" })
+	@Test(description = "Verify that a user gets added to Public Group named as PMP_OnePartnerID, if it gets assigned with Employee entitlement successfully", groups = { "Draco Smoke" })
 	public void TC0048_DRACO() throws Exception {
 		String MethodName = new Object() {
 		}.getClass().getEnclosingMethod().getName();

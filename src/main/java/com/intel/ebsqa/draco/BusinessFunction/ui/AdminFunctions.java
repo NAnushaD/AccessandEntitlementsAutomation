@@ -982,7 +982,7 @@ public class AdminFunctions extends TestBase {
 		{
 			Entitlement_Name.get(i);
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//span[text()='"+ Entitlement_Name.get(i) +"'])[1]"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+ Entitlement_Name.get(i) +"'])[1]"));
 			if(ele.isDisplayed())
 				System.out.println("Entitlements is displayed");
 			}
@@ -995,7 +995,7 @@ public class AdminFunctions extends TestBase {
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//a[text()='"+Entitlement_Name.get(i)+"']//following::span[text()='"+expectedStatus+"']"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//*[text()='"+Entitlement_Name.get(i)+"']//following::*[text()='"+expectedStatus+"']"));
 			String CCF=ele.getText();
 	  
 	    	if(CCF.equalsIgnoreCase("Pending"))
@@ -1011,7 +1011,7 @@ public class AdminFunctions extends TestBase {
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//a[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='True'])[1]"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='True'])[1]"));
 			if(!(ele.isSelected()))
 				System.out.println("checkbox is selected for the entitlement");
 			}
@@ -1076,7 +1076,7 @@ public class AdminFunctions extends TestBase {
 		{
 			Entitlement_Name.get(i);
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//span[text()='"+ Entitlement_Name.get(i) +"'])[1]"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+ Entitlement_Name.get(i) +"'])[1]"));
 			if(ele.isDisplayed())
 				System.out.println("Entitlements is displayed");
 			}
@@ -1089,7 +1089,7 @@ public class AdminFunctions extends TestBase {
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//a[text()='"+Entitlement_Name.get(i)+"']//following::span[text()='"+expectedStatus+"']"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//*[text()='"+Entitlement_Name.get(i)+"']//following::*[text()='"+expectedStatus+"']"));
 			String CCF=ele.getText();
 	  
 	    	if(CCF.equalsIgnoreCase("Complete"))
@@ -1105,7 +1105,7 @@ public class AdminFunctions extends TestBase {
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//a[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='True'])[1]"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='True'])[1]"));
 			if(!(ele.isSelected()))
 				System.out.println("checkbox is selected for the entitlement");
 			}
@@ -1127,7 +1127,7 @@ public class AdminFunctions extends TestBase {
 		{
 			Entitlement_Name.get(i);
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//span[text()='"+ Entitlement_Name.get(i) +"'])[1]"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+ Entitlement_Name.get(i) +"'])[1]"));
 			if(ele.isDisplayed())
 				System.out.println("Entitlements is displayed");
 			}
@@ -1140,7 +1140,7 @@ public class AdminFunctions extends TestBase {
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//a[text()='"+Entitlement_Name.get(i)+"']//following::span[text()='"+expectedStatus+"']"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//*[text()='"+Entitlement_Name.get(i)+"']//following::*[text()='"+expectedStatus+"']"));
 			String CCF=ele.getText();
 	  
 	    	if(CCF.equalsIgnoreCase("Complete"))
@@ -1156,7 +1156,7 @@ public class AdminFunctions extends TestBase {
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//a[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='True'])[1]"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='True'])[1]"));
 			if(!(ele.isSelected()))
 				System.out.println("checkbox is selected for the entitlement");
 			}
@@ -1251,7 +1251,7 @@ public class AdminFunctions extends TestBase {
 		{
 			Entitlement_Name.get(i);
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//span[text()='"+ Entitlement_Name.get(i) +"'])[1]"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+ Entitlement_Name.get(i) +"'])[1]"));
 			if(ele.isDisplayed())
 				System.out.println("Entitlements is displayed");
 			}
@@ -1264,7 +1264,7 @@ public class AdminFunctions extends TestBase {
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//a[text()='"+Entitlement_Name.get(i)+"']//following::span[text()='"+expectedStatus+"']"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//*[text()='"+Entitlement_Name.get(i)+"']//following::*[text()='"+expectedStatus+"']"));
 			String CCF=ele.getText();
 	  
 	    	if(CCF.equalsIgnoreCase("Complete"))
@@ -1280,7 +1280,7 @@ public class AdminFunctions extends TestBase {
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//a[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='False'])[1]"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='False'])[1]"));
 			if(!(ele.isSelected()))
 				System.out.println("checkbox is Not selected for the entitlement");
 			}
@@ -1571,7 +1571,7 @@ public class AdminFunctions extends TestBase {
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//a[text()='"+Entitlement_Name.get(i)+"']//following::span[text()='"+expectedStatus+"']"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("//*[text()='"+Entitlement_Name.get(i)+"']//following::*[text()='"+expectedStatus+"']"));
 			String CCF=ele.getText();
 	  
 	    	if(CCF.equalsIgnoreCase("Pending"))
@@ -1588,7 +1588,7 @@ public class AdminFunctions extends TestBase {
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//a[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='False'])[1]"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='False'])[1]"));
 			if(!(ele.isSelected()))
 				System.out.println("checkbox is Not selected for the entitlement");
 			}
