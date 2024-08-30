@@ -449,7 +449,7 @@ public class OperationPageClass extends TestBase {
 	sfcommonObj.waitTillLightningPageLoadComplete();
 
 }
-	@FindBy(xpath = "(//span[contains(@title,'Show All Results for ')])[1]")
+	@FindBy(xpath = "(//span[contains(@title,'Show more results for')])")
 	public WebElement showAllResults;
 
 	public void selectAccountName(String account) {
@@ -1366,7 +1366,7 @@ public class OperationPageClass extends TestBase {
 			sfcommonObj.waitTillLightningPageLoadComplete();
 		}
 		
-		@FindBy(xpath="//span[text()='Invite the contact to register for the Intel® Partner Alliance Program']")
+		@FindBy(xpath="//span[text()='Invite the contact to register for the Intelï¿½ Partner Alliance Program']")
 		public WebElement newcontactMessageManagePersonnel;
 		
 		//String str=newcontactMessageManagePersonnel.toString();
@@ -1377,7 +1377,7 @@ public class OperationPageClass extends TestBase {
 		}
 		
 		
-		@FindBy(xpath="//span[text()='The Contact has an Active Intel® Partner Alliance Membership. Need help?']")
+		@FindBy(xpath="//span[text()='The Contact has an Active Intelï¿½ Partner Alliance Membership. Need help?']")
 		public WebElement acractivecontactMessageManagePersonnel;
 		
 		public String validateACRactiveMessageonManagePersonnel() throws TimeOutException {
@@ -1881,4 +1881,748 @@ public class OperationPageClass extends TestBase {
 				Assert.assertEquals("Successfully Found","AutomationMPdraco4 Useripa03", userName.getText());
 				sfcommonObj.waitTillLightningPageLoadComplete();
 			}
+			@FindBy(xpath = "(//*[text()='IPA Activity Manager (Account Plan MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPAActivityManagerCheckBox;
+
+			public void checkIPAActivityManagerCheckBox() {
+
+					seleniumObj.waitForElement(IPAActivityManagerCheckBox, 4, 4);
+					seleniumObj.scrollToElement(IPAActivityManagerCheckBox);
+					IPAActivityManagerCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//div[@class='slds-modal__content slds-p-around_medium benifitsClass']/li)[1]")
+			public WebElement PopupMsg;
+
+			public void checkPopupMsg() {
+
+					seleniumObj.waitForElement(PopupMsg, 4, 4);
+					seleniumObj.scrollToElement(PopupMsg);
+					//PopupMsg.click();// Benifits are required
+					System.out.println("Benifits are required for Mentioned Entitlement: "+PopupMsg.getText());
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "//button[@class='slds-button slds-button_brand']")
+			public WebElement OkBtn;
+
+			public void ClickOkBtn() {
+
+					seleniumObj.waitForElement(OkBtn, 4, 4);
+					seleniumObj.scrollToElement(OkBtn);
+					OkBtn.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			
+			@FindBy(xpath = "//tbody/tr/td[2]/div")
+			public WebElement Alertmsg;
+
+			public void checkAlertmsg() {
+
+					seleniumObj.waitForElement(Alertmsg, 4, 4);
+					seleniumObj.scrollToElement(Alertmsg);
+					System.out.println(Alertmsg.getText());
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='IPA Claim Submitter (Account Plan MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPAClaimSubmitterCheckBox;
+
+			public void checkIPAClaimSubmitterCheckBox() {
+
+					seleniumObj.waitForElement(IPAClaimSubmitterCheckBox, 4, 4);
+					seleniumObj.scrollToElement(IPAClaimSubmitterCheckBox);
+					IPAClaimSubmitterCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='IPA Claim Submitter (Proposal MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPAClaimSubmitterProposalCheckBox;
+
+			public void checkIPAClaimSubmitterProposalCheckBox() {
+
+					seleniumObj.waitForElement(IPAClaimSubmitterProposalCheckBox, 4, 4);
+					seleniumObj.scrollToElement(IPAClaimSubmitterProposalCheckBox);
+					IPAClaimSubmitterProposalCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='IPA External View Only (Account Plan MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPACExternalViewCheckBox;
+
+			public void checkIPACExternalViewCheckBox() {
+
+					seleniumObj.waitForElement(IPACExternalViewCheckBox, 4, 4);
+					seleniumObj.scrollToElement(IPACExternalViewCheckBox);
+					IPACExternalViewCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='IPA External View Only (Account Plan MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPACExternalViewProposalCheckBox;
+
+			public void checkIPACExternalViewProposalCheckBox() {
+
+					seleniumObj.waitForElement(IPACExternalViewProposalCheckBox, 4, 4);
+					seleniumObj.scrollToElement(IPACExternalViewProposalCheckBox);
+					IPACExternalViewProposalCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='IPA Proposal Manager (Proposal MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPAProposalManagerCheckBox;
+
+			public void checkIPAProposalManagerCheckBox() {
+
+					seleniumObj.waitForElement(IPAProposalManagerCheckBox, 4, 4);
+					seleniumObj.scrollToElement(IPAProposalManagerCheckBox);
+					IPAProposalManagerCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='IPA Recovery Administrator (Account Plan MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPARecoveryAdministratorCheckBox;
+
+			public void checkIPARecoveryAdministratorCheckBox() {
+
+					seleniumObj.waitForElement(IPARecoveryAdministratorCheckBox, 4, 4);
+					seleniumObj.scrollToElement(IPARecoveryAdministratorCheckBox);
+					IPARecoveryAdministratorCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='IPA Recovery Administrator (Proposal MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPARecoveryAdministratorproposalCheckBox;
+
+			public void checkIPARecoveryAdministratorProposalCheckBox() {
+
+					seleniumObj.waitForElement(IPARecoveryAdministratorproposalCheckBox, 4, 4);
+					seleniumObj.scrollToElement(IPARecoveryAdministratorproposalCheckBox);
+					IPARecoveryAdministratorproposalCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='MDF Claim Submitter']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement MDFClaimSubmitterCheckBox;
+
+			public void checkMDFClaimSubmitterCheckBox() {
+
+					seleniumObj.waitForElement(MDFClaimSubmitterCheckBox, 4, 4);
+					seleniumObj.scrollToElement(MDFClaimSubmitterCheckBox);
+					MDFClaimSubmitterCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='MDF Proposal Manager']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement MDFProposalCheckBox;
+
+			public void checkMDFProposalCheckBox() {
+
+					seleniumObj.waitForElement(MDFProposalCheckBox, 4, 4);
+					seleniumObj.scrollToElement(MDFProposalCheckBox);
+					MDFProposalCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='MDF Viewer']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement MDFViewerCheckBox;
+
+			public void checkMDFViewerCheckBox() {
+
+					seleniumObj.waitForElement(MDFViewerCheckBox, 4, 4);
+					seleniumObj.scrollToElement(MDFViewerCheckBox);
+					MDFViewerCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='Platform Verification Program (PVP) access']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement PlatformVerificationCheckbox;
+
+			public void checkPlatformVerificationCheckbox() {
+
+					seleniumObj.waitForElement(PlatformVerificationCheckbox, 4, 4);
+					seleniumObj.scrollToElement(PlatformVerificationCheckbox);
+					seleniumObj.clickByJS(PlatformVerificationCheckbox);
+					//PlatformVerificationCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='Points Manager']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement PointManagerCheckbox;
+
+			public void checkPointManagerCheckBox() {
+
+					seleniumObj.waitForElement(PointManagerCheckbox, 4, 4);
+					seleniumObj.scrollToElement(PointManagerCheckbox);
+					PointManagerCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='Points View']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement PointViewCheckbox;
+
+			public void checkPointViewCheckBox() {
+
+					seleniumObj.waitForElement(PointViewCheckbox, 4, 4);
+					seleniumObj.scrollToElement(PointViewCheckbox);
+					PointViewCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='Warranty Requestor']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement WarrantyRequestorCheckbox;
+
+			public void checkWarrantyRequestor() {
+
+					seleniumObj.waitForElement(WarrantyRequestorCheckbox, 4, 4);
+					seleniumObj.scrollToElement(WarrantyRequestorCheckbox);
+					WarrantyRequestorCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//*[text()='Technology Sandbox']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement TechnologySandboxCheckbox;
+
+			public void checkTechnologySandboxCheckbox() {
+
+					seleniumObj.waitForElement(TechnologySandboxCheckbox, 4, 4);
+					seleniumObj.scrollToElement(TechnologySandboxCheckbox);
+					TechnologySandboxCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "(//div/span[contains(text(),'Republish OBM')]//following::button)[2]")
+			public WebElement republishobmEdit;
+			@FindBy(xpath = "(//label/span[contains(text(),'Republish OBM')]//following::span/input)[1]")
+			public WebElement republishobmCheckBox;
+			@FindBy(xpath = "//button[@name='SaveEdit']")
+			public WebElement savebtn;
+			
+			public void checkRepublishObm() {
+
+					seleniumObj.waitForElement(republishobmEdit, 4, 4);
+					seleniumObj.scrollToElement(republishobmEdit);
+					republishobmEdit.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+					seleniumObj.waitForElement(republishobmCheckBox, 4, 4);
+					seleniumObj.scrollToElement(republishobmCheckBox);
+					republishobmCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+					seleniumObj.waitForElement(savebtn, 4, 4);
+					seleniumObj.scrollToElement(savebtn);
+					savebtn.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+
+			}
+			@FindBy(xpath = "//*[contains(text(),'Order Management')]/parent::div/div/div[@class='headerPlusMinusIcon']")
+			public WebElement ordermanagement;
+
+			public void expandOrderManagement() {
+				seleniumObj.waitForElement(ordermanagement, 4, 4);
+				seleniumObj.scrollToElement(ordermanagement);
+				ordermanagement.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			@FindBy(xpath = "(//*[text()='Intel On Demand Purchase Agent']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IntelOnDemandPurchaseCheckbox;
+
+			public void checkIntelOnDemandPurchaseCheckbox() {
+
+				seleniumObj.waitForElement(IntelOnDemandPurchaseCheckbox, 4, 4);
+				seleniumObj.scrollToElement(IntelOnDemandPurchaseCheckbox);
+				IntelOnDemandPurchaseCheckbox.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			@FindBy(xpath = "((//span[text()='Internal Entitlement Status']//following::span[@class='test-id__field-label'])[1]/following::div/span/slot/lightning-formatted-text)[1]")
+			public WebElement internalEntitlementStatus;
+
+			public void internalEntitlementStatus() {
+                try{
+                	
+                		seleniumObj.waitForElement(internalEntitlementStatus, 4, 4);
+        				seleniumObj.scrollToElement(internalEntitlementStatus);
+        				System.out.println("Internal Enetitlement Status:"+internalEntitlementStatus.getAttribute("value"));
+        				
+                	
+                }
+                catch(Exception Ex){
+                	Assert.fail("Internal Entitlement Status is not Displayed");
+                }
+				
+			}
+			@FindBy(xpath = "//*[contains(text(),'Technical Content & Tools (Intel Developer Zone & Others)')]/parent::div/div/div[@class='headerPlusMinusIcon']")
+			public WebElement TechnicalContentAndTools;
+			public void expandTechnicalContentAndTools() {
+				// TODO Auto-generated method stub
+						seleniumObj.waitForElement(TechnicalContentAndTools, 4, 4);
+						seleniumObj.scrollToElement(TechnicalContentAndTools);
+						TechnicalContentAndTools.click();
+						sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+		/*	@FindBy(xpath = "(//*[text()='Developer Zone Premier(CNDA required)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement DeveloperZonePremierCheckbox;
+ 
+			public void checkDeveloperZonePremierCheckbox() {
+					// TODO Auto-generated method stub
+					seleniumObj.waitForElement(DeveloperZonePremierCheckbox, 4, 4);
+					seleniumObj.scrollToElement(DeveloperZonePremierCheckbox);
+					DeveloperZonePremierCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+				}*/
+			/*@FindBy(xpath = "(//*[text()='IPA Activity Manager (Account Plan MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPAActivityManagerCheckBox;
+ 
+			public void checkIPAActivityManagerCheckBox() {
+					seleniumObj.waitForElement(IPAActivityManagerCheckBox, 4, 4);
+					seleniumObj.scrollToElement(IPAActivityManagerCheckBox);
+					IPAActivityManagerCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}*/
+			/*@FindBy(xpath = "(//div[@class='slds-modal__content slds-p-around_medium benifitsClass']/li)[1]")
+			public WebElement PopupMsg;*/
+			
+			@FindBy(xpath = "(//div[@class='slds-modal__content slds-p-around_medium benifitsClass']/li)[2]")
+			public WebElement PopupMsg1;
+			
+			@FindBy(xpath = "(//div[@class='slds-modal__content slds-p-around_medium benifitsClass']/li)[3]")
+			public WebElement PopupMsg2;
+ 
+			/*public void checkPopupMsg() 
+			{
+					seleniumObj.waitForElement(PopupMsg, 4, 4);
+					seleniumObj.scrollToElement(PopupMsg);
+					PopupMsg.click();
+					System.out.println("Below mentioned benifits are required : ");
+					System.out.println(PopupMsg.getText());
+					sfcommonObj.waitTillLightningPageLoadComplete();
+			}*/
+			public void check3PopupMsg() 
+			{
+					seleniumObj.waitForElement(PopupMsg, 4, 4);
+					seleniumObj.scrollToElement(PopupMsg);
+					PopupMsg.click();
+					System.out.println("Below mentioned benifits are required : ");
+					System.out.println(PopupMsg.getText());
+					System.out.println(PopupMsg1.getText());
+					System.out.println(PopupMsg2.getText());
+					sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			public void check2PopupMsg() 
+			{
+					seleniumObj.waitForElement(PopupMsg, 4, 4);
+					seleniumObj.scrollToElement(PopupMsg);
+					PopupMsg.click();
+					System.out.println("Below mentioned benifits are required : ");
+					System.out.println(PopupMsg.getText());
+					System.out.println(PopupMsg1.getText());
+					sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			@FindBy(xpath = "(//*[text()='IPA Claim Submitter (Account Plan MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPAClaimSubmitterAccountPlanCheckBox;
+ 
+			public void checkIPAClaimSubmitterAccountPlanCheckBox() {
+					seleniumObj.waitForElement(IPAClaimSubmitterAccountPlanCheckBox, 4, 4);
+					seleniumObj.scrollToElement(IPAClaimSubmitterAccountPlanCheckBox);
+					IPAClaimSubmitterAccountPlanCheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}
+			@FindBy(xpath = "(//*[text()='IPA Claim Submitter (Proposal MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPAClaimSubmitterProposalMDFcheckBox;
+ 
+			public void checkIPAClaimSubmitterProposalMDFcheckBox() {
+					seleniumObj.waitForElement(IPAClaimSubmitterProposalMDFcheckBox, 4, 4);
+					seleniumObj.scrollToElement(IPAClaimSubmitterProposalMDFcheckBox);
+					IPAClaimSubmitterProposalMDFcheckBox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}
+			@FindBy(xpath = "(//*[text()='IPA External View Only (Account Plan MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPAExternalViewAccountPlanCheckbox;
+ 
+			public void checkIPAExternalViewAccountPlanCheckbox() {
+					seleniumObj.waitForElement(IPAExternalViewAccountPlanCheckbox, 4, 4);
+					seleniumObj.scrollToElement(IPAExternalViewAccountPlanCheckbox);
+					IPAExternalViewAccountPlanCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}
+			@FindBy(xpath = "(//*[text()='IPA External View Only (Proposal MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPAExternalViewProposalMDFCheckbox;
+ 
+			public void checkIPAExternalViewProposalMDFCheckbox() {
+					seleniumObj.waitForElement(IPAExternalViewProposalMDFCheckbox, 4, 4);
+					seleniumObj.scrollToElement(IPAExternalViewProposalMDFCheckbox);
+					IPAExternalViewProposalMDFCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}
+			@FindBy(xpath = "(//*[text()='IPA Proposal Manager (Proposal MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPAProposalManagerCheckbox;
+ 
+			public void checkIPAProposalManagerCheckbox() {
+					seleniumObj.waitForElement(IPAProposalManagerCheckbox, 4, 4);
+					seleniumObj.scrollToElement(IPAProposalManagerCheckbox);
+					IPAProposalManagerCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}
+			@FindBy(xpath = "(//*[text()='IPA Recovery Administrator (Account Plan MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPARecoveryAdministratorAccountPlanCheckbox;
+ 
+			public void checkIPARecoveryAdministratorAccountPlanCheckbox() {
+					seleniumObj.waitForElement(IPARecoveryAdministratorAccountPlanCheckbox, 4, 4);
+					seleniumObj.scrollToElement(IPARecoveryAdministratorAccountPlanCheckbox);
+					IPARecoveryAdministratorAccountPlanCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}
+			@FindBy(xpath = "(//*[text()='IPA Recovery Administrator (Proposal MDF)']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement IPARecoveryAdministratorProposalMDFCheckbox;
+ 
+			public void checkIPARecoveryAdministratorProposalMDFCheckbox() {
+					seleniumObj.waitForElement(IPARecoveryAdministratorProposalMDFCheckbox, 4, 4);
+					seleniumObj.scrollToElement(IPARecoveryAdministratorProposalMDFCheckbox);
+					IPARecoveryAdministratorProposalMDFCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}
+			@FindBy(xpath = "(//*[text()='MDF Claim Submitter']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement MDFClaimSubmitterCheckbox;
+ 
+			public void checkMDFClaimSubmitterCheckbox() {
+					seleniumObj.waitForElement(MDFClaimSubmitterCheckbox, 4, 4);
+					seleniumObj.scrollToElement(MDFClaimSubmitterCheckbox);
+					MDFClaimSubmitterCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}
+			@FindBy(xpath = "(//*[text()='MDF Proposal Manager']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement MDFProposalManagerCheckbox;
+ 
+			public void checkMDFProposalManagerCheckbox() {
+					seleniumObj.waitForElement(MDFProposalManagerCheckbox, 4, 4);
+					seleniumObj.scrollToElement(MDFProposalManagerCheckbox);
+					MDFProposalManagerCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}
+			@FindBy(xpath = "(//*[text()='Platform Verification Program (PVP) access']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement PlatformVerificationProgramCheckbox;
+ 
+			public void checkPlatformVerificationProgramCheckbox() {
+					seleniumObj.waitForElement(PlatformVerificationProgramCheckbox, 4, 4);
+					seleniumObj.scrollToElement(PlatformVerificationProgramCheckbox);
+					PlatformVerificationProgramCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}
+			@FindBy(xpath = "(//*[text()='Points Manager']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement PointsManagerCheckbox;
+ 
+			public void checkPointsManagerCheckbox() {
+					seleniumObj.waitForElement(PointsManagerCheckbox, 4, 4);
+					seleniumObj.scrollToElement(PointsManagerCheckbox);
+					PointsManagerCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}
+			@FindBy(xpath = "(//*[text()='Points View']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement PointsViewCheckbox;
+ 
+			public void checkPointsViewCheckbox() {
+					seleniumObj.waitForElement(PointsViewCheckbox, 4, 4);
+					seleniumObj.scrollToElement(PointsViewCheckbox);
+					PointsViewCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}
+			/*@FindBy(xpath = "(//*[text()='Warranty Requestor']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement WarrantyRequestorCheckbox;
+ 
+			public void checkWarrantyRequestorCheckbox() {
+					seleniumObj.waitForElement(WarrantyRequestorCheckbox, 4, 4);
+					seleniumObj.scrollToElement(WarrantyRequestorCheckbox);
+					WarrantyRequestorCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+ 
+			}*/
+			/*@FindBy(xpath = "//*[contains(text(),'IntelÂ® Partner Investment Center')]/parent::div/div/div[@class='headerPlusMinusIcon']")
+			public WebElement IntelPartnerInvestmentCenter;
+	 
+			public void expandIntelPartnerInvestmentCenter() {
+				seleniumObj.waitForElement(IntelPartnerInvestmentCenter, 4, 4);
+				seleniumObj.scrollToElement(IntelPartnerInvestmentCenter);
+				IntelPartnerInvestmentCenter.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}*/
+			@FindBy(xpath = "//div[@class='messageText']")
+			public WebElement ErrormsgAfterSAVEOnGrantAccessPage;
+	 
+			public boolean verifyErrormsgAfterSAVEOnGrantAccessPage() {
+				seleniumObj.waitForElement(ErrormsgAfterSAVEOnGrantAccessPage, 4, 4);
+				seleniumObj.scrollToElement(ErrormsgAfterSAVEOnGrantAccessPage);
+				System.out.println(ErrormsgAfterSAVEOnGrantAccessPage.getText());
+				return ErrormsgAfterSAVEOnGrantAccessPage.isDisplayed();
+			}
+			 @FindBy(xpath = "(//span[text()='Entitlement Assignment Status']/following::lightning-formatted-text)[1]")
+				public WebElement InternalEntitlementStatus;
+
+			    public String getInternalEntitlementStatus() {
+					seleniumObj.waitForElement(InternalEntitlementStatus, 4, 4);
+					seleniumObj.scrollToElement(InternalEntitlementStatus);
+					return InternalEntitlementStatus.getText();
+				}
+			    @FindBy(xpath = "//*[contains(text(),'Data Center Blocks Configurator')]/parent::div/div/div[@class='headerPlusMinusIcon']")
+				public WebElement DataCenterBlocksConfigurator;
+				
+				public void expandDataCenterBlocksConfigurator() {
+					// TODO Auto-generated method stub
+						seleniumObj.waitForElement(DataCenterBlocksConfigurator, 4, 4);
+						seleniumObj.scrollToElement(DataCenterBlocksConfigurator);
+						DataCenterBlocksConfigurator.click();
+						sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+
+				@FindBy(xpath = "//*[text()='Distributor']")
+				public WebElement Distributor;
+				
+				public boolean verifyDistributorPresentOrNot() {
+					// TODO Auto-generated method stub
+
+						seleniumObj.waitForElement(Distributor, 4, 4);
+						seleniumObj.scrollToElement(Distributor);
+						return Distributor.isDisplayed();
+				
+				}
+				
+				@FindBy(xpath = "(//*[text()='Distributor']/following::span[@class='slds-checkbox--faux'])[1]")
+				public WebElement DistributorCheckbox;
+
+				public void checkDistributorCheckbox() {
+					// TODO Auto-generated method stub
+						seleniumObj.waitForElement(DistributorCheckbox, 4, 4);
+						seleniumObj.scrollToElement(DistributorCheckbox);
+						DistributorCheckbox.click();
+						sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+				
+				@FindBy(xpath = "//*[text()='Reseller']")
+				public WebElement Reseller;
+				
+				public boolean verifyResellerPresentOrNot() {
+					// TODO Auto-generated method stub
+					seleniumObj.waitForElement(Reseller, 4, 4);
+					seleniumObj.scrollToElement(Reseller);
+					return Reseller.isDisplayed();
+				}
+				
+				@FindBy(xpath = "(//*[text()='Reseller']/following::span[@class='slds-checkbox--faux'])[1]")
+				public WebElement ResellerCheckbox;
+				
+
+				public void checkResellerCheckbox() {
+					// TODO Auto-generated method stub
+					seleniumObj.waitForElement(ResellerCheckbox, 4, 4);
+					seleniumObj.scrollToElement(ResellerCheckbox);
+					ResellerCheckbox.click();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+				 @FindBy(xpath = "//td/span/ul/li[3]")
+					public WebElement ErrorAfterSAVEOnGrantAccessPage;
+				 
+				public boolean verifyErrorAfterSAVEOnGrantAccessPage() {
+					// TODO Auto-generated method stub
+					seleniumObj.waitForElement(ErrorAfterSAVEOnGrantAccessPage, 4, 4);
+					seleniumObj.scrollToElement(ErrorAfterSAVEOnGrantAccessPage);
+					System.out.println(ErrorAfterSAVEOnGrantAccessPage.getText());
+					return ErrorAfterSAVEOnGrantAccessPage.isDisplayed();
+				}
+				
+				@FindBy(xpath = "//*[text()='Developer Zone Premier(CNDA required)']")
+				public WebElement DeveloperZonePremier;
+				
+				public boolean VerifyDeveloperZonePremierPresentOrNot() {
+					// TODO Auto-generated method stub
+					seleniumObj.waitForElement(DeveloperZonePremier, 4, 4);
+					seleniumObj.scrollToElement(DeveloperZonePremier);
+					return DeveloperZonePremier.isDisplayed();
+				}
+				
+				@FindBy(xpath = "(//*[text()='Developer Zone Premier(CNDA required)']/following::span[@class='slds-checkbox--faux'])[1]")
+				public WebElement DeveloperZonePremierCheckbox;
+
+				public void checkDeveloperZonePremierCheckbox() {
+						// TODO Auto-generated method stub
+						seleniumObj.waitForElement(DeveloperZonePremierCheckbox, 4, 4);
+						seleniumObj.scrollToElement(DeveloperZonePremierCheckbox);
+						DeveloperZonePremierCheckbox.click();
+						sfcommonObj.waitTillLightningPageLoadComplete();
+					}
+				/*@FindBy(xpath = "//*[contains(text(),'Technical Content & Tools (Intel Developer Zone & Others)')]/parent::div/div/div[@class='headerPlusMinusIcon']")
+				public WebElement TechnicalContentAndTools;
+				
+				public void expandTechnicalContentAndTools() {
+					// TODO Auto-generated method stub
+							seleniumObj.waitForElement(TechnicalContentAndTools, 4, 4);
+							seleniumObj.scrollToElement(TechnicalContentAndTools);
+							TechnicalContentAndTools.click();
+							sfcommonObj.waitTillLightningPageLoadComplete();
+				}*/
+				@FindBy(xpath = "//td/span/ul/li[2]")
+				public WebElement ERRORmsgAfterSAVEOnGrantAccessPage;
+			 
+			public boolean verifyERRORmsgAfterSAVEOnGrantAccessPage() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(ERRORmsgAfterSAVEOnGrantAccessPage, 4, 4);
+				seleniumObj.scrollToElement(ERRORmsgAfterSAVEOnGrantAccessPage);
+				System.out.println(ERRORmsgAfterSAVEOnGrantAccessPage.getText());
+				return ERRORmsgAfterSAVEOnGrantAccessPage.isDisplayed();
+			}
+			
+			@FindBy(xpath = "//*[contains(text(),'IntelÃ‚Â® Partner Investment ')]/parent::div/div/div[@class='headerPlusMinusIcon']")
+			public WebElement IntelPartnerInvestmentCenter;
+
+			public void expandIntelPartnerInvestmentCenter() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(IntelPartnerInvestmentCenter, 4, 4);
+				seleniumObj.scrollToElement(IntelPartnerInvestmentCenter);
+				IntelPartnerInvestmentCenter.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+	}
+			
+			@FindBy(xpath = "//*[text()='Partner Admin']")
+			public WebElement PartnerAdmin;
+			
+			public boolean verifyPartnerAdminPresentOrNot() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(PartnerAdmin, 4, 4);
+				seleniumObj.scrollToElement(PartnerAdmin);
+				PartnerAdmin.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				return PartnerAdmin.isDisplayed();
+			}
+			@FindBy(xpath = "//*[text()='Partner Admin Delegate']")
+			public WebElement PartnerAdminDelegate;
+			
+			public boolean verifyPartnerAdminDelegatePresentOrNot() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(PartnerAdminDelegate, 4, 4); 
+				seleniumObj.scrollToElement(PartnerAdminDelegate);
+				PartnerAdminDelegate.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				return PartnerAdminDelegate.isDisplayed();
+			}
+			@FindBy(xpath = "//*[text()='Marketing Specialist']")
+			public WebElement MarketingSpecialist;
+			
+			public boolean verifyMarketingSpecialistPresentOrNot() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(MarketingSpecialist, 4, 4); 
+				seleniumObj.scrollToElement(MarketingSpecialist);
+				MarketingSpecialist.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				return MarketingSpecialist.isDisplayed();
+			}
+			
+			@FindBy(xpath = "(//*[text()='Marketing Specialist']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement MarketingSpecialistCkbox;
+			
+			public void checkMarketingSpecialistCheckbox() {
+				// TODO Auto-generated method stub
+						seleniumObj.waitForElement(MarketingSpecialistCkbox, 4, 4);
+						seleniumObj.scrollToElement(MarketingSpecialistCkbox);
+						MarketingSpecialistCkbox.click();
+						sfcommonObj.waitTillLightningPageLoadComplete();
+				
+			}
+			@FindBy(xpath = "//td/span/ul")
+			public WebElement ErrorMessageAfterSAVEOnGrantAccessPage;
+			
+			public boolean VerifyErrorMessageAfterSAVEOnGrantAccessPage() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(ErrorMessageAfterSAVEOnGrantAccessPage, 4, 4);
+				seleniumObj.scrollToElement(ErrorMessageAfterSAVEOnGrantAccessPage);
+				System.out.println(ErrorMessageAfterSAVEOnGrantAccessPage.getText());
+				return ErrorMessageAfterSAVEOnGrantAccessPage.isDisplayed();
+			}
+			@FindBy(xpath = "(//*[text()='Employee']/following::span[@class='slds-checkbox--faux'])[1]")
+			public WebElement UnEmployeeCheckbox;
+			
+			public void UncheckEmployeeCheckBox() {
+				// TODO Auto-generated method stud
+
+			seleniumObj.waitForElement(UnEmployeeCheckbox, 4, 4);
+			seleniumObj.scrollToElement(UnEmployeeCheckbox);
+			UnEmployeeCheckbox.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			@FindBy(xpath = "//span[text()='Contact Entitlements']")
+			public WebElement clickOnContactEntitlements;
+			
+			public void clickOnContactEntitlements() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(clickOnContactEntitlements, 4, 4);
+				seleniumObj.scrollToElement(clickOnContactEntitlements);
+				executor.executeScript("arguments[0].click();", clickOnContactEntitlements);
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			@FindBy(xpath = "//span[@class='countSortedByFilteredBy']")
+			public WebElement DispalyCERecord;
+			
+			public void VerifyNoCERecordCreated() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(DispalyCERecord, 4, 4);
+				System.out.println(DispalyCERecord.getText());
+				System.out.println("CE Record Not Created");
+			}
+			
+			@FindBy(xpath = "//button[text()='Edit']")
+			public WebElement clickonEditOnContactPage;
+			
+			public void clickonEditOnContactPage() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(clickonEditOnContactPage, 4, 4);
+				seleniumObj.scrollToElement(clickonEditOnContactPage);
+				executor.executeScript("arguments[0].click();", clickonEditOnContactPage);
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			@FindBy(xpath = "((//span[@class='slds-form-element__label'])[11]//following::input)[1]")
+			public WebElement CheckRepublishOBMCheckbox;
+			
+			public void CheckRepublishOBMCheckbox() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(CheckRepublishOBMCheckbox, 4, 4);
+				seleniumObj.scrollToElement(CheckRepublishOBMCheckbox);
+				CheckRepublishOBMCheckbox.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				
+			}
+			@FindBy(xpath = "//button[text()='Save']")
+			public WebElement ClickOneditSave;
+			
+			public void ClickOneditSave() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(ClickOneditSave, 4, 4);
+				seleniumObj.scrollToElement(ClickOneditSave);
+				executor.executeScript("arguments[0].click();", ClickOneditSave);
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			
+			@FindBy(xpath = "(//span[text()='AGS Integration Status']/following::lightning-formatted-text)[1]")
+			public WebElement AGSIntegrationStatusNotShowPending;
+			
+			public void AGSIntegrationStatusNotShowPendingStatus() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(AGSIntegrationStatusNotShowPending, 4, 4);
+				seleniumObj.scrollToElement(AGSIntegrationStatusNotShowPending);
+				System.out.println(AGSIntegrationStatusNotShowPending.getText());
+				System.out.println("AGS Integration Status Not Show Pending");
+				
+			}
+
+		
 }

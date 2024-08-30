@@ -6,6 +6,7 @@ public enum Tabs {
 	Accounts("Accounts"),
 	Home("Home"),
 	Membership("Membership"),
+	Related("Related"),
 	
 	;
 	private final String displayName;

@@ -258,7 +258,6 @@ public class NavigationPageClass extends TestBase {
 			seleniumObj.waitForElement(globalSearchShowMoreResults, 5, 5);
 			seleniumObj.waitForSeconds(3);
 			seleniumObj.clickByJS(globalSearchShowMoreResults);
-			sfcommonObj.waitTillAllXHRCallsComplete();
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			//globalSearchResultSearchIcon.click();
 			log.info("Clicked on search icon in global search");
@@ -481,7 +480,7 @@ public class NavigationPageClass extends TestBase {
 	
 	public List<WebElement> getselectSearchedContact(String accName, String SearchType, String emailID, String contactName) {
 		return seleniumObj.getDriver()
-				.findElements(By.xpath("(//h2/*[text()='"+SearchType+"']/following::a[text()='"+emailID.toLowerCase()+"']/preceding::a[@title='"+accName+"']/preceding::th[@scope='row']//a[@title='"+contactName+"'])"));
+				.findElements(By.xpath("(//h2/*[text()='"+SearchType+"']/following::a[text()='"+emailID.toLowerCase()+"']/preceding::th[@scope='row']//a[@title='"+contactName+"'])"));
 	}
 	
 	public List<WebElement> getselectSearchedAccountsclassic(String accName, String SearchType, String cimID, String accID) {
