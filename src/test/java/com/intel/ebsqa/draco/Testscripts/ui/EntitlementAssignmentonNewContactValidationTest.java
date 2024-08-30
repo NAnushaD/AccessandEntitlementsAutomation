@@ -74,7 +74,8 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 	ExternalCustomerUIDataDetails objExternalCustomerUIDetails;
 	public List<String> Entitlement_Name = new ArrayList<String>();
     public List<String> IPA_membership=new ArrayList<String>();
-	
+    public List<String> Entitlement_Name1 = new ArrayList<String>();
+
 	@BeforeTest(alwaysRun = true)
 	public void BeforeTestcase() {
 
@@ -3191,5 +3192,2027 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 			objNavigation.logoutFromApplication();
 			
 		}
+		/*------------------------------------ new testCase ------------------------------------------*/
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'IPA Activity Manager (Account Plan MDF)' as below - 'Account or OPID doesn't have required benefit for these entitlements : IPA Activity Manager (Account Plan MDF)'",groups={"Draco Smoke"})
+		public void TC0086_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPAActivityManager();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			
+			
 		
+	}
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'IPA Claim Submitter (Account Plan MDF)' as below -  'Account or OPID doesn't have required benefit for these entitlements : IPA Claim Submitter (Account Plan MDF)'",groups={"Draco Smoke"})
+		public void TC0087_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPAClaimSubmitter();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			
+			
+		
+	}
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'IPA Claim Submitter (Proposal MDF) ' as below - 'Account or OPID doesn't have required benefit for these entitlements : IPA Claim Submitter (Proposal MDF)'",groups={"Draco Smoke"})
+		public void TC0088_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPAClaimSubmitterProposal();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			
+			
+		
+	}
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'IPA External View Only (Account Plan MDF)' as below - 'Account or OPID doesn't have required benefit for these entitlements : IPA External View Only (Account Plan MDF)'",groups={"Draco Smoke"})
+		public void TC0089_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPAExternalViewOnlycheckbox();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			
+			
+		
+	}
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'IPA External View Only (Proposal MDF) ' as below - 'Account or OPID doesn't have required benefit for these entitlements : IPA External View Only (Proposal MDF)'",groups={"Draco Smoke"})
+		public void TC0090_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPAExternalViewOnlyProposalcheckbox();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			
+			
+		
+	}
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'IPA Proposal Manager (Proposal MDF)  'as below - 'Account or OPID doesn't have required benefit for these entitlements : IPA Proposal Manager (Proposal MDF)'",groups={"Draco Smoke"})
+		public void TC0091_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPAProposalManagerCheckBox();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			
+			
+		
+	}
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'IPA Recovery Administrator (Proposal MDF)' as below - 'Account or OPID doesn't have required benefit for these entitlements : IPA Recovery Administrator (Proposal MDF)",groups={"Draco Smoke"})
+		public void TC0092_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPARecoveryAdministratorCheckBox();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			
+			
+		
+	}
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'IPA Recovery Administrator (Proposal MDF)' as below - 'Account or OPID doesn't have required benefit for these entitlements : IPA Recovery Administrator (Proposal MDF)'",groups={"Draco Smoke"})
+		public void TC0093_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPARecoveryAdministratorProposalCheckBox();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			
+			
+		
+	}
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'MDF Claim Submitter' as below - 'Account or OPID doesn't have required benefit for these entitlements : MDF Claim Submitter'",groups={"Draco Smoke"})
+		public void TC0094_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkMDFClaimSubmitterCheckBox();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			
+			
+		
+	}
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'MDF Proposal Manager' as below - 'Account or OPID doesn't have required benefit for these entitlements : MDF Proposal Manager'",groups={"Draco Smoke"})
+		public void TC0095_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkMDFProposalCheckBox();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			
+			
+		
+	}
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'MDF Viewer' as below - 'Account or OPID doesn't have required benefit for these entitlements : MDF Viewer",groups={"Draco Smoke"})
+		public void TC0096_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkMDFViewerCheckBox();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			
+			
+		
+	}
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'Platform Verification Program (PVP) access' as below - 'Account or OPID doesn't have required benefit for these entitlements : Platform Verification Program (PVP) access'",groups={"Draco Smoke"})
+		public void TC0097_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkPlatformVerification();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			
+			
+		
+	}
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'Points Manager' as below - 'Account or OPID doesn't have required benefit for these entitlements : Points Manager'",groups={"Draco Smoke"})
+		public void TC0098_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkPointManager();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			}
+		
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of Points View as below - 'Account or OPID doesn't have required benefit for these entitlements : Points View'",groups={"Draco Smoke"})
+		public void TC0099_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkPointView();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			}
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'Warranty Requestor' as below - 'Account or OPID doesn't have required benefit for these entitlements : Warranty Requestor",groups={"Draco Smoke"})
+		public void TC0100_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkWarrantyRequestor();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			}
+		
+		@Test(description="Verify that popup message is displayed on clicking on Save button on GA page after checking the checkbox in front of 'Technology Sandbox' as below - Account or OPID doesn't have required benefit for these entitlements : Technology Sandbox'",groups={"Draco Smoke"})
+		public void TC0101_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkTechnologySandbox();
+			//objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.checkMsg();
+			}
+		@Test(description="Verify that if we republish a contact with no CE records does not change the AGS Integration Status to Pending",groups={"Draco Smoke"})
+		public void TC0102_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);
+			seleniumObj.waitForSeconds(20);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Pending.getDescription());
+			objAdminFunctions.checkRepublishObm();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Pending.getDescription());
+			
+			}
+		@Test(description = "Verify that user is able to successfully assign 1.0  external entitlement on a new contact", groups = { "Draco Smoke" })
+		public void TC0105_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Intel On Demand Purchase Agent");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToLightningExperience();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			
+			/*String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);*/
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandOrderManagement();
+			
+			objAdminFunctions.checkIntelOnDemand();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Pending.getDescription());
+			objAdminFunctions.switchToTab(Tabs.Related.toString());
+			seleniumObj.waitForSeconds(5);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
+			objAdminFunctions.goBackToContactsPage();
+			seleniumObj.waitForSeconds(60);
+			 do{
+					sfcommonObj.pageRefresh();
+					sfcommonObj.waitTillLightningPageLoadComplete();
+				   }
+			 while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			
+			objAdminFunctions.internalEntitlementStatus();
+			objAdminFunctions.switchToTab(Tabs.Related.toString());
+			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+			//objAdminFunctions.validateContactEntitlementsAssignment(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+			
+			objNavigation.logoutFromApplication();
+
+		}
+		@Test(description = "Verify that user is able to successfully assign 2.0  external entitlements on a new contact", groups = { "Draco Smoke" })
+		public void TC0106_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Developer Zone Premier(CNDA required)");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToLightningExperience();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			
+			/*String contactName2 = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName2);*/
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandTechnicalContentAndTools();
+			
+			objAdminFunctions.checkDeveloperZonePremierCheckbox();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			seleniumObj.waitForSeconds(60);
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			seleniumObj.waitForSeconds(60);
+		   do{
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		   }
+		   while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.internalEntitlementStatus();
+			objAdminFunctions.switchToTab(Tabs.Related.toString());
+			seleniumObj.waitForSeconds(20);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+			//objAdminFunctions.validateContactEntitlementsAssignment(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+			
+			objNavigation.logoutFromApplication();
+
+		}
+		
+		/*------------------------------------------------------------------------------Priti---------------------------------------------------------------------------------------------------------------------------------------------------*/
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of IPA Activity Manager (Account Plan MDF) as below - "
+				+ "IPA Activity Manager (Account Plan MDF) Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)--> Market Development Funds (Account MDF)-CCP",
+				groups={"Draco Smoke"})
+		public void TC0071_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPAActivityManager();
+			objAdminFunctions.checkPopupMsg();
+			objAdminFunctions.clickOnOkOnGrantAccessPage();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();	
+		}
+
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of IPA Claim Submitter (Account Plan MDF) as below - "
+				+ "IPA Claim Submitter (Account Plan MDF) Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-->Market Development Funds (Account MDF)-CCP",
+				groups={"Draco Smoke"})
+		public void TC0072_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPAClaimSubmitterAccountPlan();
+			objAdminFunctions.checkPopUpMsg();
+		
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();
+
+		}
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of IPA Claim Submitter (Proposal MDF)  as below -"
+				+ " IPA Claim Submitter (Proposal MDF) Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-->Market Development Funds (Proposal MDF)-CCP",
+				groups={"Draco Smoke"})
+		public void TC0073_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPAClaimSubmitterProposalMDF();
+			objAdminFunctions.checkPopUpMsg();
+			//objAdminFunctions.clickOnOkOnGrantAccessPage();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();
+
+		}
+
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of IPA External View Only (Account Plan MDF) as below - "
+				+ "IPA External View Only (Account Plan MDF) Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-->Market Development Funds (Account MDF)-CCP",
+				groups={"Draco Smoke"})
+		public void TC0074_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPAExternalViewAccountPlan();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();	
+		}
+
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of IPA External View Only (Proposal MDF) as below -"
+				+ " IPA External View Only (Proposal MDF) Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-->Market Development Funds (Proposal MDF)-CCP",
+				groups={"Draco Smoke"})
+		public void TC0075_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPAExternalViewProposalMDF();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();
+
+		}
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of IPA Proposal Manager (Proposal MDF) as below -"
+				+ "IPA Proposal Manager (Proposal MDF) Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-->Market Development Funds (Proposal MDF)-CCP",
+				groups={"Draco Smoke"})
+		public void TC0076_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPAProposalManager();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();
+
+		}
+
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of IPA Recovery Administrator (Account Plan MDF) as below -"
+				+ "IPA Recovery Administrator (Account Plan MDF) Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-->Market Development Funds (Account MDF)-CCP",
+				groups={"Draco Smoke"})
+		public void TC0077_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPARecoveryAdministratorAccountPlan();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();
+
+		}
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of IPA Recovery Administrator (Proposal MDF) as below -"
+				+ "IPA Recovery Administrator (Proposal MDF) Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-->Market Development Funds (Proposal MDF)-CCP",
+				groups={"Draco Smoke"})
+		public void TC0078_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkIPARecoveryAdministratorProposalMDF();
+			objAdminFunctions.checkPopUpMsg();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();	
+		}
+
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of MDF Claim Submitter as below - "
+				+ "MDF Claim Submitter Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-"
+				+ "->Market Development Funds (MDF)-CCP"
+				+ "->Market Development Funds (MDF)-CCPPilot"
+				+ "->Market Development Funds (MDF)-IMX",	groups={"Draco Smoke"})
+		public void TC0079_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkMDFClaimSubmitter();
+			objAdminFunctions.check3PopupMsg();
+			objAdminFunctions.clickOnOkOnGrantAccessPage();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();	
+		}
+
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of MDF Proposal Manager as below - "
+				+ "MDF Proposal Manager Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-"
+				+ "->Market Development Funds (MDF)-CCP"
+				+ "->Market Development Funds (MDF)-CCPPilot"
+				+ "->Market Development Funds (MDF)-IMX",	groups={"Draco Smoke"})
+		public void TC0080_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkMDFProposalManager();
+			objAdminFunctions.check3PopupMsg();
+			objAdminFunctions.clickOnOkOnGrantAccessPage();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();	
+		}
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of MDF Viewer as below - "
+				+ "MDF Viewer Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-"
+				+ "->Market Development Funds (MDF)-CCP"
+				+ "->Market Development Funds (MDF)-CCPPilot"
+				+ "->Market Development Funds (MDF)-IMX",	groups={"Draco Smoke"})
+		public void TC0081_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkMDFProposalManager();
+			objAdminFunctions.check3PopupMsg();
+			objAdminFunctions.clickOnOkOnGrantAccessPage();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();	
+		}
+
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of Platform Verification Program (PVP) access as below - "
+				+ "PVP Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-->Platform Verification Program (PVP)",	groups={"Draco Smoke"})
+		public void TC0082_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkPlatformVerificationProgram();
+			objAdminFunctions.checkPopupMsg();
+			objAdminFunctions.clickOnOkOnGrantAccessPage();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();	
+		}
+
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of Points Manager as below - "
+				+ "Points Manager Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-->Points Redemption",	groups={"Draco Smoke"})
+		public void TC0083_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkPointsManager();
+			objAdminFunctions.checkPopupMsg();
+			objAdminFunctions.clickOnOkOnGrantAccessPage();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();	
+		}
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of Points View as below - "
+				+ "Points View Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-->Points Accruals View",	groups={"Draco Smoke"})
+		public void TC0084_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkPointsView();
+			objAdminFunctions.checkPopupMsg();
+			objAdminFunctions.clickOnOkOnGrantAccessPage();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();	
+		}
+		@Test(description="Verify that popup message is displayed on checking the checkbox in front of Warranty Requestor as below - "
+				+ "Warranty Requestor Entitlement can only be granted if ACCOUNT/OPID has any one of the following benefit(s)-"
+				+ "->Advanced Warranty Replacement"
+				+ "->Standard Warranty Replacement",	groups={"Draco Smoke"})
+		public void TC0085_DRACO() throws Exception{
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			String contactName = objAdminDataDetails.getFirstName() + " "+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkWarrantyRequestor();
+			objAdminFunctions.check2PopupMsg();
+			objAdminFunctions.clickOnOkOnGrantAccessPage();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objNavigation.logoutFromApplication();	
+		}
+		/**
+		 *Verify that user is able to successfully assign Intel® Partner Investment Center entitlements  on a new contact
+		 * @throws Exception 
+		 * 
+		 * @Author Priti
+		 * @Since 19-June-2024
+		 */
+		@Test(description = "Verify that user is able to successfully assign Intel® Partner Investment Center entitlements  on a new contact", groups = { "Draco Smoke" })
+		public void TC0103_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("CCF User");
+			Entitlement_Name.add("Partner Portal");
+			Entitlement_Name.add("CCF User Administrator");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToLightningExperience();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerInvestmentCenter();
+			objAdminFunctions.verifyCCFUserAdministratorPresentOrNot();
+			objAdminFunctions.checkCCFUserAdministratorCheckbox();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription()));
+			seleniumObj.waitForSeconds(5);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
+			objAdminFunctions.goBackToContactsPage();
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			objAdminFunctions.verifyInternalEntitlementStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			sfcommonObj.pageRefresh();
+			seleniumObj.waitForSeconds(60);
+			objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+			objNavigation.logoutFromApplication();
+
+		}
+
+		/**
+		 * Verify that user is able to successfully assign IQR internal entitlements on a new contact 
+		 * @throws Exception 
+		 * 
+		 * @Author Priti
+		 * @Since 19-June-2024
+		 */
+		@Test(description = "Verify that user is able to successfully assign IQR internal entitlements on a new contact", groups = { "Draco Smoke" })
+		public void TC0104_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Partner Portal");
+			Entitlement_Name.add("Customer Drafter Access");
+			Entitlement_Name.add("Customer User");
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToLightningExperience();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelQuoteRequest();
+			objAdminFunctions.verifyCustomerDrafterAccessEntitlementPresentOrNot();
+			objAdminFunctions.checkCustomerDrafterAccessCheckbox();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription()));
+			seleniumObj.waitForSeconds(5);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
+			objAdminFunctions.goBackToContactsPage();
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			objAdminFunctions.verifyInternalEntitlementStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			//objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			sfcommonObj.pageRefresh();
+			seleniumObj.waitForSeconds(60);
+			objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+			objNavigation.logoutFromApplication();
+
+		}
+		/**
+		 * Verify that user is able to successfully assign internal entitlement on an existing contact 
+		 * @throws Exception 
+		 * 
+		 * @Author Priti
+		 * @Since 19-June-2024
+		 */
+		@Test(description = " Verify that user is able to successfully assign internal entitlement on an existing contact ", groups = { "Draco Smoke" })
+		public void TC0107_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+			+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Partner Portal");
+			Entitlement_Name.add("PSG Licensing User");
+
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToLightningExperience();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandProgrammableSolutionsGroup();
+			objAdminFunctions.verifyPSGLicensingUserEntitlementPresentOrNot();
+			objAdminFunctions.checkPSGLicensingUserCheckbox();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription()));
+			seleniumObj.waitForSeconds(5);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
+			objAdminFunctions.goBackToContactsPage();
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			do{
+				sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				}
+			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));	
+			objAdminFunctions.verifyInternalEntitlementStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			sfcommonObj.pageRefresh();
+			seleniumObj.waitForSeconds(60);
+			objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+			objNavigation.logoutFromApplication();
+
+		}
+		@Test(description = "Verify that a validation error is thrown on Grant Access if a user selects Distributor and Reseller entitlements together", groups = { "Draco Smoke" })
+		public void TC0060_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			//Entitlement_Name.add("Data Center Blocks Configurator");
+			
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String contactName = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandDataCenterBlocksConfigurator();
+			
+			objAdminFunctions.verifyDistributorPresentOrNot();
+			objAdminFunctions.checkDistributorCheckbox();
+			
+			objAdminFunctions.verifyResellerPresentOrNot();
+			objAdminFunctions.checkResellerCheckbox();
+			
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+		
+			objAdminFunctions.verifyErrorAfterSAVEOnGrantAccessPage();
+			
+			objAdminFunctions.clickOnCancelOnGrantAccessPage();
+			objNavigation.logoutFromApplication();
+}
+		
+		@Test(description = "Verify that a validation error is thrown on Grant Access if a user selects any of the DZS entitlements if an Account associated with that contact doesn't have a CNDA number", groups = { "Draco Smoke" })
+		public void TC0061_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			//Entitlement_Name.add("Data Center Blocks Configurator");
+			
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String contactName = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandTechnicalContentAndTools();
+			
+			objAdminFunctions.VerifyDeveloperZonePremierPresentOrNot();
+			objAdminFunctions.checkDeveloperZonePremierCheckbox();
+			
+			
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			
+			objAdminFunctions.verifyERRORAfterSAVEOnGrantAccessPage();
+			
+			objAdminFunctions.clickOnCancelOnGrantAccessPage();
+			objNavigation.logoutFromApplication();
+}
+		@Test(description = "Verify that a validation error is thrown on Grant Access if a user selects any of the IntelÂ® Partner Investment Center entitlements if an Account associated with that contact doesn't have a CIM ID number", groups = { "Draco Smoke" })
+		public void TC0062_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			//Entitlement_Name.add("Data Center Blocks Configurator");
+			
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String contactName = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerInvestmentCenter();
+			
+			objAdminFunctions.verifyCCFActivitySubmitterPresentOrNot();
+			objAdminFunctions.checkCCFActivitySubmitterCheckbox();
+			
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.VerifyErrorMsgAfterSAVEOnGrantAccessPage();
+			
+			objAdminFunctions.clickOnCancelOnGrantAccessPage();
+			objNavigation.logoutFromApplication();
+}
+		@Test(description = "Verify that a validation error is thrown on Grant Access if a user selects any of the PSG B2B entitlements if an Account associated with that contact doesn't have a CIM ID number", groups = { "Draco Smoke" })
+		public void TC0063_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			//Entitlement_Name.add("Data Center Blocks Configurator");
+			
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String contactName = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandProgrammableSolutionsGroup();
+			
+			objAdminFunctions.verifyPSGLicensingUserEntitlementPresentOrNot();
+			objAdminFunctions.checkPSGLicensingUserCheckbox();
+			
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.VerifyErrorMsgAfterSAVEOnGrantAccessPage();
+			
+			objAdminFunctions.clickOnCancelOnGrantAccessPage();
+			objNavigation.logoutFromApplication();
+}
+		@Test(description = "Verify that a validation error is thrown on Grant Access if a user selects any of the IQR entitlements if an Account associated with that contact doesn't have a CIM ID number", groups = { "Draco Smoke" })
+		public void TC0064_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			//Entitlement_Name.add("Data Center Blocks Configurator");
+			
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String contactName = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelQuoteRequest();
+			
+			objAdminFunctions.verifyCustomerDrafterAccessEntitlementPresentOrNot();
+			objAdminFunctions.checkCustomerDrafterAccessCheckbox();
+			
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.VerifyErrorMsgAfterSAVEOnGrantAccessPage();
+			
+			objAdminFunctions.clickOnCancelOnGrantAccessPage();
+			objNavigation.logoutFromApplication();
+}
+		@Test(description = "Verify that a validation error is thrown on Grant Access if a user selects Partner Admin and Partner Admin Delegate entitlements together", groups = { "Draco Smoke" })
+		public void TC0065_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			//Entitlement_Name.add("Data Center Blocks Configurator");
+			
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String contactName = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			
+			objAdminFunctions.verifyPartnerAdminPresentOrNot();
+			objAdminFunctions.checkPartnerAdminCheckbox();
+			objAdminFunctions.clickOnOkOnGrantAccessPage();
+			
+			objAdminFunctions.verifyPartnerAdminDelegatePresentOrNot();
+			objAdminFunctions.checkPADCheckbox();
+			objAdminFunctions.clickOnOkOnGrantAccessPage();
+			
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.VerifyErrorMsgAfterSAVEOnGrantAccessPage();
+			
+			objAdminFunctions.clickOnCancelOnGrantAccessPage();
+			objNavigation.logoutFromApplication();
+}
+		@Test(description = "Verify that a validation error is thrown on Grant Access if a user selects Partner Admin Partner Admin Delegate  and any of the Marketing Specialist Offering Editor Partner Lead Development Rep entitlements together", groups = { "Draco Smoke" })
+		public void TC0066_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			//Entitlement_Name.add("Data Center Blocks Configurator");
+			
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String contactName = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			
+			objAdminFunctions.verifyPartnerAdminPresentOrNot();
+			objAdminFunctions.checkPartnerAdminCheckbox();
+			objAdminFunctions.clickOnOkOnGrantAccessPage();
+			
+			objAdminFunctions.verifyMarketingSpecialistPresentOrNot();
+			objAdminFunctions.checkMarketingSpecialistCheckbox();
+			
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.VerifyErrorMessageAfterSAVEOnGrantAccessPage();
+			
+			objAdminFunctions.clickOnCancelOnGrantAccessPage();
+			objNavigation.logoutFromApplication();
+}
+		@Test(description = "Verify that DZP entitlement is getting removed upon removing an Employee entitlement if the Account associated to that Contact does not have CNDA number on it", groups = { "Draco Smoke" })
+		public void TC0067_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			//contact with cnd no. is null (emp,Dzp both are assigned)
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Employee");
+			Entitlement_Name1.add("Employee");
+			Entitlement_Name1.add("Developer Zone Premier(CNDA required)"); 
+			
+			
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String contactName = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.UncheckEmployeeCheckBox();
+			objAdminFunctions.clickOnYesOnGrantAccessPage();
+			//objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			
+			//objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(5);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+		   objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
+			objAdminFunctions.goBackToContactsPage();
+			seleniumObj.waitForSeconds(60);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.validateContactEntitlementsRemoval(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name1);
+			objNavigation.logoutFromApplication();
+}
+		@Test(description = "Assignment of DZP upon assigning employee entitlement Non CNDA", groups = { "Draco Smoke" })
+		public void TC0068_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			 //contact with cnd no. is null 
+			
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Employee");
+			Entitlement_Name1.add("Employee");
+			Entitlement_Name1.add("Developer Zone Premier(CNDA required)"); 
+			
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String contactName = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.checkEmployeeCheckbox();
+			objAdminFunctions.clickOnOkOnGrantAccessPage();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
+			seleniumObj.waitForSeconds(05);
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandTechnicalContentAndTools();
+			objAdminFunctions.VerifyDeveloperZonePremierPresentOrNot();
+			objAdminFunctions.checkDeveloperZonePremierCheckbox();
+			objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			seleniumObj.waitForSeconds(60);
+			seleniumObj.waitForSeconds(60);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name1);
+			objNavigation.logoutFromApplication();
+			
+}
+		@Test(description = "CNDA Account's contact Removal of Employee entitltment should not remove DZP entitlement", groups = { "Draco Smoke" })
+		public void TC0069_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			//contact with cnd no. (emp,Dzp both are assigned)
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Employee");
+			Entitlement_Name1.add("Employee");
+			Entitlement_Name1.add("Developer Zone Premier(CNDA required)"); 
+			
+			
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String contactName = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			
+			objAdminFunctions.ClickOnshowMoreActions();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			objAdminFunctions.expandIntelPartnerAlliance();
+			objAdminFunctions.UncheckEmployeeCheckBox();
+			objAdminFunctions.clickOnYesOnGrantAccessPage();
+			//objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			
+			seleniumObj.waitForSeconds(5);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+		   objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
+			objAdminFunctions.goBackToContactsPage();
+			seleniumObj.waitForSeconds(5);
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			seleniumObj.waitForSeconds(60);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.validateContactEntitlementsRemoval(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name1);
+			objNavigation.logoutFromApplication();
+}
+		@Test(description = "CNDA Account's contact Removal of Employee entitltment should not remove DZP entitlement", groups = { "Draco Smoke" })
+		public void TC0070_DRACO() throws Exception {
+			String MethodName = new Object() {
+			}.getClass().getEnclosingMethod().getName();
+			//contact with cnd no. (emp,Dzp both are assigned)
+			
+			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
+			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
+			String[] filePaths = new String[2];
+			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
+			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
+					+ objAdminDataDetails.getFileName();
+			objAdminDataDetails.setFilePaths(filePaths);
+			
+			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
+			Entitlement_Name.add("Employee");
+			Entitlement_Name1.add("Employee");
+			Entitlement_Name1.add("Developer Zone Premier(CNDA required)"); 
+			
+			
+			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
+					objAdminData.getRole());
+			objAdminFunctions.switchToLightningExperience();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			String contactName = objAdminDataDetails.getFirstName() + " "
+					+ objAdminDataDetails.getLastName();
+			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
+					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
+					objAdminDataDetails.getEmail(), contactName);
+			
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.switchToLightningExperience();
+			objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+			objAdminFunctions.clickButton(Button.New.toString());
+			objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+			objAdminFunctions.createNewContact(objAdminDataDetails);
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			seleniumObj.waitForSeconds(60);
+			seleniumObj.waitForSeconds(60);
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			seleniumObj.waitForSeconds(05);
+			sfcommonObj.pageRefresh();
+			objAdminFunctions.clickOnContactEntitlementsAndVerifyNoCERecordCreated();
+			objAdminFunctions.clickonEditOnContactPage();
+			objAdminFunctions.CheckRepublishOBMCheckbox();
+			objAdminFunctions.ClickOneditSave();
+			objAdminFunctions.AGSIntegrationStatusShouldNotShowPendingStatus();
+			objNavigation.logoutFromApplication();
+}
+
 }

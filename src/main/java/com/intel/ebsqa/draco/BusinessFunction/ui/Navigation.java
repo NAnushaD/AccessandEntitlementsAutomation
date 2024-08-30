@@ -466,17 +466,13 @@ public class Navigation extends TestBase {
 	public void globalUISearchContactAndSelect(String accName, String searchType, String searchIcon, String emailID,
 			String contactName) {
 		sfcommonObj.waitTillLightningPageLoadComplete();
-		seleniumObj.pageRefresh();
-		sfcommonObj.waitTillLightningPageLoadComplete();
-		sfcommonObj.waitTillLightningPageLoadComplete();
 		if (searchIcon.equals("false")) {
 			objNavigationPageClass.setValueForGlobalSearchTextbox(emailID);
 			objNavigationPageClass.clickOnSearchResultSearchIcon();
-			sfcommonObj.waitTillLightningPageLoadComplete();
+		//	sfcommonObj.waitTillLightningPageLoadComplete();
 		} else if (searchIcon.equals("true")) {
 			objNavigationPageClass.setValueForGlobalSearchTextbox(emailID);
-			sfcommonObj.waitTillAllXHRCallsComplete();
-			sfcommonObj.waitTillLightningPageLoadComplete();
+			
 			objNavigationPageClass.clickOnSearchResultSearchIcon();
 			List<WebElement> records = objNavigationPageClass.getselectSearchedContact(accName, searchType, emailID,
 					contactName);

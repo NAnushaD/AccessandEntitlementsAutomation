@@ -655,17 +655,28 @@ public class AdminFunctions extends TestBase {
 	 * @Since 29-Nov-2022
 	 * @throws TimeOutException
 	 */
-	public void verifyERPMIntegrationStatus(String expectedStatus) throws TimeOutException {
+	public boolean verifyERPMIntegrationStatus(String expectedStatus) throws TimeOutException {
+		boolean StatusCheck =false;
 		try {
 			String actualStatus = objOperationPageClass.getERPMIntegrationStatus();
-			Assert.assertEquals(actualStatus, expectedStatus, "Integration status Mis-Match");
-			log.info("Succussfully verifyERPMIntegrationStatus");
+//			
+//			Assert.assertEquals(actualStatus, expectedStatus, "Integration status Mis-Match");
+//			log.info("Succussfully verifyERPMIntegrationStatus");
+			StatusCheck =actualStatus.equals(expectedStatus);
+			System.out.println(StatusCheck);
+			if(StatusCheck){
+				log.info("Succussfully verifyERPMIntegrationStatus");
+				}
+			else{
+				log.info("Not able to verifyERPMIntegrationStatus.");
+			}
 		}
 
 		catch (Exception ex) {
 			Assert.fail("Not able to verifyERPMIntegrationStatus. " + ex.getMessage());
 
 		}
+		return StatusCheck;
 	}
 	public void verifyERPMIntegrationStatusClassic(String expectedStatus) throws TimeOutException {
 		try {
@@ -685,17 +696,29 @@ public class AdminFunctions extends TestBase {
 	 * @Since 29-Nov-2022
 	 * @throws TimeOutException
 	 */
-	public void verifyAGSIntegrationStatus(String expectedStatus) throws TimeOutException {
+	public boolean verifyAGSIntegrationStatus(String expectedStatus) throws TimeOutException {
+		boolean StatusCheck =false;
 		try {
 			String actualStatus = objOperationPageClass.getAGSIntegrationStatus();
-			Assert.assertEquals(actualStatus, expectedStatus, "Integration status Mis-Match");
-			log.info("Succussfully verifyAGSIntegrationStatus");
+//			
+//			Assert.assertEquals(actualStatus, expectedStatus, "Integration status Mis-Match");
+//			log.info("Succussfully verifyERPMIntegrationStatus");
+			StatusCheck =actualStatus.equals(expectedStatus);
+			System.out.println(StatusCheck);
+			if(StatusCheck){
+				log.info("Succussfully verifyERPMIntegrationStatus");
+				}
+			else{
+				log.info("Not able to verifyERPMIntegrationStatus.");
+			}
 		}
 
 		catch (Exception ex) {
-			Assert.fail("Not able to verifyAGSIntegrationStatus. " + ex.getMessage());
+			Assert.fail("Not able to verifyERPMIntegrationStatus. " + ex.getMessage());
 
 		}
+		return StatusCheck;
+		
 	}
 	public void verifyAGSIntegrationStatusClassic(String expectedStatus) throws TimeOutException {
 		try {
@@ -909,7 +932,7 @@ public class AdminFunctions extends TestBase {
 			objOperationPageClass.clickOnSaveOnGrantAccessPage();
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			sfcommonObj.waitTillLightningPageLoadComplete();
-			sfcommonObj.waitTillLightningPageLoadComplete();
+			
 			log.info("Succussfully clickOnSaveOnGrantAccessPage");
 		}
 
@@ -958,9 +981,7 @@ public class AdminFunctions extends TestBase {
 		try {
 			objOperationPageClass.clickOnViewAllOfContactEntitlements();
 			sfcommonObj.waitTillLightningPageLoadComplete();
-			sfcommonObj.waitTillLightningPageLoadComplete();
-			sfcommonObj.waitTillLightningPageLoadComplete();
-			sfcommonObj.waitTillLightningPageLoadComplete();
+			
 			log.info("Succussfully clickOnViewAllOfContactEntitlements");
 		}
 
@@ -978,6 +999,7 @@ public class AdminFunctions extends TestBase {
 	 * @throws TimeOutException
 	 */
 	public void verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(String expectedStatus,List<String> Entitlement_Name) throws TimeOutException {
+		
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			Entitlement_Name.get(i);
@@ -1008,11 +1030,14 @@ public class AdminFunctions extends TestBase {
 		
 		}
 		seleniumObj.waitForSeconds(5);
+		seleniumObj.pageRefresh();
+		seleniumObj.waitForSeconds(5);
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='True'])[1]"));
-			if(!(ele.isSelected()))
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::input)[1]"));
+			String status=ele.getAttribute("checked");
+			if(status.contentEquals("true"))
 				System.out.println("checkbox is selected for the entitlement");
 			}
 			catch (Exception e) {
@@ -1105,14 +1130,15 @@ public class AdminFunctions extends TestBase {
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='True'])[1]"));
-			if(!(ele.isSelected()))
-				System.out.println("checkbox is selected for the entitlement");
-			}
-			catch (Exception e) {
-				log.info("checkbox is not selected for the entitlement" + e.getMessage());
-				Assert.fail(e.getClass().getSimpleName() + " : " + "checkebox is not selected for the entitlement");
-			}		
+				WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::input)[1]"));
+				String status=ele.getAttribute("checked");
+				if(status.contentEquals("true"))
+					System.out.println("checkbox is selected for the entitlement");
+				}
+				catch (Exception e) {
+					log.info("checkbox is not selected for the entitlement" + e.getMessage());
+					Assert.fail(e.getClass().getSimpleName() + " : " + "checkebox is not selected for the entitlement");
+				}		
 		}
 	}
 	
@@ -2378,10 +2404,9 @@ public class AdminFunctions extends TestBase {
 	}
 	public void clickOnOkOnGrantAccessPage() throws TimeOutException {
 		try {
-			objOperationPageClass.clickOnOkOnGrantAccessPage();
+			 objOperationPageClass.ClickOkBtn();
 			sfcommonObj.waitTillLightningPageLoadComplete();
-			sfcommonObj.waitTillLightningPageLoadComplete();
-			sfcommonObj.waitTillLightningPageLoadComplete();
+			
 			log.info("Succussfully clickOnOkOnGrantAccessPage");
 		}
 
@@ -3471,4 +3496,1022 @@ public class AdminFunctions extends TestBase {
 
 		}
 	}
+	/**
+	 * @Description Method to check IPA Activity Manager 
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPAActivityManager () throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkIPAActivityManagerCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check PopUpMsg 
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkPopUpMsg() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkPopupMsg();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+	        objOperationPageClass.ClickOkBtn();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check Pop Up. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check msg 
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkMsg() throws TimeOutException {
+		try {
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+	        objOperationPageClass.checkAlertmsg();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+	       
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check Alertmsg. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check IPA Activity Manager 
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPAClaimSubmitter() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkIPAClaimSubmitterCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check IPA Claim Submitter 
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPAClaimSubmitterProposal() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkIPAClaimSubmitterProposalCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check IPA Claim Submitter 
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPAExternalViewOnlycheckbox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkIPACExternalViewCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check IPA Claim Submitter 
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPAExternalViewOnlyProposalcheckbox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkIPACExternalViewProposalCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check IPA ProposalManager CheckBox
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPAProposalManagerCheckBox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkIPAProposalManagerCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check check IPA  Recovery Administrator CheckBox
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPARecoveryAdministratorCheckBox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkIPARecoveryAdministratorCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check check IPA  Recovery Administrator CheckBox
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPARecoveryAdministratorProposalCheckBox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkIPARecoveryAdministratorProposalCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check check IPA  Recovery Administrator CheckBox
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkMDFClaimSubmitterCheckBox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkMDFClaimSubmitterCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check check IPA  Recovery Administrator CheckBox
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkMDFProposalCheckBox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkMDFProposalCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check check IPA  Recovery Administrator CheckBox
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkMDFViewerCheckBox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkMDFViewerCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check check IPA  Recovery Administrator CheckBox
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkPlatformVerification() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkPlatformVerificationCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check check IPA  Recovery Administrator CheckBox
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkPointManager() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkPointManagerCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check check IPA  Recovery Administrator CheckBox
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkPointView() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkPointViewCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check  Technology Sandbox CheckBox
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkTechnologySandbox() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkTechnologySandboxCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check  Warranty Requestor CheckBox
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkWarrantyRequestor() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkWarrantyRequestor();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check Republish Obm
+	 * @Author AmartyaX
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkRepublishObm() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkRepublishObm();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkEmployeeCheckbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check RepublishObm. " + ex.getMessage());
+
+		}
+	}
+	public void expandOrderManagement() throws TimeOutException {
+		try {
+			objOperationPageClass.expandOrderManagement();
+			log.info("Succussfully expandConsolidatedPlatform");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to expandConsolidatedPlatform. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to checkIntelOnDemand
+	 * @Author Amartya
+	 * @Since 19-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIntelOnDemand() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.checkIntelOnDemandPurchaseCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully check IntelOnDemandPurchase Checkbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IntelOnDemandPurchase Checkbox. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to internalEntitlementStatus
+	 * @Author Amartya
+	 * @Since 19-June-2024
+	 * @throws TimeOutException
+	 */
+	public void internalEntitlementStatus() throws TimeOutException {
+		try {
+			
+	        objOperationPageClass.internalEntitlementStatus();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully check IntelOnDemandPurchase Checkbox");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to check IntelOnDemandPurchase Checkbox. " + ex.getMessage());
+
+		}
+	}
+	
+	
+	/**
+	 * @Description Method to check IPA Activity Manager 
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 *//*
+	public void checkIPAActivityManager() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkIPAActivityManagerCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully check IPA Activity Manager");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Activity Manager. " + ex.getMessage());
+ 
+		}
+	}*/
+	/**
+	 * @Description Method to check Popup 
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkPopupMsg() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkPopupMsg();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully verified popup message");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to verify popup message" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check 3 popup msg
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void check3PopupMsg() throws TimeOutException {
+		try {
+	        objOperationPageClass.check3PopupMsg();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully verified popup message");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to verify popup message" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check 2 popup msg
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void check2PopupMsg() throws TimeOutException {
+		try {
+	        objOperationPageClass.check2PopupMsg();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully verified popup message");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to verify popup message" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check IPA Claim Submitter  (Account Plan MDF)
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPAClaimSubmitterAccountPlan() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkIPAClaimSubmitterAccountPlanCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully check IPA Claim Submitter");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Claim Submitter" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check IPA Claim Submitter  (Proposal MDF)
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPAClaimSubmitterProposalMDF() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkIPAClaimSubmitterProposalMDFcheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully check IPA Claim Submitter");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA Claim Submitter" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check IPA External View Only (Account Plan MDF)
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPAExternalViewAccountPlan() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkIPAExternalViewAccountPlanCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully check IPA External View ");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA External View" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check IPA External View Only (Proposal MDF)
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPAExternalViewProposalMDF() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkIPAExternalViewProposalMDFCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully check IPA External view ");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to check IPA External view" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check IPA Proposal Manager (Proposal MDF)
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPAProposalManager() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkIPAProposalManagerCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkIPAProposalManager ");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to checkIPAProposalManager" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check IPA Recovery Administrator (Account Plan MDF)
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPARecoveryAdministratorAccountPlan() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkIPARecoveryAdministratorAccountPlanCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkIPARecoveryAdministratorAccountPlan");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to checkIPARecoveryAdministratorAccountPlan" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check IPA Recovery Administrator (Proposal MDF)
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkIPARecoveryAdministratorProposalMDF() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkIPARecoveryAdministratorProposalMDFCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkIPARecoveryAdministratorProposalMDF");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to checkIPARecoveryAdministratorProposalMDF" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check MDF Claim Submitter
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkMDFClaimSubmitter() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkMDFClaimSubmitterCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkMDFClaimSubmitter");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to checkMDFClaimSubmitter" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check MDF Proposal Manager
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkMDFProposalManager() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkMDFProposalManagerCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkMDFProposalManager");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to checkMDFProposalManager" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check Platform Verification Program
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkPlatformVerificationProgram() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkPlatformVerificationProgramCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully checkMDFProposalManager");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to checkMDFProposalManager" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check Points Manager
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkPointsManager() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkPointsManagerCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully check Points Manager");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to check Points Manager" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check Points View
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkPointsView() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkPointsViewCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully check Points Manager");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to check Points Manager" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to check Warranty Requestor
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 *//*
+	public void checkWarrantyRequestor() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkWarrantyRequestorCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully check Points Manager");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to check Points Manager" + ex.getMessage());
+ 
+		}
+	}*/
+	/**
+	 * @Description Method to expand Intel Partner InvestmentCenter
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void expandIntelPartnerInvestmentCenter() {
+		try {
+			objOperationPageClass.expandIntelPartnerInvestmentCenter();
+			log.info("Succussfully expandIntelPartnerInvestmentCenter");
+	 	}
+		catch (Exception ex) {
+			Assert.fail("Not able to expandIntelPartnerInvestmentCenter. " + ex.getMessage());
+
+		}
+	}
+	/**
+	 * @Description Method to check DCF User Administrator
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void checkDCFUserAdministrator() throws TimeOutException {
+		try {
+	        objOperationPageClass.checkDCFUserAdministratorCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully check Points Manager");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to check Points Manager" + ex.getMessage());
+ 
+		}
+	}
+	/**
+	 * @Description Method to Verify Error Msg After SAVE On Grant Access Page
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void VerifyErrorMsgAfterSAVEOnGrantAccessPage() {
+		try{
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			Assert.assertTrue(objOperationPageClass.verifyErrormsgAfterSAVEOnGrantAccessPage(), "Error on Grant Access Page is not present");
+			log.info("Succussfully VerifyErrorMsgAfterSAVEOnGrantAccessPage");
+		}
+		catch (Exception ex) {
+			Assert.fail("Not able to VerifyErrorMsgAfterSAVEOnGrantAccessPage. " + ex.getMessage());
+		}
+	}
+	/**
+	 * @Description Method to verifyInternalEntitlementStatus
+	 * @Author Priti
+	 * @Since 17-June-2024
+	 * @throws TimeOutException
+	 */
+	public void verifyInternalEntitlementStatus(String expectedStatus) throws TimeOutException {
+		try {
+			String actualStatus = objOperationPageClass.getInternalEntitlementStatus();
+			Assert.assertEquals(actualStatus, expectedStatus, "Internal Entitlement status Mis-Match");
+			log.info("Succussfully verifyInternalEntitlementStatus");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to verifyInternalEntitlementStatus. " + ex.getMessage());
+
+		}
+	}
+	public void expandDataCenterBlocksConfigurator() {
+		// TODO Auto-generated method stub
+		try {
+			objOperationPageClass.expandDataCenterBlocksConfigurator();
+			log.info("Succussfully expandDataCenterBlocksConfigurator");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to expandDataCenterBlocksConfigurator. " + ex.getMessage());
+
+		}
+		
+	}
+
+		public void verifyDistributorPresentOrNot() {
+			// TODO Auto-generated method stub
+			try {
+				Assert.assertTrue(objOperationPageClass.verifyDistributorPresentOrNot(), "Distributor is not present");
+				log.info("Succussfully verifyDistributorPresentOrNot");
+			}
+
+			catch (Exception ex) {
+				Assert.fail("Not able to verifyDistributorPresentOrNot. " + ex.getMessage());
+
+			}
+		}
+
+		public void checkDistributorCheckbox() {
+			// TODO Auto-generated method stub
+			try {
+				objOperationPageClass.checkDistributorCheckbox();
+		        sfcommonObj.waitTillLightningPageLoadComplete();
+				log.info("Succussfully checkDistributorCheckbox");
+			}
+
+			catch (Exception ex) {
+				Assert.fail("Not able to checkDistributorCheckbox. " + ex.getMessage());
+
+			}
+			
+		}
+
+		public void verifyResellerPresentOrNot() {
+			// TODO Auto-generated method stub
+			try {
+				Assert.assertTrue(objOperationPageClass.verifyResellerPresentOrNot(), "Reseller is not present");
+				log.info("Succussfully verifyResellerPresentOrNot");
+			}
+
+			catch (Exception ex) {
+				Assert.fail("Not able to verifyResellerPresentOrNot. " + ex.getMessage());
+
+			}
+		}
+
+		public void checkResellerCheckbox() {
+			// TODO Auto-generated method stub
+			try {
+				objOperationPageClass.checkResellerCheckbox();
+		        sfcommonObj.waitTillLightningPageLoadComplete();
+				log.info("Succussfully checkResellerCheckbox");
+			}
+
+			catch (Exception ex) {
+				Assert.fail("Not able to checkResellerCheckbox. " + ex.getMessage());
+
+			}
+		}
+
+		public void verifyErrorAfterSAVEOnGrantAccessPage() {
+			// TODO Auto-generated method stub
+			try{
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			Assert.assertTrue(objOperationPageClass.verifyErrorAfterSAVEOnGrantAccessPage(), "Error on Grant Access Page is not present");
+			log.info("Succussfully verifyErrorOnGrantAccessPage");
+}
+		catch (Exception ex) {
+			Assert.fail("Not able to verifyErrorAfterSAVEOnGrantAccessPage. " + ex.getMessage());
+		}
+		}
+
+		public void VerifyDeveloperZonePremierPresentOrNot() {
+			// TODO Auto-generated method stub
+			try {
+				Assert.assertTrue(objOperationPageClass.VerifyDeveloperZonePremierPresentOrNot(), "Verify Developer Zone Premier is not present");
+				log.info("Succussfully VerifyDeveloperZonePremierPresentOrNot");
+			}
+
+			catch (Exception ex) {
+				Assert.fail("Not able to VerifyTechnicalContentAndToolsPresentOrNot. " + ex.getMessage());
+
+			}
+		}
+
+		public void checkDeveloperZonePremierCheckbox() {
+			// TODO Auto-generated method stub
+			try {
+				
+				objOperationPageClass.checkDeveloperZonePremierCheckbox();
+		        sfcommonObj.waitTillLightningPageLoadComplete();
+				log.info("Succussfully checkDeveloperZonePremierCheckbox");
+			}
+
+			catch (Exception ex) {
+				Assert.fail("Not able to checkDeveloperZonePremierCheckbox " + ex.getMessage());
+
+			}
+		}
+
+		public void expandTechnicalContentAndTools() {
+			// TODO Auto-generated method stub
+			try {
+				
+				objOperationPageClass.expandTechnicalContentAndTools();
+				log.info("Succussfully expandTechnicalContentAndTools");
+			}
+
+			catch (Exception ex) {
+				Assert.fail("Not able to expandTechnicalContentAndTools. " + ex.getMessage());
+
+			}
+		}
+
+		public void verifyERRORAfterSAVEOnGrantAccessPage() {
+			// TODO Auto-generated method stub
+			try{
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				Assert.assertTrue(objOperationPageClass.verifyERRORmsgAfterSAVEOnGrantAccessPage(), "Error on Grant Access Page is not present");
+				log.info("Succussfully verifyERRORAfterSAVEOnGrantAccessPage");
+	}
+			catch (Exception ex) {
+				Assert.fail("Not able to verifyERRORAfterSAVEOnGrantAccessPage. " + ex.getMessage());
+			}
+		}
+
+		
+
+		
+
+		public void verifyPartnerAdminPresentOrNot() {
+			// TODO Auto-generated method stub
+			try{
+			Assert.assertTrue(objOperationPageClass.verifyPartnerAdminPresentOrNot(), " Partner Admin is not present");
+			log.info("Succussfully verifyPartnerAdminPresentOrNot");
+		}
+
+		catch (Exception ex) {
+			Assert.fail("Not able to verifyPartnerAdminPresentOrNot. " + ex.getMessage());
+		}
+}
+
+		public void verifyPartnerAdminDelegatePresentOrNot() {
+			// TODO Auto-generated method stub
+			try{
+				Assert.assertTrue(objOperationPageClass.verifyPartnerAdminDelegatePresentOrNot(), " verify Partner Admin Delegate is not present");
+				log.info("Succussfully verifyPartnerAdminDelegate");
+			}
+
+			catch (Exception ex) {
+				Assert.fail("Not able to verifyPartnerAdminDelegate. " + ex.getMessage());
+			}
+		}
+
+		public void verifyMarketingSpecialistPresentOrNot() {
+			// TODO Auto-generated method stub
+			try{
+				Assert.assertTrue(objOperationPageClass.verifyMarketingSpecialistPresentOrNot(), " Marketing Specialist is not present");
+				log.info("Succussfully verifyMarketingSpecialistPresentOrNot");
+			}
+
+			catch (Exception ex) {
+				Assert.fail("Not able to verifyMarketingSpecialistPresentOrNot. " + ex.getMessage());
+			}
+		}
+
+		public void checkMarketingSpecialistCheckbox() {
+			// TODO Auto-generated method stub
+                   try {
+				
+				objOperationPageClass.checkMarketingSpecialistCheckbox();
+		        sfcommonObj.waitTillLightningPageLoadComplete();
+				log.info("Succussfully checkMarketingSpecialistCheckbox");
+			          }
+
+			catch (Exception ex) {
+				Assert.fail("Not able to checkMarketingSpecialistCheckbox " + ex.getMessage());
+
+			}
+		}
+
+		public void VerifyErrorMessageAfterSAVEOnGrantAccessPage() {
+			// TODO Auto-generated method stub
+			try{
+				sfcommonObj.waitTillLightningPageLoadComplete();
+				Assert.assertTrue(objOperationPageClass.VerifyErrorMessageAfterSAVEOnGrantAccessPage(), "Error on Grant Access Page is not present");
+				log.info("Succussfully VerifyErrorMsgAfterSAVEOnGrantAccessPage");
+	}
+			catch (Exception ex) {
+				Assert.fail("Not able to VerifyErrorMsgAfterSAVEOnGrantAccessPage. " + ex.getMessage());
+			}
+		}
+
+		public void UncheckEmployeeCheckBox() {
+			// TODO Auto-generated method stub
+			objOperationPageClass.UncheckEmployeeCheckBox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully UncheckEmployeeCheckBox");
+			
+		}
+
+		public void clickOnContactEntitlementsAndVerifyNoCERecordCreated() {
+			// TODO Auto-generated method stub
+			objOperationPageClass.clickOnContactEntitlements();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			seleniumObj.waitForSeconds(05);
+			objOperationPageClass.VerifyNoCERecordCreated();
+		}
+
+		public void clickonEditOnContactPage() {
+			// TODO Auto-generated method stub
+			objOperationPageClass.clickOnContactEntitlements();
+			seleniumObj.waitForSeconds(05);
+			objOperationPageClass.clickonEditOnContactPage();
+		}
+
+		public void CheckRepublishOBMCheckbox() {
+			// TODO Auto-generated method stub
+			objOperationPageClass.CheckRepublishOBMCheckbox();
+	        sfcommonObj.waitTillLightningPageLoadComplete();
+			log.info("Succussfully CheckRepublishOBMCheckbox");
+			
+		}
+
+		public void ClickOneditSave() {
+			// TODO Auto-generated method stub
+			objOperationPageClass.ClickOneditSave();
+		}
+
+		public void AGSIntegrationStatusShouldNotShowPendingStatus() {
+			// TODO Auto-generated method stub
+			objOperationPageClass. AGSIntegrationStatusNotShowPendingStatus();
+		}
+		
+		
+
+
 }
