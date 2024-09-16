@@ -998,7 +998,6 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 		Entitlement_Name.add("CCF User Administrator");
 		sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
 				objAdminData.getRole());
-		
 		objAdminFunctions.switchToLightningExperience();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 		objAdminFunctions.switchToTab(Tabs.Contacts.toString());
