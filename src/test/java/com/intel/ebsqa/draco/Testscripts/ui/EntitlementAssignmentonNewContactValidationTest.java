@@ -1004,11 +1004,12 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 		
 		String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
 		
+		
 		objAdminFunctions.clickButton(Button.New.toString());
 		objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
 		objAdminFunctions.createNewContact(objAdminDataDetails);
 		objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
-		seleniumObj.waitForSeconds(100);
+		seleniumObj.waitForSeconds(70);
 		sfcommonObj.pageRefresh();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 		objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
@@ -1024,7 +1025,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 		objAdminFunctions.clickOnViewAllOfContactEntitlements();
 		objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
 		objAdminFunctions.goBackToContactsPage();
-		seleniumObj.waitForSeconds(100);
+		seleniumObj.waitForSeconds(70);
 		sfcommonObj.pageRefresh();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 		objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
@@ -1059,7 +1060,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 				GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
 				objAdminDataDetails.getNonExistingEmail(), contactName2);
 		
-		seleniumObj.waitForSeconds(100);
+		seleniumObj.waitForSeconds(70);
 		sfcommonObj.pageRefresh();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 		objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
@@ -1147,7 +1148,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 				GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
 				objAdminDataDetails.getNonExistingEmail(), contactName2);
 		
-		seleniumObj.waitForSeconds(100);
+		seleniumObj.waitForSeconds(70);
 		sfcommonObj.pageRefresh();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 		objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
