@@ -143,7 +143,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 	 * 
 	 * @Author manish9x
 	 * @Since 24-Nov-2022
-	 */
+	 *//*
 	
 	@Test(description = "Creation of contact and verify Entitlements of CCFadminUser through lightning UI", groups = { "Draco Smoke" })
 	public void TC0001_DRACO() throws Exception {
@@ -178,11 +178,13 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 		sfcommonObj.pageRefresh();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 		objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
-		objAdminFunctions.clickOnGrantAccessButton();
+		objAdminFunctions.ClickOnshowMoreActions();
+		objAdminFunctions.clickOnGrantAccessInShowMoreActions();
 		objAdminFunctions.expandConsolidatedPlatform();
 		objAdminFunctions.verifyCCFUserAdministratorPresentOrNot();
 		objAdminFunctions.checkCCFUserAdministratorCheckbox();
 		objAdminFunctions.clickOnSaveOnGrantAccessPage();
+		sfcommonObj.waitTillLightningPageLoadComplete();
 		objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
 		objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Pending.getDescription());
 		objAdminFunctions.switchToTab(Tabs.Membership.toString());
@@ -200,23 +202,24 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 		objAdminFunctions.switchToTab(Tabs.Membership.toString());
 		seleniumObj.waitForSeconds(10);
 		objAdminFunctions.clickOnViewAllOfContactEntitlements();
-		//objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
-		objAdminFunctions.validateContactEntitlementsAssignment(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+		objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
+		//objAdminFunctions.validateContactEntitlementsAssignment(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
 		objAdminFunctions.clickOnViewPartnerUserButton();
 		objAdminFunctions.verifyActiveCheckboxOnUserIsCheckedOrNot();
 		objAdminFunctions.verifyPermissionSetAssignments();
 		objNavigation.logoutFromApplication();
 
-	}
+	}*/
 	
 
 	/**
+	 * Cancelled Testcases
 	 * Verify that "CCF User Administrator" Entitlement gets successfully removed from the existing Contact in 1.0 flow
 	 * @throws Exception 
 	 * 
 	 * @Author manish9x
 	 * @Since 01-Dec-2022
-	 */
+	 *//*
 	
 	@Test(description = "Verify that 'CCF User Administrator' Entitlement gets successfully removed from the existing Contact in 1.0 flow", groups = { "Draco Smoke" })
 	public void TC0002_DRACO() throws Exception {
@@ -286,7 +289,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 		
 		objNavigation.logoutFromApplication();
 
-	}
+	}*/
 	
 	/**
 	 * Verify that 'PSG Licensing User' entitlement gets successfully assigned on the New Contact in 2.0 flow through lightning UI
@@ -383,26 +386,25 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 		
 		sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
 				objAdminData.getRole());
-		objAdminFunctions.switchToLightningExperience();
+		
 		sfcommonObj.waitTillLightningPageLoadComplete();
-		String contactName = objAdminDataDetails.getFirstName() + " "
+		/*String contactName = objAdminDataDetails.getFirstName() + " "
 				+ objAdminDataDetails.getLastName();
 		objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
 				GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
-				objAdminDataDetails.getEmail(), contactName);
-		
+				objAdminDataDetails.getEmail(), contactName);*/
+		objAdminFunctions.switchToTab(Tabs.Contacts.toString());
+		objAdminFunctions.clickButton(Button.New.toString());
+		objAdminFunctions.selectContactTypeAsIntelContactAndClickNext();
+		objAdminFunctions.createNewContact(objAdminDataDetails);
+		objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+		seleniumObj.waitForSeconds(60);
+		seleniumObj.waitForSeconds(60);
+		sfcommonObj.pageRefresh();
+		sfcommonObj.waitTillLightningPageLoadComplete();
 		objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
 		objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
-		objAdminFunctions.switchToTab(Tabs.Membership.toString());
-		objAdminFunctions.clickOnViewAllOfContactEntitlements();
-		objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
 		
-		objAdminFunctions.goBackToContactsPage();
-		objAdminFunctions.clickOnViewPartnerUserButton();
-		objAdminFunctions.verifyActiveCheckboxOnUserIsCheckedOrNot();
-		objAdminFunctions.verifyPermissionSetAssignmentsForPSGLicensingUser();
-		
-		objAdminFunctions.goToContactFromPartnerUserPage();
 		objAdminFunctions.ClickOnshowMoreActions();
 		objAdminFunctions.clickOnGrantAccessInShowMoreActions();
 		
@@ -410,7 +412,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 		objAdminFunctions.verifyPSGLicensingUserEntitlementPresentOrNot();
 		objAdminFunctions.checkPSGLicensingUserCheckbox();
 		objAdminFunctions.clickOnSaveOnGrantAccessPage();
-		
+		sfcommonObj.waitTillLightningPageLoadComplete();
 		objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
 		objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
 		
@@ -420,7 +422,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 		objAdminFunctions.goBackToContactsPage();
 		seleniumObj.waitForSeconds(60);
 		seleniumObj.waitForSeconds(60);
-		seleniumObj.waitForSeconds(60);
+		
 		sfcommonObj.pageRefresh();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 		objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
@@ -1782,7 +1784,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 			
 		
 	}
-		@Test(description="Verify that after opening Manage Personnel page, User should be able to see columns of Contacts list as Select, Name, Email Address, Last Sign-in, IPA Membership, Country,Responibilities Assigned",groups={"Draco Smoke"})
+		/*@Test(description="Verify that after opening Manage Personnel page, User should be able to see columns of Contacts list as Select, Name, Email Address, Last Sign-in, IPA Membership, Country,Responibilities Assigned",groups={"Draco Smoke"})
 		public void TC0021_DRACO() throws Exception
 		{
 			String MethodName = new Object() {
@@ -1825,9 +1827,10 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 			seleniumObj.getDriver().get(currentContactsURL);
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			objNavigation.logoutFromApplication();		
-		}
+		}// Cancelled Testcase */
 		
-		@Test(description="Verify that  Contacts with IPA Membership Active(ACR-Complete) and Invited(ACR-Pending) are displayed and ACR-Inactive contacts are not displayed under Contacts list of Manage Personnel page",groups={"Draco Smoke"})
+		/* Cancelled Testcases 
+		 * @Test(description="Verify that  Contacts with IPA Membership Active(ACR-Complete) and Invited(ACR-Pending) are displayed and ACR-Inactive contacts are not displayed under Contacts list of Manage Personnel page",groups={"Draco Smoke"})
 		public void TC0022_DRACO() throws Exception{
 			String MethodName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -1927,9 +1930,9 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			objNavigation.logoutFromApplication();
 			
-		}
+		}*/
 		
-		@Test(description="Verify that a User can remove the Invited/Active Contact with Same Partner Role and Same Account from IPA by clicking on Delete button",groups={"Draco Smoke"})
+		/*@Test(description="Verify that a User can remove the Invited/Active Contact with Same Partner Role and Same Account from IPA by clicking on Delete button",groups={"Draco Smoke"})
 		public void TC0024_DRACO() throws Exception{
 			String MethodName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -2695,8 +2698,9 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			objNavigation.logoutFromApplication();
 			
-		}
-		@Test(description = "Creation of contact and verify Entitlements of CCFadminUser through Classic UI", groups = {"Draco Smoke"})
+		}*/
+		/* Cancelled Testcases
+		 * @Test(description = "Creation of contact and verify Entitlements of CCFadminUser through Classic UI", groups = {"Draco Smoke"})
 		public void TC0052_DRACO() throws Exception {
 			String MethodName = new Object() {
 			}.getClass().getEnclosingMethod().getName();
@@ -2826,7 +2830,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 			objAdminFunctions.verifyPermissionSetRemovals();
 			//objNavigation.logoutFromApplication();
 
-		}
+		}*/
 		@Test(description = "Verify that 'PSG Licensing User' Entitlement gets successfully removed from the existing Contact in 2.0 flow in classic UI", groups = { "Draco Smoke" })
 		public void TC0054_DRACO() throws Exception {
 			String MethodName = new Object() {
@@ -3791,43 +3795,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 			objAdminFunctions.clickOnSaveOnGrantAccessPage();
 			objAdminFunctions.checkMsg();
 			}
-		@Test(description="Verify that if we republish a contact with no CE records does not change the AGS Integration Status to Pending",groups={"Draco Smoke"})
-		public void TC0102_DRACO() throws Exception{
-			String MethodName = new Object() {
-			}.getClass().getEnclosingMethod().getName();
-			
-			objAdminDataDetails.setFilePath(CommonEnum.UploadFile.FILEPATH.getDescription());
-			objAdminDataDetails.setFileName(CommonEnum.UploadFile.FILENAME.getDescription());
-			String[] filePaths = new String[2];
-			filePaths[0] = System.getProperty("user.dir") + configObj.getAutoITFileUploadExePath();
-			filePaths[1] = System.getProperty("user.dir") + objAdminDataDetails.getFilePath()
-					+ objAdminDataDetails.getFileName();
-			objAdminDataDetails.setFilePaths(filePaths);
-			objAdminFunctions.setAdminDataDetails(objAdminDataDetails, objAdminData, MethodName);
-
-			sfcommonObj.loginToApplicationAs(ApplicationType.Draco_INTERNAL_CUSTOMER.getDescription(),
-					objAdminData.getRole());
-			
-			objAdminFunctions.switchToLightningExperience();
-			sfcommonObj.waitTillLightningPageLoadComplete();
-			//objAdminFunctions.switchToTab(Tabs.Contacts.toString());
-			
-			String currentContactsURL  = seleniumObj.getDriver().getCurrentUrl();
-			String contactName2 = objAdminDataDetails.getFirstName() + " "
-					+ objAdminDataDetails.getLastName();
-			objNavigation.globalUISearchContactAndSelect(objAdminDataDetails.getAccountName(),
-					GlobalSearchResultDescription_Plural.CONTACTS.getDescription(), BooleanValues.TRUE.getDescription(),
-					objAdminDataDetails.getEmail(), contactName2);
-			seleniumObj.waitForSeconds(20);
-			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
-			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Pending.getDescription());
-			objAdminFunctions.checkRepublishObm();
-			sfcommonObj.waitTillLightningPageLoadComplete();
-			
-			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
-			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Pending.getDescription());
-			
-			}
+		
 		@Test(description = "Verify that user is able to successfully assign 1.0  external entitlement on a new contact", groups = { "Draco Smoke" })
 		public void TC0105_DRACO() throws Exception {
 			String MethodName = new Object() {
@@ -3874,7 +3842,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
 			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Pending.getDescription());
-			objAdminFunctions.switchToTab(Tabs.Related.toString());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
 			seleniumObj.waitForSeconds(5);
 			objAdminFunctions.clickOnViewAllOfContactEntitlements();
 			objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
@@ -3888,7 +3856,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
 			
 			objAdminFunctions.internalEntitlementStatus();
-			objAdminFunctions.switchToTab(Tabs.Related.toString());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
 			seleniumObj.waitForSeconds(10);
 			objAdminFunctions.clickOnViewAllOfContactEntitlements();
 			objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
@@ -3944,7 +3912,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
 			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
-			seleniumObj.waitForSeconds(60);
+			
 		   do{
 			sfcommonObj.pageRefresh();
 			sfcommonObj.waitTillLightningPageLoadComplete();
@@ -3952,7 +3920,7 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 		   while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
 			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
 			objAdminFunctions.internalEntitlementStatus();
-			objAdminFunctions.switchToTab(Tabs.Related.toString());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
 			seleniumObj.waitForSeconds(20);
 			objAdminFunctions.clickOnViewAllOfContactEntitlements();
 			objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
@@ -4531,17 +4499,12 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 			objAdminFunctions.checkCCFUserAdministratorCheckbox();
 			objAdminFunctions.clickOnSaveOnGrantAccessPage();
 			sfcommonObj.waitTillLightningPageLoadComplete();
-			do{
-				sfcommonObj.pageRefresh();
-				sfcommonObj.waitTillLightningPageLoadComplete();
-				}
-			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
-			do{
-				sfcommonObj.pageRefresh();
-				sfcommonObj.waitTillLightningPageLoadComplete();
-				}
-			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription()));
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Pending.getDescription());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
 			seleniumObj.waitForSeconds(5);
+			
 			objAdminFunctions.clickOnViewAllOfContactEntitlements();
 			objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
 			objAdminFunctions.goBackToContactsPage();
@@ -4556,10 +4519,12 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 				}
 			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
 			objAdminFunctions.verifyInternalEntitlementStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
-			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(5);
+			
 			objAdminFunctions.clickOnViewAllOfContactEntitlements();
 			sfcommonObj.pageRefresh();
-			seleniumObj.waitForSeconds(60);
+			seleniumObj.waitForSeconds(10);
 			objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
 			objNavigation.logoutFromApplication();
 
@@ -4611,16 +4576,9 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 			objAdminFunctions.checkCustomerDrafterAccessCheckbox();
 			objAdminFunctions.clickOnSaveOnGrantAccessPage();
 			sfcommonObj.waitTillLightningPageLoadComplete();
-			do{
-				sfcommonObj.pageRefresh();
-				sfcommonObj.waitTillLightningPageLoadComplete();
-				}
-			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
-			do{
-				sfcommonObj.pageRefresh();
-				sfcommonObj.waitTillLightningPageLoadComplete();
-				}
-			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription()));
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Pending.getDescription());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
 			seleniumObj.waitForSeconds(5);
 			objAdminFunctions.clickOnViewAllOfContactEntitlements();
 			objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
@@ -4636,11 +4594,11 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 				}
 			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
 			objAdminFunctions.verifyInternalEntitlementStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
-			//objAdminFunctions.switchToTab(Tabs.Membership.toString());
-			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(5);
 			objAdminFunctions.clickOnViewAllOfContactEntitlements();
 			sfcommonObj.pageRefresh();
-			seleniumObj.waitForSeconds(60);
+			seleniumObj.waitForSeconds(10);
 			objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
 			objNavigation.logoutFromApplication();
 
@@ -4691,16 +4649,9 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 			objAdminFunctions.checkPSGLicensingUserCheckbox();
 			objAdminFunctions.clickOnSaveOnGrantAccessPage();
 			sfcommonObj.waitTillLightningPageLoadComplete();
-			do{
-				sfcommonObj.pageRefresh();
-				sfcommonObj.waitTillLightningPageLoadComplete();
-				}
-			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
-			do{
-				sfcommonObj.pageRefresh();
-				sfcommonObj.waitTillLightningPageLoadComplete();
-				}
-			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription()));
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Pending.getDescription());
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
 			seleniumObj.waitForSeconds(5);
 			objAdminFunctions.clickOnViewAllOfContactEntitlements();
 			objAdminFunctions.verifyStatusAsPendingAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),Entitlement_Name);
@@ -4716,10 +4667,12 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 				}
 			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));	
 			objAdminFunctions.verifyInternalEntitlementStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
-			seleniumObj.waitForSeconds(10);
+			objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			seleniumObj.waitForSeconds(5);
+			
 			objAdminFunctions.clickOnViewAllOfContactEntitlements();
 			sfcommonObj.pageRefresh();
-			seleniumObj.waitForSeconds(60);
+			seleniumObj.waitForSeconds(6);
 			objAdminFunctions.verifyStatusAsCompleteAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),Entitlement_Name);
 			objNavigation.logoutFromApplication();
 

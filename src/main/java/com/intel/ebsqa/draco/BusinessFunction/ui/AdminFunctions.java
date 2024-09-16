@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -603,7 +604,9 @@ public class AdminFunctions extends TestBase {
 			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getAccountName())) {
 				this.enterAndselectAccountName(objAdminDataDetails.getAccountName());
 			}
-            
+			if (!StringUtils.isNullOrBlank(objAdminDataDetails.getCountry())) {
+				this.enterAndselectMailingCountry(objAdminDataDetails.getCountry());
+			}
 			this.clickSave();
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			log.info(" createNewContact Successfully Done");
@@ -782,6 +785,7 @@ public class AdminFunctions extends TestBase {
 
 			objOperationPageClass.clickOnGrantAccessInShowMoreActions();
 			sfcommonObj.waitTillLightningPageLoadComplete();
+			sfcommonObj.pageRefresh();
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			seleniumObj.getDriver().switchTo().frame(0);
 			sfcommonObj.waitTillLightningPageLoadComplete();
@@ -1030,8 +1034,7 @@ public class AdminFunctions extends TestBase {
 		
 		}
 		seleniumObj.waitForSeconds(5);
-		seleniumObj.pageRefresh();
-		seleniumObj.waitForSeconds(5);
+		
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
@@ -1140,6 +1143,7 @@ public class AdminFunctions extends TestBase {
 					Assert.fail(e.getClass().getSimpleName() + " : " + "checkebox is not selected for the entitlement");
 				}		
 		}
+		this.goBackToContactsPage();
 	}
 	
 	/**
@@ -2262,6 +2266,9 @@ public class AdminFunctions extends TestBase {
 	 */
 	public void expandIntelPartnerAlliance() throws TimeOutException {
 		try {
+			/*JavascriptExecutor js = (JavascriptExecutor) driver;
+			js.executeScript("window.scrollBy(0,350)", "");*/
+			
 			objOperationPageClass.expandIntelPartnerAlliance();
 			log.info("Succussfully expandIntelPartnerAlliance");
 		}
@@ -4512,6 +4519,40 @@ public class AdminFunctions extends TestBase {
 		}
 		
 		
+		/**
+		 * @Description Method to enterAndselectMailing Country
+		 * @Author AmartyaX
+		 * @Since 10-Sep-2024
+		 * @throws TimeOutException
+		 */
+		public void enterAndselectMailingCountry(String Country) throws TimeOutException {
+			try {
+				this.enterMailingCountry(Country);
+				
+				log.info("Succussfully enter And select Country");
+			}
 
+			catch (Exception ex) {
+				Assert.fail("Not able to enter And selectCountry. " + ex.getMessage());
 
+			}
+		}
+		/**
+		 * @Description Method to enterMailing Country
+		 * @Author AmartyaX
+		 * @Since 10-Sep-2024
+		 * @throws TimeOutException
+		 */
+		public void enterMailingCountry(String Country) throws TimeOutException {
+			try {
+
+				objOperationPageClass.enterAndSelectMailingCountry(Country);
+				log.info("Succussfully enter Mailing Country");
+			}
+
+			catch (Exception ex) {
+				Assert.fail("Not able to enter Mailing COuntry. " + ex.getMessage());
+
+			}
+		}
 }
