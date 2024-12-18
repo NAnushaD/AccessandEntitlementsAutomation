@@ -223,6 +223,7 @@ public class ExternalApplicationNavigationPageClass extends TestBase {
 		}
 	}
 
+
 	public void clickOnUserMenuLink() {
 		seleniumObj.click(userMenuLink);
 	}

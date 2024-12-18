@@ -451,9 +451,35 @@ public class CommonEnum {
                    @AllArgsConstructor
                    @Getter
                    public enum IntegrationStatus {
-                        IN_PROGRESS("In-Progress"),Successful("Successful"),Pending("Pending"),Complete("Complete");
+                        IN_PROGRESS("In-Progress"),Successful("Successful"),Pending("Pending"),Complete("Complete"),Failed("Failed");
 
                          private final String description;
                    }
+                   /**
+                    * @Description Enum for Escalation Record type
+                    * @author priti Since 23-Sept-2024
+                    */
+                    @AllArgsConstructor
+                    @Getter
+                    public enum InternalEntitlementErrorMsg {
+					User_Record_Inactive("User Record Inactive"),
+					User_Record_Not_Available("User Record Not Available");
+                        
+
+                          private final String description;
+                    }
+                   /**
+                    * @Description Enum for Escalation Record type
+                    * @author priti Since 23-Sept-2024
+                    */
+                    @AllArgsConstructor
+                    @Getter
+                    public enum UpdateReasonInContactEntitlement {
+					User_Record_Inactive("User record Inactive"),
+					User_Record_Not_Available("User record not Available");
+                        
+
+                          private final String description;
+                    }
 }
 

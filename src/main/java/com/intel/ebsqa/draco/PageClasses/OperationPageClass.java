@@ -2,6 +2,7 @@ package com.intel.ebsqa.draco.PageClasses;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -410,11 +411,15 @@ public class OperationPageClass extends TestBase {
 	}
 	public void enterEmailContact(String searchText) {
 		try {
+			Random randomGenerator = new Random();
+			int randomInt = randomGenerator.nextInt(2000);
+			String Email=searchText+randomInt+"@mailinator.com";
+			System.out.println(Email);
 			seleniumObj.waitForElement(email, 4, 4);
 			seleniumObj.scrollToElement(email);
 			email.click();
 			email.clear();
-			email.sendKeys(searchText);
+			email.sendKeys(Email);
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			log.info("Entered text in email textbox : " + searchText);
 		} catch (Exception e) {
@@ -539,7 +544,7 @@ public class OperationPageClass extends TestBase {
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
 	
-	@FindBy(xpath = "//*[contains(text(),'Consolidated Co-marketing Platform')]/parent::div/div/div[@class='headerPlusMinusIcon']")
+	@FindBy(xpath = "//*[contains(text(),'Intel® Partner Investment Center')]/parent::div/div/div[@class='headerPlusMinusIcon']")
 	public WebElement consolidatedPlatform;
 
 	public void expandConsolidatedPlatform() {
@@ -659,7 +664,8 @@ public class OperationPageClass extends TestBase {
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
 	
-	@FindBy(xpath = "//*[text()='CCF User Administrator']")
+	//@FindBy(xpath = "//*[text()='CCF User Administrator']")
+	@FindBy(xpath ="//*[text()='Client User Administrator']")
 	public WebElement CCFUserAdministrator;
 
 	public boolean verifyCCFUserAdministratorPresentOrNot() {
@@ -669,7 +675,8 @@ public class OperationPageClass extends TestBase {
 		return CCFUserAdministrator.isDisplayed();
      }
 	
-	@FindBy(xpath = "(//*[text()='CCF User Administrator']/following::span[@class='slds-checkbox--faux'])[1]")
+	//@FindBy(xpath = "(//*[text()='CCF User Administrator']/following::span[@class='slds-checkbox--faux'])[1]")
+	@FindBy(xpath = "(//*[text()='Client User Administrator']/following::span[@class='slds-checkbox--faux'])[1]")
 	public WebElement CCFUserAdministratorCheckbox;
 
 	public void checkCCFUserAdministratorCheckbox() {
@@ -866,7 +873,7 @@ public class OperationPageClass extends TestBase {
 	
 	public void ClickOnEntitlementRecordElement(String elememnt) {
 		
-    	WebElement ele = seleniumObj.getDriver().findElement(By.xpath("(//a[text()='"+elememnt+"']//ancestor::tr//following::a)[1]"));
+    	WebElement ele = seleniumObj.getDriver().findElement(By.xpath("(//span[text()='"+elememnt+"']//ancestor::tr//following::a)[1]"));
 		executor.executeScript("arguments[0].click();", ele);
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
@@ -1048,7 +1055,8 @@ public class OperationPageClass extends TestBase {
 		 public void expandIntelPartnerAlliance() {
 		 		seleniumObj.waitForElement(IntelPartnerAlliance, 4, 4);
 		 		seleniumObj.scrollToElement(IntelPartnerAlliance);
-		 		IntelPartnerAlliance.click();
+		 		executor.executeScript("window.scrollBy(0,250)", "");
+		 		executor.executeScript("arguments[0].click();", IntelPartnerAlliance);
 		 		sfcommonObj.waitTillLightningPageLoadComplete();
 		 }
 		
@@ -1126,7 +1134,8 @@ public class OperationPageClass extends TestBase {
 			}
 		}
 		
-		@FindBy(xpath = "//button[text()='Log in to Experience as User']")
+		//@FindBy(xpath = "//button[text()='Log in to Experience as User']")
+		@FindBy(xpath ="(//span[text()='Log in to Experience as User'])[1]")
 		public WebElement LogintoExperienceasUserButton;
 
 		public void clickOnLogintoExperienceasUserButton() {
@@ -1585,7 +1594,7 @@ public class OperationPageClass extends TestBase {
 
 			}
 			
-			@FindBy(xpath = "//*[text()='CCF Activity Submitter']")
+			@FindBy(xpath = "//*[text()='CCF Boost Activity Submitter']") ////*[text()='CCF Activity Submitter']
 			public WebElement CCFActivitySubmitter;
 
 			public boolean verifyCCFActivitySubmitterPresentOrNot() {
@@ -1596,7 +1605,7 @@ public class OperationPageClass extends TestBase {
 
 			}
 			
-			@FindBy(xpath = "(//*[text()='CCF Activity Submitter']/following::span[@class='slds-checkbox--faux'])[1]")
+			@FindBy(xpath = "(//*[text()='CCF Boost Activity Submitter']/following::span[@class='slds-checkbox--faux'])[1]") //(//*[text()='CCF Activity Submitter']/following::span[@class='slds-checkbox--faux'])[1]
 			public WebElement CCFActivitySubmitterCheckbox;
 
 			public void checkCCFActivitySubmitterCheckbox() {
@@ -1904,7 +1913,8 @@ public class OperationPageClass extends TestBase {
 					sfcommonObj.waitTillLightningPageLoadComplete();
 
 			}
-			@FindBy(xpath = "//button[@class='slds-button slds-button_brand']")
+			 
+			@FindBy(xpath = "//commandbutton[text()='Ok']") ////button[@class='slds-button slds-button_brand']
 			public WebElement OkBtn;
 
 			public void ClickOkBtn() {
@@ -2431,7 +2441,7 @@ public class OperationPageClass extends TestBase {
 					ResellerCheckbox.click();
 					sfcommonObj.waitTillLightningPageLoadComplete();
 				}
-				 @FindBy(xpath = "//td/span/ul/li[3]")
+				 @FindBy(xpath = "//td/div")
 					public WebElement ErrorAfterSAVEOnGrantAccessPage;
 				 
 				public boolean verifyErrorAfterSAVEOnGrantAccessPage() {
@@ -2483,7 +2493,7 @@ public class OperationPageClass extends TestBase {
 				return ERRORmsgAfterSAVEOnGrantAccessPage.isDisplayed();
 			}
 			
-			@FindBy(xpath = "//*[contains(text(),'IntelÂ® Partner Investment ')]/parent::div/div/div[@class='headerPlusMinusIcon']")
+			@FindBy(xpath = "//*[contains(text(),'Intel® Partner Investment Center')]/parent::div/div/div[@class='headerPlusMinusIcon']")
 			public WebElement IntelPartnerInvestmentCenter;
 
 			public void expandIntelPartnerInvestmentCenter() {
@@ -2623,6 +2633,28 @@ public class OperationPageClass extends TestBase {
 				System.out.println("AGS Integration Status Not Show Pending");
 				
 			}
+			@FindBy(xpath = "(//label[text()='Mailing Country/Region']//following::div/input)[1]")
+			public WebElement mailingCountry;
+			@FindBy(xpath = "//lightning-base-combobox-item[@data-value='ALB']")
+			public WebElement SelectmailingCountry;
+		    public void enterAndSelectMailingCountry(String Country) {
+			seleniumObj.waitForElement(mailingCountry, 4, 4);
+			seleniumObj.scrollToElement(mailingCountry);
+			mailingCountry.click();
+			seleniumObj.waitForElement(SelectmailingCountry, 4, 4);
+			seleniumObj.scrollToElement(SelectmailingCountry);
+			SelectmailingCountry.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
 
+		}
+		    @FindBy(xpath = "//*[contains(text(),'Intel On Demand')]/parent::div/div/div[@class='headerPlusMinusIcon']")
+			public WebElement IntelOnDemand;
+			public void expandIntelOnDemand() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(IntelOnDemand, 4, 4);
+				seleniumObj.scrollToElement(IntelOnDemand);
+				IntelOnDemand.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
 		
 }

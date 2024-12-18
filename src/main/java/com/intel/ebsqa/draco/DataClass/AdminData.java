@@ -143,6 +143,7 @@ public class AdminData {
 		public String email2;
 		public String Country;
 		public String accountName;
+		public String mailingCountry;
 		public String nonExistingEmail;
 		public String ExistingEmail;
 		public String firstName2;
