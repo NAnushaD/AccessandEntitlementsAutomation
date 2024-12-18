@@ -13,18 +13,28 @@
 		<classes>
 			<class name="com.intel.ebsqa.draco.Testscripts.ui.EntitlementAssignmentonNewContactValidationTest">
 				<methods>					
-					<include name="TC0001_DRACO" />	
-					<include name="TC0002_DRACO" />	
-					<include name="TC0004_DRACO" />	
+					<!-- <include name="TC0001_DRACO" />	
+					<include name="TC0002_DRACO" />	 -->
 					<include name="TC0003_DRACO" />	
+					<include name="TC0004_DRACO" />	
+					
 					<include name="TC0005_DRACO" />	
 					<include name="TC0006_DRACO" />	
 					<include name="TC0007_DRACO" />	
 					<include name="TC0008_DRACO" />	
 					<include name="TC0009_DRACO" />	 
+					<include name="TC0010_DRACO" />	
+					<include name="TC0011_DRACO" />	
+					<include name="TC0012_DRACO" />	
+					<include name="TC0013_DRACO" />	
+					<include name="TC0014_DRACO" />	
+					<include name="TC0015_DRACO" />	
+					<include name="TC0016_DRACO" />	 
+					<include name="TC0017_DRACO" />	
+					<include name="TC0018_DRACO" />	
 					<include name="TC0019_DRACO" />	
 					<include name="TC0020_DRACO" />	
-					<include name="TC0021_DRACO" />	
+					<!-- <include name="TC0021_DRACO" />	
 					<include name="TC0022_DRACO" />	
 					<include name="TC0023_DRACO" />	
 					<include name="TC0024_DRACO" />	
@@ -42,7 +52,7 @@
 					<include name="TC0037_DRACO" />	
 					<include name="TC0038_DRACO" />	
 					<include name="TC0052_DRACO" />
-					<include name="TC0053_DRACO" />
+					<include name="TC0053_DRACO" /> -->
 					<include name="TC0054_DRACO" />
 					<include name="TC0055_DRACO" />
 					<include name="TC0056_DRACO" />
@@ -91,13 +101,19 @@
 					<include name="TC0099_DRACO" />	
 					<include name="TC0100_DRACO" />	
 					<include name="TC0101_DRACO" />	
-					
+					<include name="TC0103_DRACO" />	
+					<include name="TC0104_DRACO" />
 					<include name="TC0105_DRACO" />	
 					<include name="TC0106_DRACO" />	 	
-					<include name="TC0100_DRACO" />	
-					<include name="TC0103_DRACO" />	
-					<include name="TC0104_DRACO" />	
 					<include name="TC0107_DRACO" />
+					<include name="TC0108_DRACO" />	
+					<include name="TC0109_DRACO" />	 	
+					<include name="TC0110_DRACO" />	
+					<include name="TC0111_DRACO" />	
+					<include name="TC0112_DRACO" />	
+					<include name="TC0113_DRACO" />
+					<include name="TC0114_DRACO" />	
+					<include name="TC0115_DRACO" />
 				</methods>
 			</class>	
 		</classes>
