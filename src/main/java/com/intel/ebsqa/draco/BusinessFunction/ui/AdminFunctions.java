@@ -861,7 +861,6 @@ public class AdminFunctions extends TestBase {
 			Assert.assertTrue(objOperationPageClass.verifyCCFUserAdministratorPresentOrNot(), "CCF User Adm is not present");
 			log.info("Succussfully verifyCCFUserAdministratorPresentOrNot");
 		}
-
 		catch (Exception ex) {
 			Assert.fail("Not able to verifyCCFUserAdministratorPresentOrNot. " + ex.getMessage());
 
@@ -1129,13 +1128,17 @@ public class AdminFunctions extends TestBase {
 			}
 		
 		}
-		seleniumObj.waitForSeconds(5);
+		seleniumObj.pageRefresh();
+		seleniumObj.waitForSeconds(10);
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-				WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::input)[1]"));
-				String status=ele.getAttribute("checked");
-				if(status.contentEquals("true"))
+				WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='Checked'])[1]"));
+//				String status=ele.getAttribute("checked");
+//				if(status.contentEquals("true"))
+//					System.out.println("checkbox is selected for the entitlement");
+//				}
+				if(!(ele.isSelected()))
 					System.out.println("checkbox is selected for the entitlement");
 				}
 				catch (Exception e) {
@@ -1160,8 +1163,7 @@ public class AdminFunctions extends TestBase {
 			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+ Entitlement_Name.get(i) +"'])[1]"));
 			if(ele.isDisplayed())
 				System.out.println("Entitlements is displayed");
-			}
-			catch (Exception e) {
+			}catch (Exception e) {
 				log.info("Entitlements is not displayed" + e.getMessage());
 				Assert.fail(e.getClass().getSimpleName() + " : " + "Entitlements is not displayed");
 			}
@@ -1184,9 +1186,10 @@ public class AdminFunctions extends TestBase {
 		}
 		seleniumObj.waitForSeconds(5);
 		for(int i=0;i<Entitlement_Name.size();i++)
-		{
+		{	
 			try {
-			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='True'])[1]"));
+			//WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='True'])[1]"));
+			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::input)[1]"));
 			if(!(ele.isSelected()))
 				System.out.println("checkbox is selected for the entitlement");
 			}
@@ -4553,6 +4556,34 @@ public class AdminFunctions extends TestBase {
 			catch (Exception ex) {
 				Assert.fail("Not able to enter Mailing COuntry. " + ex.getMessage());
 
+			}
+		}
+		public void verifyInternalEntitlementMsg(String Msg) {
+			try{
+				WebElement ErrorMsg = seleniumObj.getDriver().findElement(By.xpath("//span[text()='Entitlement Assignment Message']//following::lightning-formatted-text[1]"));
+				seleniumObj.scrollToElement(ErrorMsg);
+				String ErrorMsgText = ErrorMsg.getText();
+				if(ErrorMsgText.contains(Msg))
+				{
+					System.out.println("Error Msg is Expected");
+				}
+				
+			}catch (Exception ex) {
+				Assert.fail("Not able to verify error msg " + ex.getMessage());
+
+			}
+			
+		}
+		public void expandOnIntelOnDemand() {
+			// TODO Auto-generated method stub
+			try {
+				objOperationPageClass.expandIntelOnDemand();
+				log.info("Succussfully expandOnIntelOnDemand");
+			}
+ 
+			catch (Exception ex) {
+				Assert.fail("Not able to expandOnIntelOnDemand. " + ex.getMessage());
+ 
 			}
 		}
 }

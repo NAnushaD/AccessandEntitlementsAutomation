@@ -664,7 +664,8 @@ public class OperationPageClass extends TestBase {
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
 	
-	@FindBy(xpath = "//*[text()='CCF User Administrator']")
+	//@FindBy(xpath = "//*[text()='CCF User Administrator']")
+	@FindBy(xpath ="//*[text()='Client User Administrator']")
 	public WebElement CCFUserAdministrator;
 
 	public boolean verifyCCFUserAdministratorPresentOrNot() {
@@ -674,7 +675,8 @@ public class OperationPageClass extends TestBase {
 		return CCFUserAdministrator.isDisplayed();
      }
 	
-	@FindBy(xpath = "(//*[text()='CCF User Administrator']/following::span[@class='slds-checkbox--faux'])[1]")
+	//@FindBy(xpath = "(//*[text()='CCF User Administrator']/following::span[@class='slds-checkbox--faux'])[1]")
+	@FindBy(xpath = "(//*[text()='Client User Administrator']/following::span[@class='slds-checkbox--faux'])[1]")
 	public WebElement CCFUserAdministratorCheckbox;
 
 	public void checkCCFUserAdministratorCheckbox() {
@@ -871,7 +873,7 @@ public class OperationPageClass extends TestBase {
 	
 	public void ClickOnEntitlementRecordElement(String elememnt) {
 		
-    	WebElement ele = seleniumObj.getDriver().findElement(By.xpath("(//a[text()='"+elememnt+"']//ancestor::tr//following::a)[1]"));
+    	WebElement ele = seleniumObj.getDriver().findElement(By.xpath("(//span[text()='"+elememnt+"']//ancestor::tr//following::a)[1]"));
 		executor.executeScript("arguments[0].click();", ele);
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
@@ -1132,7 +1134,8 @@ public class OperationPageClass extends TestBase {
 			}
 		}
 		
-		@FindBy(xpath = "//button[text()='Log in to Experience as User']")
+		//@FindBy(xpath = "//button[text()='Log in to Experience as User']")
+		@FindBy(xpath ="(//span[text()='Log in to Experience as User'])[1]")
 		public WebElement LogintoExperienceasUserButton;
 
 		public void clickOnLogintoExperienceasUserButton() {
@@ -1591,7 +1594,7 @@ public class OperationPageClass extends TestBase {
 
 			}
 			
-			@FindBy(xpath = "//*[text()='CCF Activity Submitter']")
+			@FindBy(xpath = "//*[text()='CCF Boost Activity Submitter']") ////*[text()='CCF Activity Submitter']
 			public WebElement CCFActivitySubmitter;
 
 			public boolean verifyCCFActivitySubmitterPresentOrNot() {
@@ -1602,7 +1605,7 @@ public class OperationPageClass extends TestBase {
 
 			}
 			
-			@FindBy(xpath = "(//*[text()='CCF Activity Submitter']/following::span[@class='slds-checkbox--faux'])[1]")
+			@FindBy(xpath = "(//*[text()='CCF Boost Activity Submitter']/following::span[@class='slds-checkbox--faux'])[1]") //(//*[text()='CCF Activity Submitter']/following::span[@class='slds-checkbox--faux'])[1]
 			public WebElement CCFActivitySubmitterCheckbox;
 
 			public void checkCCFActivitySubmitterCheckbox() {
@@ -1910,7 +1913,8 @@ public class OperationPageClass extends TestBase {
 					sfcommonObj.waitTillLightningPageLoadComplete();
 
 			}
-			@FindBy(xpath = "//button[@class='slds-button slds-button_brand']")
+			 
+			@FindBy(xpath = "//commandbutton[text()='Ok']") ////button[@class='slds-button slds-button_brand']
 			public WebElement OkBtn;
 
 			public void ClickOkBtn() {
@@ -2643,5 +2647,14 @@ public class OperationPageClass extends TestBase {
 			sfcommonObj.waitTillLightningPageLoadComplete();
 
 		}
+		    @FindBy(xpath = "//*[contains(text(),'Intel On Demand')]/parent::div/div/div[@class='headerPlusMinusIcon']")
+			public WebElement IntelOnDemand;
+			public void expandIntelOnDemand() {
+				// TODO Auto-generated method stub
+				seleniumObj.waitForElement(IntelOnDemand, 4, 4);
+				seleniumObj.scrollToElement(IntelOnDemand);
+				IntelOnDemand.click();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
 		
 }
