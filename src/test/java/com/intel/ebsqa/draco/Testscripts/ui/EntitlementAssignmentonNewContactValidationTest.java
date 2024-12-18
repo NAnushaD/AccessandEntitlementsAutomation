@@ -1211,7 +1211,6 @@ public class EntitlementAssignmentonNewContactValidationTest extends TestBase {
 		objNavigation.logoutFromApplication();
 
 	}
-	
 	/**
 	 * Verify that User can Assign entitlement for the Contacts in their Agency Accounts
 	 * @throws Exception 
