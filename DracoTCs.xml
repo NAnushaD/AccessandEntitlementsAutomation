@@ -114,6 +114,14 @@
 					<include name="TC0113_DRACO" />
 					<include name="TC0114_DRACO" />	
 					<include name="TC0115_DRACO" />
+					<!-- Nivetha TC -->
+					<include name = "TC10001_DRACO"/>
+					<include name = "TC10002_DRACO"/>
+					<include name = "TC10003_DRACO"/>
+					<include name = "TC10004_DRACO"/>
+					<include name = "TC10005_DRACO"/>
+					<include name = "TC10006_DRACO"/>
+					<include name = "TC10021_DRACO"/>
 				</methods>
 			</class>	
 		</classes>

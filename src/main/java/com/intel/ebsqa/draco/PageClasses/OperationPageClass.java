@@ -54,31 +54,32 @@ public class OperationPageClass extends TestBase {
 	@FindBy(xpath = "//label[text()='Email']/following::input[@name='con15']")
 	public WebElement emailclassic;
 	
-	@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='CCP CCF USER'])[1]")
+	@FindBy(xpath = "(//*[text()='Permission Set Assignments']//following::a[text()='CCP CCF USER'])[1]")
 	public WebElement cCPCCFuser;
 	
-	@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='CCP External User Admin'])[1]")
+	@FindBy(xpath = "(//*[text()='Permission Set Assignments']//following::a[text()='CCP External User Admin'])[1]")
    	public WebElement cCPExternalUser;
 	
 	@FindBy(xpath = "(//h3[text()='Permission Set Assignments']//following::th[text()='No records to display'])[1]")
 	public WebElement nORecordToDisplay;
 	
-	@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='PSG External - License User'])[1]")
-   	public WebElement pSGExternalUser;
+	//@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='PSG External - License User'])[1]")
+   	@FindBy(xpath="(//*[text()='Permission Set Assignments']//following::a[text()='PSG External - License User'])[1]")
+	public WebElement pSGExternalUser;
 	
-	@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='CPQ Managed License User'])[1]")
+	@FindBy(xpath = "(//*[text()='Permission Set Assignments']//following::a[text()='CPQ Managed License User'])[1]")
    	public WebElement CPQManagedLicenseUser;
 	
-	@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='PSG External - Disty'])[1]")
+	@FindBy(xpath = "(//*[text()='Permission Set Assignments']//following::a[text()='PSG External - Disty'])[1]")
    	public WebElement PSGExternalDisty;
 	
-	@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='Tender Partner Drafter Access'])[1]")
+	@FindBy(xpath = "(//*[text()='Permission Set Assignments']//following::a[text()='Tender Partner Drafter Access'])[1]")
    	public WebElement TenderPartnerDrafterAccess;
 	
-	@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='UCD ACM Foundation Access'])[1]")
+	@FindBy(xpath = "(//*[text()='Permission Set Assignments']//following::a[text()='UCD ACM Foundation Access'])[1]")
    	public WebElement FoundationAccess;
 	
-	@FindBy(xpath = "(//*[text()='Permission Set Label']//following::a[text()='PMP External - Employee'])[1]")
+	@FindBy(xpath = "(//*[text()='Permission Set Assignments']//following::a[text()='PMP External - Employee'])[1]")
 	public WebElement Employee;
 	
 	
@@ -444,6 +445,7 @@ public class OperationPageClass extends TestBase {
 	
 
     @FindBy(xpath = "(//label[text()='Account Name']/following::input[@placeholder='Search Accounts...'])[1]")
+	//@FindBy(xpath="(//label[text()='Account Name']/following::input[@name='con4'])[1]")
 	public WebElement accountName;
 
     public void enterAccountName(String account) {
@@ -463,11 +465,15 @@ public class OperationPageClass extends TestBase {
 		showAllResults.click();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 		sfcommonObj.waitTillLightningPageLoadComplete();
+//		WebElement ele = seleniumObj.getDriver().findElement(
+//				By.xpath("(//div[text()='Accounts']/following::a[text()='Account Name']/following::a[@title='"+ account + "'])[1]"));
 		WebElement ele = seleniumObj.getDriver().findElement(
-				By.xpath("(//div[text()='Accounts']/following::a[text()='Account Name']/following::a[@title='"
-						+ account + "'])[1]"));
+				By.xpath("(//span[text()='Account Name'])[last()]//following::lightning-base-formatted-text[text()='"+ account + "'][1]//preceding::span[@class='slds-radio_faux'][1]"));
 		seleniumObj.waitForElement(ele, 5, 5);
 		ele.click();
+		WebElement selectBtn = seleniumObj.getDriver().findElement(By.xpath("//button[text()='Select']"));
+		seleniumObj.waitForElement(selectBtn, 5, 5);
+		selectBtn.click();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 	}
 	
@@ -774,12 +780,23 @@ public class OperationPageClass extends TestBase {
 	
 	@FindBy(xpath = "(//button[text()='View Partner User'])[1]")
 	public WebElement viewPartnerUserButton;
+	
+	@FindBy(xpath = "(//span[text()='View Partner User'])[1]")
+	public WebElement viewPartnerUserButton1;
 
 	public void clickOnViewPartnerUserButton() {
+		try{
 		seleniumObj.waitForElement(viewPartnerUserButton, 4, 4);
 		seleniumObj.scrollToElement(viewPartnerUserButton);
 		viewPartnerUserButton.click();
 		sfcommonObj.waitTillLightningPageLoadComplete();
+		}
+		catch(Exception e){
+			seleniumObj.waitForElement(viewPartnerUserButton1, 4, 4);
+			seleniumObj.scrollToElement(viewPartnerUserButton1);
+			viewPartnerUserButton1.click();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}
 	}
 	
 	@FindBy(xpath="//span[@id='workWithPortalLabel']")
@@ -1914,7 +1931,7 @@ public class OperationPageClass extends TestBase {
 
 			}
 			 
-			@FindBy(xpath = "//commandbutton[text()='Ok']") ////button[@class='slds-button slds-button_brand']
+			@FindBy(xpath = "//button[@class='slds-button slds-button_brand']") ////button[@class='slds-button slds-button_brand']
 			public WebElement OkBtn;
 
 			public void ClickOkBtn() {
