@@ -87,7 +87,9 @@ public class ContactPageClass extends TestBase {
 
 	    }
 		
-	
+		@FindBy(xpath = "((//i[contains(text(),'Please')])/following::*[text()='Ok'])[1]")
+		public WebElement OkBtn;
+
 	 
 	 
 }

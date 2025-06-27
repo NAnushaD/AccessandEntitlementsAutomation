@@ -1133,12 +1133,9 @@ public class AdminFunctions extends TestBase {
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
 			try {
-				WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='Checked'])[1]"));
-//				String status=ele.getAttribute("checked");
-//				if(status.contentEquals("true"))
-//					System.out.println("checkbox is selected for the entitlement");
-//				}
-				if(!(ele.isSelected()))
+				WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::input)[1]"));
+				String status=ele.getAttribute("checked");
+				if(status.contentEquals("true"))
 					System.out.println("checkbox is selected for the entitlement");
 				}
 				catch (Exception e) {
@@ -1312,11 +1309,17 @@ public class AdminFunctions extends TestBase {
 		seleniumObj.waitForSeconds(5);
 		for(int i=0;i<Entitlement_Name.size();i++)
 		{
-			try {
+			/*try {
 			WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::img[@alt='False'])[1]"));
 			if(!(ele.isSelected()))
 				System.out.println("checkbox is Not selected for the entitlement");
-			}
+			}*/
+			try {
+				WebElement ele=seleniumObj.getDriver().findElement(By.xpath("(//*[text()='"+Entitlement_Name.get(i)+"']//following::input)[1]"));
+				String status=ele.getAttribute("checked");
+				if(status.contentEquals("true"))
+					System.out.println("checkbox is selected for the entitlement");
+				}
 			catch (Exception e) {
 				log.info("checkbox is selected for the entitlement" + e.getMessage());
 				Assert.fail(e.getClass().getSimpleName() + " : " + "checkbox is selected for the entitlement");
@@ -1331,7 +1334,7 @@ public class AdminFunctions extends TestBase {
 			objOperationPageClass.ClickOnEntitlementRecordElement(entitlement);
 			objOperationPageClass.validateStatusOfRemovalOfEntitlement();
 			objOperationPageClass.clickOncontactNameInEntitlement();
-			this.switchToTab(Tabs.Membership.toString());
+			this.switchToTab(Tabs.Related.toString());
 			seleniumObj.waitForSeconds(20);
 			this.clickOnViewAllOfContactEntitlements();
 		}

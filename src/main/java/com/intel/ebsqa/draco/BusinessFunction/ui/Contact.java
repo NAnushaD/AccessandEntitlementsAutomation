@@ -205,7 +205,7 @@ public class Contact extends TestBase {
 				objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
 				objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
 			}
-//			objAdminFunctions.switchToTab(Tabs.Membership.toString());
+//			objAdminFunctions.switchToTab(Tabs.Related.toString());
 //			//seleniumObj.waitForSeconds(5);
 //			objAdminFunctions.clickOnViewAllOfContactEntitlements();
 //			this.verifyEntitlementStatusAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Pending.getDescription(),entitlement_Name,isCheckedExpected);
@@ -223,7 +223,7 @@ public class Contact extends TestBase {
 			sfcommonObj.pageRefresh();
 			sfcommonObj.waitTillLightningPageLoadComplete();
 			objAdminFunctions.verifyInternalEntitlementStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
-			objAdminFunctions.switchToTab(Tabs.Membership.toString());
+			objAdminFunctions.switchToTab(Tabs.Related.toString());
 			seleniumObj.waitForSeconds(5);
  
 			objAdminFunctions.clickOnViewAllOfContactEntitlements();
@@ -271,6 +271,7 @@ public class Contact extends TestBase {
 	 */
 	public void verifyPermissionSetAssignment(String expectedValueOfPermissionSet)
 	{
+		objOperationPageClass.ClickOnshowMoreActions();
 		objOperationPageClass.clickOnViewPartnerUserButton();
 		sfcommonObj.waitTillLightningPageLoadComplete();
 		sfcommonObj.waitTillLightningPageLoadComplete();
@@ -308,4 +309,112 @@ public class Contact extends TestBase {
 			}
 		}
 	}
+	
+	/**
+	 * @Description Method to validationsAfterGrandOrRemoveAccessToEntitlement_WithoutPartnerPortal 
+	 * @Author nmurugan
+	 * @Since Sep 19, 2024
+	 * @throws TimeOutException
+	 * @throws InterruptedException 
+	 */
+	public void validationsAfterGrandOrRemoveAccessToEntitlement_WithoutPartnerPortal(List<String> entitlement_Name, boolean isCheckedExpected) throws TimeOutException {
+		try {			
+			
+			//Without Partnal Portal
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			
+			/*do{	sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			do{	sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));*/
+			
+			objAdminFunctions.switchToTab(Tabs.Related.toString());
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			seleniumObj.waitForSeconds(10);
+
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			sfcommonObj.pageRefresh();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			seleniumObj.waitForSeconds(10);
+			this.verifyEntitlementStatusAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),entitlement_Name, isCheckedExpected);
+			objAdminFunctions.goBackToContactsPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}		
+		catch (Exception ex) {
+			Assert.fail("validationsAfterGrandAccessToEntitlement failed" + ex.getMessage());
+		}
+	}
+	/**
+	 * @Description Method to validationsAfterGrandOrRemoveAccessToEntitlement_WithPartnerPortal 
+	 * @Author nmurugan
+	 * @Since Sep 19, 2024
+	 * @throws TimeOutException
+	 * @throws InterruptedException 
+	 */
+	public void validationsAfterGrandOrRemoveAccessToEntitlement_WithPartnerPortal(List<String> entitlement_Name, boolean isCheckedExpected) throws TimeOutException {
+		try {			
+			//With Partner Portal
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.IN_PROGRESS.getDescription());
+			objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Pending.getDescription());
+						
+			do{	sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			while(!objAdminFunctions.verifyERPMIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			do{	sfcommonObj.pageRefresh();
+				sfcommonObj.waitTillLightningPageLoadComplete();
+			}
+			while(!objAdminFunctions.verifyAGSIntegrationStatus(CommonEnum.IntegrationStatus.Successful.getDescription()));
+			//objAdminFunctions.verifyInternalEntitlementStatus(CommonEnum.IntegrationStatus.Successful.getDescription());
+			objAdminFunctions.switchToTab(Tabs.Related.toString());
+			seleniumObj.waitForSeconds(5);
+
+			objAdminFunctions.clickOnViewAllOfContactEntitlements();
+			sfcommonObj.pageRefresh();
+			seleniumObj.waitForSeconds(10);
+			this.verifyEntitlementStatusAndSelectedCheckboxOfContactEntitlements(CommonEnum.IntegrationStatus.Complete.getDescription(),entitlement_Name, isCheckedExpected);
+			objAdminFunctions.goBackToContactsPage();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+		}		
+		catch (Exception ex) {
+			Assert.fail("validationsAfterGrandAccessToEntitlement failed" + ex.getMessage());
+		}
+	}
+	
+	/**
+	 * @Description Method to grandOrRemoveAccessForEntitlement_Multiple 
+	 * @Author nmurugan
+	 * @Since Sep 19, 2024
+	 * @throws TimeOutException
+	 * @throws InterruptedException 
+	 */
+	public void grandOrRemoveAccessForEntitlement_Multiple(String entitlementCategory, List<String> entitlementLists) throws TimeOutException {
+		try {
+			objAdminFunctions.ClickOnshowMoreActions();
+			sfcommonObj.waitTillLightningPageLoadComplete();
+			objAdminFunctions.clickOnGrantAccessInShowMoreActions();
+			this.expandEntitlementCategory(entitlementCategory);
+			for(String entitlement: entitlementLists)
+			{
+				this.verifyEntitilementPresentOrNot(entitlement);
+				this.checkEntitlementCheckBox(entitlement);
+			}
+			if(sfcommonObj.checkElementExists(objContactPageClass.OkBtn)){
+				seleniumObj.clickByJS(objContactPageClass.OkBtn);
+			}
+			if(sfcommonObj.checkElementExists(objOperationPageClass.saveOnGrantAccessPage)){
+				objAdminFunctions.clickOnSaveOnGrantAccessPage();
+			}			
+		}		
+		catch (Exception ex) {
+			Assert.fail("Not able to grandAccessToEntitlement" + ex.getMessage());
+		}
+	}
+
+
 }
